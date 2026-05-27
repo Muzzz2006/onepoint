@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brew Haven | Premium Coffee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background-color: #fdfbf9; color: #2c1810; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    .hero-bg {
+      background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* --- ANIMATION STATES --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .reveal-down {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.6s ease-out;
+    }
+
+    /* Mobile Friendly: Disable heavy sideways translations on mobile to prevent horizontal scrolling bugs */
+    .reveal-left {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    /* Laptop Viewport: Bring back elegant side slide animations */
+    @media (min-width: 768px) {
+      .reveal-left { transform: translateX(-50px); transition: all 0.8s ease-out; }
+      .reveal-right { transform: translateX(50px); transition: all 0.8s ease-out; }
+    }
+
+    .reveal.active, 
+    .reveal-down.active, 
+    .reveal-left.active, 
+    .reveal-right.active {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+
+    section { scroll-margin-top: 70px; }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-stone-100 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center relative">
+      
+      <div class="flex items-center gap-2">
+        <button id="bhMenuToggle" class="md:hidden p-2 rounded-xl bg-stone-50 border border-stone-200/60 text-[#2c1810] hover:bg-stone-100 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation Options">
+          <span id="line1" class="w-5 h-0.5 bg-[#2c1810] transition-all duration-300 origin-center"></span>
+          <span id="line2" class="w-5 h-0.5 bg-[#2c1810] transition-all duration-300"></span>
+          <span id="line3" class="w-5 h-0.5 bg-[#2c1810] transition-all duration-300 origin-center"></span>
+        </button>
+
+        <a href="#home" class="flex items-center gap-2 group">
+          <img src="logo.png" alt="Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
+          <h1 class="text-lg sm:text-2xl font-black tracking-tighter italic text-[#2c1810]">BREW HAVEN</h1>
+        </a>
+      </div>
+
+      <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-[0.2em]">
+        <a href="#home" class="hover:text-amber-700 transition">Home</a>
+        <a href="#about" class="hover:text-amber-700 transition">About</a>
+        <a href="#lounge" class="hover:text-amber-700 transition">Our Space</a>
+        <a href="#menu" class="hover:text-amber-700 transition">Menu</a>
+        <a href="#contact" class="hover:text-amber-700 transition">Contact</a>
+      </div>
+
+      <div>
+        <a href="#contact" class="bg-[#2c1810] text-white px-4 sm:px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-800 transition shadow-sm inline-block">
+          Reserve
+        </a>
+      </div>
+
+      <div id="bhMobileMenu" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-stone-200/80 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col space-y-4 shadow-xl md:hidden transition-all duration-500 ease-in-out">
+        <p class="text-[9px] font-bold uppercase tracking-[0.25em] text-stone-400 border-b border-stone-100 pb-2 mt-4">Menu Explorer</p>
+        <a href="#home" class="bh-mobile-link text-sm font-semibold text-[#2c1810] hover:text-amber-700 transition-colors flex items-center gap-3 py-1">☕ Home</a>
+        <a href="#about" class="bh-mobile-link text-sm font-semibold text-[#2c1810] hover:text-amber-700 transition-colors flex items-center gap-3 py-1">✨ Our Story</a>
+        <a href="#lounge" class="bh-mobile-link text-sm font-semibold text-[#2c1810] hover:text-amber-700 transition-colors flex items-center gap-3 py-1">🏛️ Our Space</a>
+        <a href="#menu" class="bh-mobile-link text-sm font-semibold text-[#2c1810] hover:text-amber-700 transition-colors flex items-center gap-3 py-1">📜 The Brew Menu</a>
+        <a href="#contact" class="bh-mobile-link text-sm font-semibold text-[#2c1810] hover:text-amber-700 transition-colors flex items-center gap-3 py-1 mb-6">📅 Table Reservations</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero-bg h-screen flex items-center justify-center text-white text-center px-4">
+    <div class="max-w-4xl">
+      <h1 class="reveal-down text-4xl sm:text-7xl md:text-9xl font-black mb-6 leading-tight">
+        Wake up your <br><span class="text-amber-500 italic">Senses</span>
+      </h1>
+      <div class="reveal delay-1 flex flex-col sm:flex-row gap-3 justify-center max-w-xs sm:max-w-none mx-auto w-full px-4 sm:px-0">
+        <a href="#menu" class="bg-amber-600 border-[2px] sm:border-[4px] border-white text-white px-6 sm:px-10 py-2.5 sm:py-4 rounded-full font-bold transition-all text-sm sm:text-base hover:bg-white hover:text-amber-600 hover:border-amber-600 hover:scale-105 active:scale-95 text-center">
+          View Menu
+        </a>
+        <a href="#about" class="bg-white border-[2px] sm:border-[4px] border-amber-600 text-amber-600 px-6 sm:px-10 py-2.5 sm:py-4 rounded-full font-bold transition-all text-sm sm:text-base hover:bg-amber-600 hover:border-white hover:text-white hover:scale-105 active:scale-95 text-center">
+          Our Story
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-12 sm:py-24 bg-stone-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8 sm:mb-16 reveal">
+        <p class="uppercase tracking-[4px] text-amber-700 font-bold text-[10px] sm:text-xs mb-2">Discover</p>
+        <h2 class="text-3xl sm:text-5xl font-black mb-3">About Us</h2>
+        <div class="h-0.5 w-16 bg-amber-600 mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div class="relative reveal-left">
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-amber-200 rounded-full mix-blend-multiply filter blur-2xl opacity-20 hidden sm:block"></div>
+          <img src="about-store.jpg" class="rounded-[1.5rem] sm:rounded-[3rem] shadow-xl relative z-10 w-full h-[260px] sm:h-[500px] object-cover">
+          <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-md z-20 hidden lg:block border border-stone-100">
+            <p class="text-[#2c1810] font-black text-xl">100%</p>
+            <p class="text-stone-500 text-[10px] uppercase tracking-widest font-bold">Organic Beans</p>
+          </div>
+        </div>
+
+        <div class="reveal-right text-center md:text-left">
+          <h3 class="text-2xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6 leading-tight text-[#2c1810]">
+            Crafting Coffee, <br class="hidden sm:block">Creating <span class="text-amber-600 italic font-serif">Home</span>
+          </h3>
+          <p class="text-stone-600 leading-relaxed mb-6 text-sm sm:text-lg max-w-xl mx-auto md:mx-0">
+            Brew Haven started in 2024 with a simple mission: to bring the art of artisanal roasting to the neighborhood. We believe that every cup should be a masterpiece.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto md:mx-0">
+            <div class="bg-white p-3 sm:p-6 rounded-[1.2rem] sm:rounded-[2rem] shadow-sm border border-stone-100">
+              <h4 class="text-xl sm:text-3xl font-black text-amber-700 mb-0.5">10+</h4>
+              <p class="text-stone-500 text-[9px] font-bold uppercase tracking-widest">Master Baristas</p>
+            </div>
+            <div class="bg-white p-3 sm:p-6 rounded-[1.2rem] sm:rounded-[2rem] shadow-sm border border-stone-100">
+              <h4 class="text-xl sm:text-3xl font-black text-amber-700 mb-0.5">25k</h4>
+              <p class="text-stone-500 text-[9px] font-bold uppercase tracking-widest">Happy Souls</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lounge" class="py-12 sm:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center mb-8 sm:mb-16 reveal">
+        <p class="uppercase tracking-[4px] text-amber-700 font-bold text-[10px] sm:text-xs mb-2">The Experience</p>
+        <h2 class="text-3xl sm:text-5xl font-black mb-3">Our Space & Lounge</h2>
+        <div class="h-0.5 w-16 bg-amber-600 mx-auto mb-4"></div>
+        <p class="text-stone-500 text-xs sm:text-base max-w-xl mx-auto px-2">
+          Step into a sanctuary engineered for deep work, warm conversations, and sensory elevation. Here is a preview of your new home.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-stretch">
+        
+        <div class="md:col-span-7 reveal-left relative group overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] shadow-md h-[240px] md:h-[500px]">
+          <img src="lounge-main.jpg" alt="Main Espresso Lounge" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-8 text-white">
+            <span class="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-amber-400 mb-0.5">Main Hall</span>
+            <h4 class="text-lg sm:text-2xl font-bold">The Main Lounge Arena</h4>
+            <p class="text-stone-300 text-[11px] sm:text-xs mt-0.5 max-w-sm hidden sm:block">Sunlit architecture, velvet seating nodes, and ambient acoustic isolation.</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 flex flex-col gap-4 md:gap-6">
+          
+          <div class="reveal-right relative group overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] shadow-sm h-[160px] md:h-[238px]">
+            <img src="lounge-bar.jpg" alt="Barista Brew Bar" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+              <span class="text-[9px] font-bold uppercase tracking-widest text-amber-400 mb-0.5">Craft Station</span>
+              <h4 class="text-base sm:text-xl font-bold">The Interactive Brew Bar</h4>
+            </div>
+          </div>
+
+          <div class="reveal-right delay-1 relative group overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] shadow-sm h-[160px] md:h-[238px]">
+            <img src="lounge-corner.jpg" alt="Cozy Workspace Nook" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+              <span class="text-[9px] font-bold uppercase tracking-widest text-amber-400 mb-0.5">Quiet Workspace</span>
+              <h4 class="text-base sm:text-xl font-bold">Cozy Reading Nooks</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="menu" class="py-12 sm:py-24 bg-[#2c1810] text-white block w-full relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8 sm:mb-16">
+        <p class="reveal uppercase tracking-[4px] text-amber-500 font-bold text-[10px] sm:text-xs mb-2">Artisanal Selection</p>
+        <h2 class="reveal delay-1 text-3xl sm:text-5xl font-black mb-3">The Brew & Bakery</h2>
+        <div class="reveal delay-2 h-0.5 w-16 bg-amber-600 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-10">
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="caramel-latte.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Caramel Latte</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹220</p>
+        </div>
+
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="hazelnut-latte.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Hazelnut latte</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹270</p>
+        </div>
+
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="matcha-latte.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Matcha Latte</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹260</p>
+        </div>
+
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="butter-croissant.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Butter Croissant</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹180</p>
+        </div>
+
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="pain-au-chocolat.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Pain au Chocolat</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹210</p>
+        </div>
+
+        <div class="reveal bg-white/5 p-3 sm:p-5 rounded-[1.5rem] sm:rounded-[3rem] border border-white/10 text-center hover:bg-white/10 transition-all group">
+          <div class="overflow-hidden rounded-[1rem] sm:rounded-[2.5rem] mb-3 sm:mb-6">
+            <img src="cappuccino-royale.jpg" class="aspect-square w-full object-cover group-hover:scale-110 transition-transform duration-500">
+          </div>
+          <h3 class="text-sm sm:text-2xl font-bold mb-0.5 uppercase tracking-tight truncate">Cappuccino Royale</h3>
+          <p class="text-amber-500 font-black text-sm sm:text-xl">₹250</p>
+        </div>
+      </div> 
+    </div> 
+  </section>
+
+  <section id="contact" class="py-12 sm:py-24 px-4 bg-white">
+    <div class="max-w-5xl mx-auto bg-[#2c1810] text-white p-6 sm:p-16 rounded-[1.5rem] sm:rounded-[3rem] shadow-xl relative overflow-hidden">
+      <div class="relative z-10">
+        <div class="text-center mb-8">
+          <p class="uppercase tracking-[4px] text-amber-400 font-bold text-[10px] sm:text-xs mb-2">Reservations</p>
+          <h2 class="text-2xl sm:text-5xl font-black mb-2">Book Your Table</h2>
+          <p class="text-stone-400 text-xs sm:text-sm">Planning a celebration? Let us know the details.</p>
+        </div>
+
+        <form class="grid md:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-[10px] font-bold uppercase tracking-widest text-amber-500">Full Name</label>
+            <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-amber-500 transition text-sm">
+          </div>
+          <div class="space-y-1">
+            <label class="text-[10px] font-bold uppercase tracking-widest text-amber-500">Guests</label>
+            <select class="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-amber-500 transition appearance-none text-sm text-stone-400">
+              <option class="text-black">1 Person</option>
+              <option class="text-black" selected>2 People</option>
+              <option class="text-black">4 People</option>
+              <option class="text-black">Large Group</option>
+            </select>
+          </div>
+          <div class="md:col-span-2 space-y-1">
+            <label class="text-[10px] font-bold uppercase tracking-widest text-amber-500">Date & Preferred Time</label>
+            <input type="datetime-local" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-amber-500 transition text-stone-400 text-sm">
+          </div>
+          <div class="md:col-span-2 space-y-1">
+            <label class="text-[10px] font-bold uppercase tracking-widest text-amber-500">Special Request</label>
+            <textarea placeholder="Is it a Birthday? Let us know..." rows="2" class="w-full bg-white/5 border border-white/10 p-3 rounded-xl focus:outline-none focus:border-amber-500 transition text-sm"></textarea>
+          </div>
+          <button type="button" class="md:col-span-2 bg-amber-600 hover:bg-amber-500 text-white py-3.5 rounded-xl font-black text-sm sm:text-base uppercase tracking-widest transition-all mt-2">
+            Confirm Reservation
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 bg-[#2c1810] text-white border-t border-white/10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      
+      <div class="flex flex-col items-center mb-4">
+        <a href="#home" class="inline-block group">
+          <img src="logo.png" alt="Brew Haven Logo" class="h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+        </a>
+      </div>
+
+      <p class="text-stone-400 text-[10px] sm:text-sm tracking-[0.2em] uppercase mb-6 max-w-md mx-auto px-4 font-light">
+        Artisanal Coffee <span class="text-amber-600/70 mx-1">•</span> Urban Sanctuary <span class="text-amber-600/70 mx-1">•</span> Est. 2024
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-8 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-white/5 pb-6 max-w-xl mx-auto">
+        <a href="#home" class="hover:text-amber-500 transition-colors">Home</a>
+        <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
+        <a href="#lounge" class="hover:text-amber-500 transition-colors">Our Space</a>
+        <a href="#menu" class="hover:text-amber-500 transition-colors">Menu</a>
+        <a href="#contact" class="text-amber-500 hover:text-amber-400 transition-colors">Reserve</a>
+      </div>
+
+      <div class="mb-8">
+        <p class="text-[9px] font-bold tracking-[0.25em] text-amber-500/90 uppercase mb-4">
+          Connect With Our Community
+        </p>
+        
+        <div class="flex justify-center gap-6 text-stone-400">
+          <a href="#" target="_blank" class="hover:text-white transition-all duration-300 hover:scale-110" aria-label="Follow us on Instagram">
+            <svg class="w-4 h-4 sm:w-5 " fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" target="_blank" class="hover:text-white transition-all duration-300 hover:scale-110" aria-label="Follow us on Twitter">
+            <svg class="w-4 h-4 sm:w-5 " fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" target="_blank" class="hover:text-white transition-all duration-300 hover:scale-110" aria-label="Follow us on Facebook">
+            <svg class="w-4 h-4 sm:w-5 " fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" target="_blank" class="hover:text-white transition-all duration-300 hover:scale-110" aria-label="Subscribe on YouTube">
+            <svg class="w-4 h-4 sm:w-5 " fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      
+        <p class="text-stone-500 text-[9px] uppercase tracking-[0.2em]">
+          © 2026 Brew Haven Artisanal Coffee Co. All Rights Reserved.
+        </p>
+      
+
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919999999999?text=Hi%20Brew%20Haven!%20I'd%20like%20to%20know%20more%20about%20your%20lounge%20reservations." 
+     target="_blank" 
+     class="fixed bottom-5 right-5 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+     aria-label="Chat on WhatsApp">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.004c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    const bhMenuToggle = document.getElementById('bhMenuToggle');
+    const bhMobileMenu = document.getElementById('bhMobileMenu');
+    const bhMobileLinks = document.querySelectorAll('.bh-mobile-link');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+
+    function toggleBrewDropdown() {
+      const isDropdownClosed = bhMobileMenu.classList.contains('pointer-events-none');
+      if (isDropdownClosed) {
+        bhMobileMenu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
+        bhMobileMenu.classList.add('max-h-[450px]', 'opacity-100', 'py-6');
+        line1.classList.add('rotate-45', 'translate-y-1.5');
+        line2.classList.add('opacity-0', 'scale-0');
+        line3.classList.add('-rotate-45', '-translate-y-1.5');
+      } else {
+        resetMenuIcon();
+      }
+    }
+
+    function resetMenuIcon() {
+      bhMobileMenu.classList.remove('max-h-[450px]', 'opacity-100', 'py-6');
+      bhMobileMenu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
+      line1.classList.remove('rotate-45', 'translate-y-1.5');
+      line2.classList.remove('opacity-0', 'scale-0');
+      line3.classList.remove('-rotate-45', '-translate-y-1.5');
+    }
+
+    bhMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleBrewDropdown();
+    });
+
+    bhMobileLinks.forEach(link => {
+      link.addEventListener('click', () => resetMenuIcon());
+    });
+
+    document.addEventListener('click', (e) => {
+      const isDropdownOpen = !bhMobileMenu.classList.contains('pointer-events-none');
+      if (isDropdownOpen && !bhMenuToggle.contains(e.target) && !bhMobileMenu.contains(e.target)) {
+        resetMenuIcon();
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const elements = entry.target.querySelectorAll('.reveal, .reveal-down, .reveal-left, .reveal-right');
+        if (entry.isIntersecting) {
+          elements.forEach((el) => el.classList.add('active'));
+        } else {
+          elements.forEach((el) => el.classList.remove('active'));
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('section').forEach((section) => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
