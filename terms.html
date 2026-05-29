@@ -12,14 +12,52 @@
 
   <header class="w-full bg-[#0F172A] border-b border-indigo-500/20 sticky top-0 z-[100] shadow-xl">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-      <a href="index.html" class="flex items-center gap-3 group shrink-0 select-none">
-        <div class="text-white font-black tracking-tight text-xl">OnePoint<span class="text-[#6366F1] font-black">.</span></div>
+      
+      <a href="./index.html" class="flex items-center gap-3 group shrink-0 select-none">
+        <div class="text-white font-black tracking-tight text-xl transition-transform duration-300 group-hover:scale-[1.02]">
+          OnePoint<span class="text-[#6366F1] font-black">.</span>
+        </div>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em]">
-        <a href="index.html" class="text-stone-300 hover:text-indigo-400 transition-colors">Home</a>
-        <a href="catalog.html" class="text-stone-300 hover:text-indigo-400 transition-colors">Templates</a>
-        <a href="contact.html" class="text-stone-300 hover:text-indigo-400 transition-colors">Contact</a>
+
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-xs font-bold uppercase tracking-[0.2em]">
+        <a href="./index.html" id="link-hero" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Home
+        </a>
+        <a href="./index.html#standards" id="link-standards" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Features
+        </a>
+        <a href="./catalog.html" id="link-catalog" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Templates
+        </a>
+        <a href="./index.html#about" id="link-about" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          About Me
+        </a>
+        <a href="./contact.html" id="link-contact" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Contact
+        </a>
       </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="./index.html#contact" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/40 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
+          Hire Me
+        </a>
+
+        <button id="opMenuToggle" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation">
+          <span id="opLine1" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+          <span id="opLine2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
+          <span id="opLine3" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+
+      <div id="opMobileMenu" class="absolute top-full left-0 w-full bg-[#0F172A] border-b border-white/10 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col shadow-2xl md:hidden transition-all duration-500 ease-in-out z-50">
+        <a href="./index.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5 mt-4 border-t border-white/5">Home</a>
+        <a href="./index.html#standards" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Features</a>
+        <a href="./catalog.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Templates</a>
+        <a href="./index.html#about" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">About Me</a>
+        <a href="./contact.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Contact</a>
+        <a href="./index.html#contact" class="op-mobile-link text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-4 mb-5 border-t border-white/5">Hire Me &rarr;</a>
+      </div>
+
     </div>
   </header>
 
