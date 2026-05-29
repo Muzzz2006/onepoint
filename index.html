@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Point | Premium Digital Storefronts & Templates</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
   body { font-family: 'Plus Jakarta Sans', sans-serif; }
 
@@ -58,68 +58,62 @@
   .trigger-buttons {
     animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards !important;
   }
-  /* Custom Tooltip Animation for WhatsApp Button */
-.whatsapp-trigger:hover .whatsapp-tooltip {
-  opacity: 1;
-  transform: translateX(0);
-}
 </style>
 </head>
 <body class="bg-white">
 
-  <header class="w-full py-5 px-6 md:px-16 flex justify-between items-center border-b-2 border-indigo-500/30 bg-[#0F172A] sticky top-0 z-[100] shadow-xl backdrop-blur-md">
-    <div class="text-xl font-extrabold tracking-tight text-white">
-      OnePoint<span class="text-[#6366F1]">.</span>
-    </div>
-    
-  <nav class="fixed top-0 left-0 w-full bg-[#0d1527] border-b border-white/5 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-    
-    <a href="#home" class="flex items-center gap-2 group shrink-0">
-      <div class="text-white font-black tracking-tight text-xl transition-transform duration-300 group-hover:scale-105 select-none">
-        OnePoint<span class="text-blue-500 font-black">.</span>
+  <header class="w-full bg-[#0F172A] border-b border-indigo-500/20 sticky top-0 z-[100] shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+      
+      <a href="index.html" class="flex items-center gap-3 group shrink-0 select-none">
+        <div class="text-white font-black tracking-tight text-xl transition-transform duration-300 group-hover:scale-[1.02]">
+          OnePoint<span class="text-[#6366F1] font-black">.</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-xs font-bold uppercase tracking-[0.2em]">
+        <a href="index.html" id="link-hero" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Home
+        </a>
+        <a href="index.html#standards" id="link-standards" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Features
+        </a>
+        <a href="catalog.html" id="link-catalog" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Templates
+        </a>
+        <a href="index.html#about" id="link-about" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          About Me
+        </a>
+        <a href="contact.html" id="link-contact" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Contact
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#contact" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/40 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
+          Hire Me
+        </a>
+
+        <button id="opMenuToggle" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation">
+          <span id="opLine1" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+          <span id="opLine2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
+          <span id="opLine3" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        </button>
       </div>
-    </a>
 
-    <div class="hidden md:flex items-center gap-8 lg:gap-12 text-xs font-bold uppercase tracking-[0.2em] text-stone-300">
-      <a href="#storefront" class="hover:text-indigo-400 transition-colors">The Storefront</a>
-      <a href="#standards" class="hover:text-indigo-400 transition-colors">Our Standards</a>
-      <a href="#requests" class="hover:text-indigo-400 transition-colors">Bespoke Requests</a>
-    </div>
+      <div id="opMobileMenu" class="absolute top-full left-0 w-full bg-[#0F172A] border-b border-white/10 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col shadow-2xl md:hidden transition-all duration-500 ease-in-out z-50">
+        <a href="index.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5 mt-4 border-t border-white/5">Home</a>
+        <a href="index.html#standards" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Features</a>
+        <a href="catalog.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Templates</a>
+        <a href="index.html#about" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">About Me</a>
+        <a href="contact.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Contact</a>
+        <a href="index.html#contact" class="op-mobile-link text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-4 mb-5 border-t border-white/5">Hire Me &rarr;</a>
+      </div>
 
-    <div class="flex items-center gap-4">
-      <a href="#contact" class="hidden md:inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-indigo-600/20 shrink-0">
-        Start Project
-      </a>
-
-      <button id="opMenuToggle" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation">
-        <span id="opLine1" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-        <span id="opLine2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
-        <span id="opLine3" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-      </button>
-    </div>
-
-    <div id="opMobileMenu" class="absolute top-full left-0 w-full bg-[#0d1527] border-b border-white/10 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col shadow-2xl md:hidden transition-all duration-500 ease-in-out z-50">
-      
-      <a href="#storefront" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3 mt-4 border-t border-white/10">The Storefront</a>
-      
-      <a href="#standards" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3">Our Standards</a>
-      
-      <a href="#requests" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3">Bespoke Requests</a>
-      
-      <a href="#contact" class="op-mobile-link text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-4 mb-5 border-t border-white/5">Start Your Project →</a>
-    </div>
-
-  </div>
-</nav>
-    <div>
-      <a href="#contact" class="bg-[#4F46E5] text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#4338CA] transition-all shadow-md shadow-indigo-600/20">
-        Start Project
-      </a>
     </div>
   </header>
 
-  <section class="relative min-h-[85vh] flex items-center justify-center px-6 md:px-16 py-20 bg-slate-50 border-b border-[#E2E8F0] overflow-hidden">
+   <section id="hero" class="relative min-h-[85vh] flex items-center justify-center px-6 md:px-16 py-20 bg-slate-50 border-b border-[#E2E8F0] overflow-hidden">
     
     <div class="absolute inset-0 pointer-events-none flex flex-col gap-6 rotate-[-4deg] scale-110 justify-center z-0 select-none">
       
@@ -220,23 +214,23 @@
       </div>
     </div>
 
-   <div class="max-w-4xl w-full mx-auto relative z-10 px-4 md:px-8">
-      <div id="hero-content" class="bg-white/15 backdrop-blur-xl border border-white/30 shadow-2xl rounded-3xl p-8 md:p-14 text-center space-y-6 opacity-0">
+    <div class="max-w-4xl w-full mx-auto relative z-10 px-4 md:px-8">
+      <div id="hero-content" class="bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl rounded-3xl p-8 md:p-14 text-center space-y-6 transition-all duration-700">
         
         <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white uppercase tracking-wider mx-auto shadow-sm">
           Premium Web Architecture
         </span>
         
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.15] drop-shadow-[0_2px_8px_rgba(255,255,255,0.5)]">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.15]">
           Launch your online presence with <br>
           <span class="bg-gradient-to-r from-[#4F46E5] via-[#6366F1] to-[#3B82F6] bg-clip-text text-transparent">Absolute Authority.</span>
         </h1>
         
-        <p class="max-w-xl mx-auto text-sm md:text-base text-slate-900 font-extrabold leading-relaxed drop-shadow-[0_1px_4px_rgba(255,255,255,0.6)]">
+        <p class="max-w-xl mx-auto text-sm md:text-base text-slate-800 font-semibold leading-relaxed">
           We build elite custom storefronts and ready-to-deploy HTML/Tailwind frameworks engineered explicitly for high-conversion performance.
         </p>
         
-        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 opacity-0">
+        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 transition-all duration-700">
           <a href="#storefront" class="w-full sm:w-auto bg-[#0F172A] text-white text-center px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out shadow-lg hover:bg-[#4F46E5] hover:shadow-indigo-600/30 transform hover:-translate-y-1 active:translate-y-0">
             Browse Frameworks
           </a>
@@ -248,23 +242,19 @@
       </div>
     </div>
   </section>
-<section id="standards" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-slate-100">
+
+  <section id="standards" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-slate-100">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       
       <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-4">
-        <span class="text-xs font-bold text-[#4F46E5] uppercase tracking-widest block">
-          Our Architecture Philosophy
-        </span>
-        <h2 class="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight leading-tight">
-          Engineered for digital speed and absolute retention.
-        </h2>
+        <span class="text-xs font-bold text-[#4F46E5] uppercase tracking-widest block">Our Architecture Philosophy</span>
+        <h2 class="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight leading-tight">Engineered for digital speed and absolute retention.</h2>
         <p class="text-sm text-slate-500 leading-relaxed font-medium">
           OnePoint designs premium, clean-code web frameworks that allow businesses to bypass slow development cycles and deploy market-ready experiences instantly.
         </p>
       </div>
 
       <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        
         <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -272,9 +262,7 @@
             </svg>
           </div>
           <h3 class="text-base font-bold text-[#0F172A]">Pixel-Perfect Performance</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            Zero bloatware. Every line of HTML and Tailwind configuration is mathematically written for sub-second loading speeds and crisp rendering across devices.
-          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">Zero bloatware. Every line of HTML and Tailwind configuration is mathematically written for sub-second loading speeds and crisp rendering across devices.</p>
         </div>
 
         <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
@@ -285,9 +273,7 @@
             </svg>
           </div>
           <h3 class="text-base font-bold text-[#0F172A]">High-Conversion Layouts</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            We structure our templates based on strict UI/UX conversion principles. Content hierarchies are meticulously optimized to guide your visitors directly toward checkout or dynamic acquisition actions.
-          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">We structure our templates based on strict UI/UX conversion principles. Content hierarchies are meticulously optimized to guide your visitors directly toward checkout actions.</p>
         </div>
 
         <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
@@ -297,9 +283,7 @@
             </svg>
           </div>
           <h3 class="text-base font-bold text-[#0F172A]">Developer-First Clean Code</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            No messy configurations. Components are clearly mapped, commented, and natively componentized, making backend integrations or style mutations straightforward for any developer.
-          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">No messy configurations. Components are clearly mapped, commented, and natively componentized, making backend integrations straightforward for any developer.</p>
         </div>
 
         <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
@@ -309,200 +293,359 @@
             </svg>
           </div>
           <h3 class="text-base font-bold text-[#0F172A]">Production-Ready Assets</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            Skip the boilerplate work. All structural components come pre-configured with active production dependencies right from your main viewport initialization.
-          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">Skip the boilerplate work. All structural components come pre-configured with active production dependencies right from your main viewport initialization.</p>
         </div>
-
       </div>
+
     </div>
   </section>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-  
-  <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300">
-    <div class="h-52 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
-      <img src="brewhaven-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-    </div>
+
+<section id="explore-frameworks" class="max-w-7xl mx-auto px-6 w-full pt-24 pb-24">
     
-    <div class="px-1 space-y-2">
-      <div class="flex justify-between items-baseline">
-        <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Bean & Brew Commerce</h3>
-        <span class="text-[#0F172A] font-extrabold text-sm">₹4,999</span>
-      </div>
-      <p class="text-xs text-[#64748B] leading-relaxed">
-        A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.
+    <div class="mb-12 text-center md:text-left">
+      <h2 class="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight">Explore Active Frameworks</h2>
+      <p class="text-sm md:text-base text-slate-500 max-w-2xl leading-relaxed font-medium mt-2">
+        Deploy premium, conversion-optimized HTML/Tailwind web layers designed to look flawless and process storefront workflows instantly.
       </p>
-      <div class="pt-3 flex gap-2">
-        <a href="./brewhaven/index.html" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
-        <a href="#contact" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
-      </div>
     </div>
-  </div>
 
-  <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300">
-    <div class="h-52 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
-      <span class="text-slate-400 font-mono text-[11px] uppercase tracking-widest group-hover:scale-105 transition-transform duration-300">Luxury Retail Engine</span>
-    </div>
-    
-    <div class="px-1 space-y-2">
-      <div class="flex justify-between items-baseline">
-        <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Aesthetic Storefront Engine</h3>
-        <span class="text-[#0F172A] font-extrabold text-sm">₹8,499</span>
-      </div>
-      <p class="text-xs text-[#64748B] leading-relaxed">
-        Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward jewelry items.
-      </p>
-      <div class="pt-3 flex gap-2">
-        <a href="./aura/index.html" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
-        <a href="#contact" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300">
-    <div class="h-52 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
-      <img src="nexus-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-    </div>
-    
-    <div class="px-1 space-y-2">
-      <div class="flex justify-between items-baseline">
-        <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Nexus Corporate Layout</h3>
-        <span class="text-[#0F172A] font-extrabold text-sm">₹6,200</span>
-      </div>
-      <p class="text-xs text-[#64748B] leading-relaxed">
-        An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.
-      </p>
-      <div class="pt-3 flex gap-2">
-        <a href="./nexus/index.html" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-center text-xs font-bold py-2.5 rounded-lg hover:bg-slate-100 transition-colors">Live Preview</a>
-        <a href="#contact" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
-      </div>
-    </div>
-  </div>
-
-</div>
-  </section>
-
-  <section id="contact" class="py-24 px-6 md:px-16 bg-white border-t border-[#E2E8F0]">
-    <div class="max-w-2xl mx-auto space-y-10">
-      <div class="text-center space-y-2">
-        <h2 class="text-2xl font-extrabold text-[#0F172A] tracking-tight">Initiate Operational Request</h2>
-        <p class="text-xs text-[#64748B] max-w-sm mx-auto">
-          Connect directly with One Point operations to deploy a framework or schedule a fully custom asset build.
-        </p>
-      </div>
-
-      <form class="space-y-5">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="space-y-1.5">
-            <label class="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">Business Name / Contact</label>
-            <input type="text" placeholder="Alex Carter" class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#4F46E5] transition-colors">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+            <img src="brewhaven-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">E-Commerce</span>
           </div>
-          <div class="space-y-1.5">
-            <label class="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">Operational Email</label>
-            <input type="email" placeholder="alex@company.com" class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#4F46E5] transition-colors">
+          <div class="px-1 space-y-2">
+            <div class="flex justify-between items-baseline">
+              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Bean & Brew Commerce</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm">₹4,999</span>
+            </div>
+            <p class="text-xs text-[#64748B] leading-relaxed">A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.</p>
           </div>
         </div>
+        <div class="pt-5 flex gap-2">
+          <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+          <a href="contact.html?asset=brewhaven" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+        </div>
+      </div>
+
+      <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+            <span class="text-slate-400 font-mono text-[11px] uppercase tracking-widest">Luxury Retail Engine</span>
+            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Premium UI</span>
+          </div>
+          <div class="px-1 space-y-2">
+            <div class="flex justify-between items-baseline">
+              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Aesthetic Storefront</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm">₹8,499</span>
+            </div>
+            <p class="text-xs text-[#64748B] leading-relaxed">Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward platforms.</p>
+          </div>
+        </div>
+        <div class="pt-5 flex gap-2">
+          <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+          <a href="contact.html?asset=aura" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+        </div>
+      </div>
+
+      <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+            <img src="nexus-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Corporate</span>
+          </div>
+          <div class="px-1 space-y-2">
+            <div class="flex justify-between items-baseline">
+              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Nexus Corporate Layout</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm">₹6,200</span>
+            </div>
+            <p class="text-xs text-[#64748B] leading-relaxed">An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.</p>
+          </div>
+        </div>
+        <div class="pt-5 flex gap-2">
+          <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+          <a href="contact.html?asset=nexus" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="catalog.html" class="inline-flex items-center gap-2 bg-[#0F172A] hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
+        More Templates
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+        </svg>
+      </a>
+    </div>
+
+  </section>
+
+  <section id="about" class="bg-[#0F172A] text-slate-300 py-24 px-6 md:px-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-5 space-y-4">
+        <div class="relative group max-w-sm mx-auto lg:mx-0">
+          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+          <div class="relative bg-[#1E293B] border border-slate-700/50 p-6 rounded-2xl space-y-6 shadow-xl">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-indigo-600/20">OP</div>
+              <div>
+                <h3 class="text-base font-bold text-white tracking-tight">Your Name</h3>
+                <p class="text-xs text-indigo-400 font-mono">Lead UI Engineer & Founder</p>
+              </div>
+            </div>
+            <div class="border-t border-slate-700/60 pt-4 space-y-2 font-mono text-[11px] text-slate-400">
+              <div class="flex justify-between"><span>PROJECT FOCUS:</span><span class="text-white font-bold">Pixel-Perfect UI Frameworks</span></div>
+              <div class="flex justify-between"><span>STACK EXPERIENCE:</span><span class="text-white font-bold">HTML5 / Tailwind CSS / Vanilla JS</span></div>
+              <div class="flex justify-between"><span>OPERATIONS BASE:</span><span class="text-white font-bold">India // Global Remote</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest block">Behind The Architecture</span>
+        <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">Bridging Computer Science theory with production-grade UI design.</h2>
+        <div class="space-y-4 text-sm md:text-base text-slate-400 leading-relaxed font-medium">
+          <p>I founded <strong class="text-white font-semibold">OnePoint</strong> alongside my Computer Science Honors path. My goal is to apply rigorous software engineering concepts—like clean semantic structures, optimized asset delivery, and efficient layout calculation trees—directly into front-end design.</p>
+          <p>Instead of relying on heavy, bloated builders that slow down digital storefronts, I write lean, responsive layouts using Tailwind CSS. This ensures that every component is highly optimized for fast compilation, absolute performance, and pixel-perfect responsiveness.</p>
+        </div>
+        <div class="pt-2">
+          <a href="#contact" class="inline-flex items-center text-xs font-bold text-white uppercase tracking-wider bg-slate-800 hover:bg-slate-700 border border-slate-700 px-5 py-3 rounded-xl transition-colors">
+            Let's Build Together &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+ <section id="contact" class="py-24 bg-slate-50 border-t border-slate-100 flex items-center justify-center">
+  <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
+    <span class="text-xs font-semibold tracking-widest text-[#4F46E5] uppercase bg-indigo-50 px-3 py-1.5 rounded-full">
+      Enterprise Execution
+    </span>
+    
+    <h2 class="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight max-w-xl mx-auto leading-tight">
+      Initiate Operational Request
+    </h2>
+    
+    <p class="text-sm md:text-base text-[#64748B] max-w-lg mx-auto leading-relaxed font-normal">
+      Connect directly with our engineering division to deploy a production-ready framework or schedule a fully bespoke architectural asset build.
+    </p>
+    
+    <div class="pt-4">
+      <a href="contact.html" class="inline-flex items-center justify-center bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold tracking-wider uppercase px-8 py-4 rounded-xl border border-transparent shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group">
+        Proceed to Secure Portal
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+  <footer class="bg-[#0F172A] text-slate-400 border-t-2 border-indigo-500/20 pt-16 pb-8 px-6 md:px-16 font-medium">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-12 border-b border-slate-800">
         
-        <div class="space-y-1.5">
-          <label class="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">Project Scope</label>
-          <select class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#4F46E5] transition-colors appearance-none">
-            <option value="template">Acquiring a Pre-Built Production Framework</option>
-            <option value="custom">Commissioning a Completely Custom Website Build</option>
-          </select>
+        <div class="lg:col-span-5 space-y-5">
+          <a href="#home" class="inline-block text-xl font-extrabold tracking-tight text-white transition-transform duration-300 hover:scale-105">
+            OnePoint<span class="text-[#6366F1]">.</span>
+          </a>
+          <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-sm">
+            Engineered software ecosystems for modern digital storefronts. We build high-conversion, pixel-perfect HTML/Tailwind frameworks optimized for absolute performance.
+          </p>
+          <div class="space-y-3">
+            <p class="text-xs text-indigo-400/80 font-mono">Location: India // Global Deployment</p>
+            <div class="flex items-center gap-3 pt-1">
+              <a href="https://x.com" target="_blank" aria-label="Follow OnePoint on X" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://github.com" target="_blank" aria-label="Explore OnePoint Repositories" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.061.069-.061 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" aria-label="Connect with OnePoint on LinkedIn" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div class="space-y-1.5">
-          <label class="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">Operational Details</label>
-          <textarea rows="4" placeholder="Outline your targeted budget, business niche, or feature requirements..." class="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#4F46E5] transition-colors resize-none"></textarea>
+        <div class="lg:col-span-3 lg:col-start-7 space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Platform Directory</h4>
+          <ul class="space-y-2.5 text-xs uppercase tracking-wider font-semibold">
+            <li><a href="#home" class="hover:text-indigo-400 transition-colors">Return to Top</a></li>
+            <li><a href="#explore-frameworks" class="hover:text-indigo-400 transition-colors">The Storefront</a></li>
+            <li><a href="#standards" class="hover:text-indigo-400 transition-colors">Our Standards</a></li>
+            <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Bespoke Requests</a></li>
+          </ul>
         </div>
 
-        <button type="submit" class="w-full bg-[#4F46E5] text-white font-bold py-3.5 rounded-xl hover:bg-[#4338CA] transition-all uppercase tracking-widest text-[10px] shadow-lg shadow-indigo-600/10">
-          Transmit Form
-        </button>
-      </form>
+        <div class="lg:col-span-3 space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Active Frameworks</h4>
+          <ul class="space-y-2.5 text-xs tracking-wide">
+            <li>
+              <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Bean & Brew Commerce</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.0.4</span>
+              </a>
+            </li>
+            <li>
+              <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Aesthetic Storefront Engine</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v2.1.0</span>
+              </a>
+            </li>
+            <li>
+              <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Nexus Corporate Layout</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.1.2</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-500 text-center md:text-left">
+        <p>&copy; 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved.</p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <a href="./terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="./privacy.html " class="hover:text-white transition-colors">Privacy Framework</a>
+          <a href="https://wa.me/919999999999" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Support Operations &rarr;</a>
+        </div>
+      </div>
+
     </div>
-  </section>
-
-  <footer class="py-10 text-center border-t border-[#E2E8F0] text-[11px] text-[#64748B] bg-[#F8FAFC]">
-    <p>© 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved.</p>
   </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. DYNAMIC HEADER SCROLL-SPY ACTIVE STATES
+      if (window.location.pathname.includes('catalog.html')) {
+        const catalogLink = document.getElementById('link-catalog');
+        if (catalogLink) {
+          catalogLink.classList.remove('text-stone-300');
+          catalogLink.classList.add('text-[#4F46E5]', 'font-extrabold', 'after:w-full');
+        }
+      } else {
+        // CHANGED: "div#hero" changed to "section#hero" to accurately reference your markup element type
+        const sections = document.querySelectorAll("section#hero, section#standards, section#explore-frameworks, section#about, section#contact");
+        const navLinks = {
+          'hero': document.getElementById('link-hero'),
+          'standards': document.getElementById('link-standards'),
+          'explore-frameworks': document.getElementById('link-catalog'),
+          'about': document.getElementById('link-about'),
+          'contact': document.getElementById('link-contact')
+        };
+
+        const scrollObserverOptions = {
+          root: null,
+          rootMargin: "-25% 0px -45% 0px", 
+          threshold: 0
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const activeId = entry.target.id;
+              
+              Object.values(navLinks).forEach(link => {
+                if (link) {
+                  link.classList.remove('text-[#4F46E5]', 'font-extrabold', 'after:w-full');
+                  link.classList.add('text-stone-300');
+                }
+              });
+
+              if (navLinks[activeId]) {
+                navLinks[activeId].classList.remove('text-stone-300');
+                navLinks[activeId].classList.add('text-[#4F46E5]', 'font-extrabold', 'after:w-full');
+              }
+            }
+          });
+        }, scrollObserverOptions);
+
+        sections.forEach(section => {
+          if (section) scrollObserver.observe(section);
+        });
+      }
+
+      // 2. HERO ENTRIES ENTRANCE ANIMATION 
       const heroContent = document.getElementById('hero-content');
       const heroButtons = document.getElementById('hero-buttons');
       
-      const observer = new IntersectionObserver((entries) => {
+      const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             heroContent.classList.add('trigger-slide');
             heroButtons.classList.add('trigger-buttons');
-          } else {
-            heroContent.classList.remove('trigger-slide');
-            heroButtons.classList.remove('trigger-buttons');
           }
         });
       }, { threshold: 0.05 });
 
-      if (heroContent) observer.observe(heroContent);
+      if (heroContent) heroObserver.observe(heroContent);
     });
 
-const opMenuToggle = document.getElementById('opMenuToggle');
-const opMobileMenu = document.getElementById('opMobileMenu');
-const opMobileLinks = document.querySelectorAll('.op-mobile-link');
-const opLine1 = document.getElementById('opLine1');
-const opLine2 = document.getElementById('opLine2');
-const opLine3 = document.getElementById('opLine3');
+    // 3. MOBILE RESPONSIVE DRAWERS TRANSITION ENGINE
+    const opMenuToggle = document.getElementById('opMenuToggle');
+    const opMobileMenu = document.getElementById('opMobileMenu');
+    const opMobileLinks = document.querySelectorAll('.op-mobile-link');
+    const opLine1 = document.getElementById('opLine1');
+    const opLine2 = document.getElementById('opLine2');
+    const opLine3 = document.getElementById('opLine3');
 
-function toggleOpDropdown() {
-  const isClosed = opMobileMenu.classList.contains('pointer-events-none');
-  if (isClosed) {
-    opMobileMenu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
-    opMobileMenu.classList.add('max-h-[400px]', 'opacity-100', 'py-6');
-    opLine1.classList.add('rotate-45', 'translate-y-1.5');
-    opLine2.classList.add('opacity-0', 'scale-0');
-    opLine3.classList.add('-rotate-45', '-translate-y-1.5');
-  } else {
-    resetOpMenu();
-  }
-}
+    function toggleOpDropdown() {
+      const isClosed = opMobileMenu.classList.contains('pointer-events-none');
+      if (isClosed) {
+        opMobileMenu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
+        opMobileMenu.classList.add('max-h-[400px]', 'opacity-100', 'py-6');
+        opLine1.classList.add('rotate-45', 'translate-y-1.5');
+        opLine2.classList.add('opacity-0', 'scale-0');
+        opLine3.classList.add('-rotate-45', '-translate-y-1.5');
+      } else {
+        resetOpMenu();
+      }
+    }
 
-function resetOpMenu() {
-  opMobileMenu.classList.remove('max-h-[400px]', 'opacity-100', 'py-6');
-  opMobileMenu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
-  opLine1.classList.remove('rotate-45', 'translate-y-1.5');
-  opLine2.classList.remove('opacity-0', 'scale-0');
-  opLine3.classList.remove('-rotate-45', '-translate-y-1.5');
-}
+    function resetOpMenu() {
+      opMobileMenu.classList.remove('max-h-[400px]', 'opacity-100', 'py-6');
+      opMobileMenu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
+      opLine1.classList.remove('rotate-45', 'translate-y-1.5');
+      opLine2.classList.remove('opacity-0', 'scale-0');
+      opLine3.classList.remove('-rotate-45', '-translate-y-1.5');
+    }
 
-opMenuToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleOpDropdown(); });
-opMobileLinks.forEach(link => link.addEventListener('click', () => resetOpMenu()));
-document.addEventListener('click', (e) => {
-  if (!opMobileMenu.classList.contains('pointer-events-none') && !opMenuToggle.contains(e.target) && !opMobileMenu.contains(e.target)) {
-    resetOpMenu();
-  }
-});
-
+    if(opMenuToggle) {
+      opMenuToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleOpDropdown(); });
+    }
+    opMobileLinks.forEach(link => link.addEventListener('click', () => resetOpMenu()));
+    
+    document.addEventListener('click', (e) => {
+      if (opMobileMenu && !opMobileMenu.classList.contains('pointer-events-none') && !opMenuToggle.contains(e.target) && !opMobileMenu.contains(e.target)) {
+        resetOpMenu();
+      }
+    });
   </script>
 
-  <div class="fixed bottom-4 right-4 z-50 flex items-center group">
-  
-  <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-[#0d1527] border border-white/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-stone-200 shadow-2xl opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 select-none">
-    Chat with us
-  </span>
-
-  <a href="https://wa.me/919999999999?text=Hi%20OnePoint!%20I'd%20like%20to%20know%20more%20about%20your%20digital%20storefronts." 
-     target="_blank" 
-     class="bg-[#25D366] hover:bg-[#20ba5a] text-white p-3 rounded-full shadow-lg border-2 border-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-     aria-label="Chat on WhatsApp">
-    
-    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.004c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
-
-</div>
-
+ <div class="fixed bottom-4 right-4 z-50 flex items-center group">
+    <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-[#0d1527] border border-white/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-stone-200 shadow-2xl opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 select-none">
+      Chat with us
+    </span>
+    <a href="https://wa.me/919999999999?text=Hi%20OnePoint!%20I'd%20like%20to%20know%20more%20about%20your%20digital%20storefronts." 
+       target="_blank" 
+       class="bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 shadow-[0_4px_15px_rgba(37,211,102,0.4),_0_0_0_2px_#fff]"
+       aria-label="Chat on WhatsApp">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+    </a>
   </div>
+
 </body>
 </html>

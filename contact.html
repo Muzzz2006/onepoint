@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Initiate Project | OnePoint</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-white text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <header class="w-full bg-[#0F172A] border-b border-indigo-500/20 sticky top-0 z-[100] shadow-xl">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+      
+      <a href="index.html" class="flex items-center gap-3 group shrink-0 select-none">
+        <div class="text-white font-black tracking-tight text-xl transition-transform duration-300 group-hover:scale-[1.02]">
+          OnePoint<span class="text-[#6366F1] font-black">.</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-xs font-bold uppercase tracking-[0.2em]">
+        <a href="index.html" id="link-hero" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Home
+        </a>
+        <a href="index.html#standards" id="link-standards" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Features
+        </a>
+        <a href="catalog.html" id="link-catalog" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Templates
+        </a>
+        <a href="index.html#about" id="link-about" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          About Me
+        </a>
+        <a href="contact.html" id="link-contact" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
+          Contact
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="index.html#contact" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/40 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
+          Hire Me
+        </a>
+
+        <button id="opMenuToggle" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation">
+          <span id="opLine1" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+          <span id="opLine2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
+          <span id="opLine3" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+
+      <div id="opMobileMenu" class="absolute top-full left-0 w-full bg-[#0F172A] border-b border-white/10 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col shadow-2xl md:hidden transition-all duration-500 ease-in-out z-50">
+        <a href="index.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5 mt-4 border-t border-white/5">Home</a>
+        <a href="index.html#standards" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Features</a>
+        <a href="catalog.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Templates</a>
+        <a href="index.html#about" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">About Me</a>
+        <a href="contact.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Contact</a>
+        <a href="index.html#contact" class="op-mobile-link text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-4 mb-5 border-t border-white/5">Hire Me &rarr;</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-16 w-full flex-grow">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-5xl font-black text-[#0F172A]">Project Specification Portal</h1>
+    </div>
+
+    <form id="project-intake-form" class="bg-white border border-slate-100 rounded-[32px] p-8 md:p-12 shadow-[0_20px_50px_rgba(11,19,43,0.04)] space-y-10 relative max-w-2xl mx-auto transition-all duration-300">
+
+
+    <h2 class="text-3xl font-extrabold tracking-tight text-slate-900">Project Requirements</h2>
+    <p class="text-sm text-slate-500 leading-relaxed">Provide your specifications below to engineer your custom storefront solution.</p>
+  </div>
+
+  <div id="status-banner" class="hidden text-xs font-bold p-4 rounded-xl text-center"></div>
+
+  <div class="space-y-6">
+    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+      <span class="w-4 h-[1px] bg-slate-200"></span> 01. Identity Details
+    </h3>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Owner / Client Name <span class="text-red-500">*</span></label>
+        <input type="text" id="client_name" required placeholder="e.g., Alexander Wright" 
+               class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
+      </div>
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand / Project Name <span class="text-red-500">*</span></label>
+        <input type="text" id="brand_name" required placeholder="e.g., Nexus Digital" 
+               class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <div class="space-y-1.5">
+    <label class="text-[11px] font-bold text-slate-700 tracking-wide">Contact Email <span class="text-red-500">*</span></label>
+    <input type="email" id="client_email" placeholder="alex@brand.com" required 
+           class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
+  </div>
+  
+  <div class="space-y-1.5">
+    <label class="text-[11px] font-bold text-slate-700 tracking-wide">Mobile Number <span class="text-red-500">*</span></label>
+    <div class="flex items-center bg-white border border-slate-200 rounded-xl focus-within:border-slate-900 focus-within:ring-4 focus-within:ring-slate-900/5 transition-all duration-200 overflow-hidden">
+      
+      <select id="country_code" required 
+              class="bg-transparent pl-3 pr-7 py-3 text-sm outline-none cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_0.4rem_center] bg-no-repeat bg-[length:1em] w-24 flex-shrink-0 text-slate-700 font-medium border-r border-slate-150 transition-colors duration-200">
+        <option value="+91" selected>🇮🇳 +91</option>
+        <option value="+1">🇺🇸 +1</option>
+        <option value="+44">🇬🇧 +44</option>
+        <option value="+971">🇦🇪 +971</option>
+        <option value="+65">🇸🇬 +65</option>
+        <option value="+61">🇦🇺 +61</option>
+        <option value="+49">🇩🇪 +49</option>
+        <option value="+33">🇫🇷 +33</option>
+        <option value="+39">🇮🇹 +39</option>
+        <option value="+34">🇪🇸 +34</option>
+        <option value="+27">🇿🇦 +27</option>
+      </select>
+      
+      <input type="tel" id="client_phone" placeholder="00000 00000" required 
+             class="w-full bg-transparent px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none border-0 focus:ring-0">
+             
+    </div>
+  </div>
+</div>
+
+  <div class="space-y-6">
+    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+      <span class="w-4 h-[1px] bg-slate-200"></span> 02. Project Architecture
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Project Type <span class="text-red-500">*</span></label>
+        <div class="relative">
+          <select id="project_scope" name="project_scope" required 
+                  class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
+            <option value="" disabled selected>Select Architecture...</option>
+            <option value="Template">Template System</option>
+            <option value="Custom Website">Custom Architecture</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Budget Range (INR) <span class="text-red-500">*</span></label>
+        <div class="relative">
+          <select id="project_budget" required 
+                  class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
+            <option value="" disabled selected>Select Allocation...</option>
+            <option value="Under ₹5,000">Under ₹5,000</option>
+            <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+            <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+            <option value="₹20,000+">₹20,000+</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="template-options" class="hidden space-y-1.5 relative">
+      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Select Template Configuration <span class="text-red-500">*</span></label>
+      <div class="relative">
+        <div id="template-dropdown-trigger" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm cursor-pointer flex justify-between items-center outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all duration-200">
+          <div class="flex items-center gap-3">
+            <img id="selected-template-img" src="" class="w-6 h-6 rounded-md object-cover border border-slate-200 hidden">
+            <span id="selected-template-text" class="text-slate-400">Choose a production template layout...</span>
+          </div>
+          <img src="https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500" class="w-5 h-5">
+        </div>
+        <div id="template-dropdown-menu" class="hidden absolute top-full left-0 z-50 w-full mt-1.5 bg-white border border-slate-200 rounded-xl shadow-xl max-h-60 overflow-y-auto outline-none transition-all duration-150">
+          <div class="p-4 text-xs text-slate-400 italic">Querying cloud systems...</div>
+        </div>
+      </div>
+      <input type="hidden" id="selected_template_val" name="selected_template">
+    </div>
+
+    <div class="space-y-1.5">
+      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Detailed Requirements <span class="text-red-500">*</span></label>
+      <textarea id="project_details" rows="5" required placeholder="Describe functionalities, design direction, page structure targets..." 
+                class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none resize-none duration-200 leading-relaxed"></textarea>
+    </div>
+  </div>
+
+  <div class="space-y-6">
+    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+      <span class="w-4 h-[1px] bg-slate-200"></span> 03. Assets & Verification
+    </h3>
+
+    <div class="space-y-1.5">
+      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand Assets <span class="text-slate-400 font-normal">(Optional)</span></label>
+      <div id="drop-zone" class="border-2 border-dashed border-slate-200 hover:border-slate-400 bg-slate-50/50 rounded-2xl p-8 text-center transition-all duration-200 group cursor-pointer">
+        <input type="file" id="client_file" class="hidden" multiple onchange="handleFile(event)">
+        <label for="client_file" class="cursor-pointer block space-y-2">
+          <div class="mx-auto w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm text-slate-500 group-hover:scale-110 transition-transform duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-slate-700 font-semibold">Drop asset files or <span class="text-slate-950 underline decoration-1 underline-offset-2">browse</span></p>
+            <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase mt-1">Maximum 5 imagery items</p>
+          </div>
+        </label>
+        <div id="thumbnail-container" class="mt-4 flex flex-wrap gap-2 justify-center"></div>
+        <div id="file-info" class="mt-3 text-xs text-slate-950 font-bold hidden"></div>
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3 bg-slate-50 border border-slate-200/50 p-4 rounded-xl">
+      <div class="flex items-center h-5">
+        <input type="checkbox" id="terms_agreement" required 
+               class="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900 accent-slate-950 cursor-pointer">
+      </div>
+      <label for="terms_agreement" class="text-xs text-slate-500 leading-normal cursor-pointer select-none">
+        I verify these entries and agree to the 
+        <a href="terms.html" target="_blank" class="text-slate-900 font-bold hover:underline">Terms & Conditions</a> 
+        and 
+        <a href="privacy.html" target="_blank" class="text-slate-900 font-bold hover:underline">Privacy Policy</a>. <span class="text-red-500">*</span>
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" id="submit-btn" 
+          class="w-full bg-slate-950 text-white font-bold text-sm py-4 rounded-xl hover:bg-slate-900 transition-all active:scale-[0.99] shadow-md hover:shadow-lg shadow-slate-950/10 tracking-wide">
+    SUBMIT
+  </button>
+</form>
+  </main>
+
+<footer class="bg-[#0F172A] text-slate-400 border-t-2 border-indigo-500/20 pt-16 pb-8 px-6 md:px-16 font-medium">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-12 border-b border-slate-800">
+        
+        <div class="lg:col-span-5 space-y-5">
+          <a href="#home" class="inline-block text-xl font-extrabold tracking-tight text-white transition-transform duration-300 hover:scale-105">
+            OnePoint<span class="text-[#6366F1]">.</span>
+          </a>
+          <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-sm">
+            Engineered software ecosystems for modern digital storefronts. We build high-conversion, pixel-perfect HTML/Tailwind frameworks optimized for absolute performance.
+          </p>
+          <div class="space-y-3">
+            <p class="text-xs text-indigo-400/80 font-mono">Location: India // Global Deployment</p>
+            <div class="flex items-center gap-3 pt-1">
+              <a href="https://x.com" target="_blank" aria-label="Follow OnePoint on X" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://github.com" target="_blank" aria-label="Explore OnePoint Repositories" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.061.069-.061 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" aria-label="Connect with OnePoint on LinkedIn" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" aria-label="Follow OnePoint Workspace on Instagram" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
+                <svg class="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 lg:col-start-7 space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Platform Directory</h4>
+          <ul class="space-y-2.5 text-xs uppercase tracking-wider font-semibold">
+            <li><a href="./index.html" class="hover:text-indigo-400 transition-colors">Return to Top</a></li>
+            <li><a href="./catalog.html" class="hover:text-indigo-400 transition-colors">The Storefront</a></li>
+            <li><a href="./index.html#standards" class="hover:text-indigo-400 transition-colors">Our Standards</a></li>
+            <li><a href="./contact.html" class="hover:text-indigo-400 transition-colors">Bespoke Requests</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Active Frameworks</h4>
+          <ul class="space-y-2.5 text-xs tracking-wide">
+            <li>
+              <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Bean & Brew Commerce</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.0.4</span>
+              </a>
+            </li>
+            <li>
+              <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Aesthetic Storefront Engine</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v2.1.0</span>
+              </a>
+            </li>
+            <li>
+              <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
+                <span>Nexus Corporate Layout</span>
+                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.1.2</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-500 text-center md:text-left">
+        <p>&copy; 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved.</p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <a href="./terms.html" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="./privacy.html " class="hover:text-white transition-colors">Privacy Framework</a>
+          <a href="https://wa.me/919999999999" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Support Operations &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+ <script>
+  // 1. Configuration Constants
+  const GOOGLE_SCRIPT_WEBHOOK = "https://script.google.com/macros/s/AKfycbzrRsZfIh2Khxv86VqpOPtxWYtNnZWZCXHD6fOOqnFEWqtRIeoX_hLQIonwNMe4rWTb/exec";
+  const DYNAMIC_TEMPLATE_URL = "https://script.google.com/macros/s/AKfycbwSlULgBO82IZynOl1l4jfVMhVuzbQYQGYZ8O_2_klmtZK99z8zu7FBoYG4MTQdf4AH/exec";
+  
+  const form = document.getElementById('project-intake-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const banner = document.getElementById('status-banner');
+  const dropZone = document.getElementById('drop-zone');
+  const projectScope = document.getElementById('project_scope');
+  const templateOptions = document.getElementById('template-options');
+  const menu = document.getElementById('template-dropdown-menu');
+  const trigger = document.getElementById('template-dropdown-trigger');
+
+  // Unified global file registry tracking raw values alongside base64 data strings
+  let uploadedFiles = [];
+
+  // FIXED: Standardized Drive asset compiler avoiding cross-origin display blocks
+  function cleanDriveUrl(url) {
+    if (!url) return '';
+    const clean = url.trim();
+    if (clean.includes('drive.google.com')) {
+      let fileId = '';
+      if (clean.includes('/d/')) {
+        fileId = clean.split('/d/')[1].split('/')[0];
+      } else if (clean.includes('id=')) {
+        fileId = clean.split('id=')[1].split('&')[0];
+      }
+      if (fileId) {
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w200`;
+      }
+    }
+    return clean;
+  }
+
+  // --- A. Dynamic Template Loading ---
+  async function loadTemplates() {
+    try {
+      const response = await fetch(DYNAMIC_TEMPLATE_URL);
+      const catalog = await response.json();
+
+      console.log("Checking sheet data format:", catalog);
+
+      if (!catalog || catalog.length === 0) {
+        menu.innerHTML = '<div class="p-4 text-xs text-slate-400 italic">No templates found in database.</div>';
+        return;
+      }
+
+      menu.innerHTML = catalog.map(item => {
+        const rawUrl = item.ImageURL || item.imageurl || item["Image URL"] || item.Image_URL || "";
+        const correctImage = cleanDriveUrl(rawUrl);
+        
+        return `
+          <div class="template-option p-3 hover:bg-slate-50 cursor-pointer flex items-center gap-4 border-b border-slate-100 last:border-0 transition-colors" 
+               data-value="${item.ID || item.Name}">
+            <img src="${correctImage}" 
+                 class="w-10 h-10 rounded-lg object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=80;h=80&fit=crop';">
+            <span class="template-title text-sm font-semibold text-slate-700 pointer-events-none">${item.Name}</span>
+          </div>
+        `;
+      }).join('');
+
+    } catch (error) {
+      console.error("Error loading templates:", error);
+      menu.innerHTML = '<div class="p-4 text-xs text-red-500 font-bold">Failed to connect to template database.</div>';
+    }
+  }
+
+  // --- B. Event Delegation & Choice Display Handling ---
+  menu.addEventListener('click', (e) => {
+    const option = e.target.closest('.template-option');
+    if (!option) return;
+    
+    e.stopPropagation();
+    const templateName = option.querySelector('.template-title').textContent;
+    const templateId = option.getAttribute('data-value');
+    const imageSrc = option.querySelector('img').src;
+
+    document.getElementById('selected-template-text').textContent = templateName;
+    document.getElementById('selected-template-text').className = "text-sm font-bold text-slate-800";
+    document.getElementById('selected_template_val').value = templateId;
+    
+    const triggerImg = document.getElementById('selected-template-img');
+    triggerImg.src = imageSrc;
+    triggerImg.classList.remove('hidden');
+
+    menu.classList.add('hidden');
+  });
+
+  // --- C. UI Toggles & Global Handlers ---
+  function toggleTemplateSection() {
+    if (projectScope.value === 'Template') {
+      templateOptions.classList.remove('hidden');
+    } else {
+      templateOptions.classList.add('hidden');
+      menu.classList.add('hidden');
+    }
+  }
+
+  projectScope.addEventListener('change', toggleTemplateSection);
+  
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', () => {
+    menu.classList.add('hidden');
+  });
+
+  toggleTemplateSection();
+  loadTemplates();
+
+  // --- D. Optimized File Handling & Individual Removal Mechanics ---
+  function handleFile(e) {
+    const files = Array.from(e.target.files || e.dataTransfer.files);
+    const imageFiles = files.filter(file => file.type.startsWith('image/'));
+
+    // Check boundary threshold limit before modifying file arrays
+    if (uploadedFiles.length + imageFiles.length > 5) {
+      alert("System limit reached: You can upload a maximum of 5 brand asset images.");
+      syncFileInput();
+      return;
+    }
+
+    let itemsProcessed = 0;
+    imageFiles.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        uploadedFiles.push({
+          name: file.name,
+          data: event.target.result.split(',')[1], // Keeps base64 payload structure safe for Google Script
+          rawFile: file                           // Tracking object references for native UI browser sync operations
+        });
+        
+        itemsProcessed++;
+        if (itemsProcessed === imageFiles.length) {
+          renderThumbnails();
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderThumbnails() {
+    const container = document.getElementById('thumbnail-container');
+    const fileInfo = document.getElementById('file-info');
+    container.innerHTML = '';
+
+    if (uploadedFiles.length === 0) {
+      fileInfo.classList.add('hidden');
+      syncFileInput();
+      return;
+    }
+
+    fileInfo.classList.remove('hidden');
+    fileInfo.textContent = `✓ ${uploadedFiles.length} file(s) selected`;
+
+    // Map active structures to generate independent close-badges
+    uploadedFiles.forEach((fileItem, index) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative w-16 h-16 group';
+
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(fileItem.rawFile);
+      img.className = 'w-full h-full object-cover rounded-xl border border-slate-200 shadow-sm group-hover:border-slate-400 transition-colors duration-200';
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 bg-slate-950 text-white rounded-full flex items-center justify-center text-xs font-bold hover:bg-red-500 hover:scale-110 transition-all duration-150 shadow-sm border border-white focus:outline-none';
+      removeBtn.innerHTML = '&times;';
+      
+      removeBtn.onclick = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        removeFile(index);
+      };
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(removeBtn);
+      container.appendChild(wrapper);
+    });
+
+    syncFileInput();
+  }
+
+  function removeFile(index) {
+    uploadedFiles.splice(index, 1);
+    renderThumbnails();
+  }
+
+  function syncFileInput() {
+    const fileInput = document.getElementById('client_file');
+    const dataTransfer = new DataTransfer();
+    uploadedFiles.forEach(item => {
+      if (item.rawFile) dataTransfer.items.add(item.rawFile);
+    });
+    fileInput.files = dataTransfer.files;
+  }
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropZone.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+  });
+  dropZone.addEventListener('drop', (e) => handleFile(e));
+
+  // --- E. Form Submission Matrix ---
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "SUBMITTING...";
+
+    // Combines the country code picker value with numerical entries into a single string payload array
+    const data = {
+      client_name: document.getElementById('client_name').value,
+      brand_name: document.getElementById('brand_name').value,
+      client_email: document.getElementById('client_email').value,
+      
+      // FIXED: Prepended single quote (') strings to force text parsing in Google Sheets cells
+      client_phone: `'${document.getElementById('country_code').value} ${document.getElementById('client_phone').value}`,
+      
+      project_scope: projectScope.value,
+      selected_template: document.getElementById('selected_template_val').value || "N/A",
+      project_budget: document.getElementById('project_budget').value,
+      project_details: document.getElementById('project_details').value,
+      // Maps active image registers back into exact structured data sets expected by your Google sheet backend
+      files: uploadedFiles.map(f => ({ name: f.name, data: f.data }))
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_WEBHOOK, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+      banner.textContent = "SUCCESS: Transmission complete.";
+      banner.className = "block p-4 bg-emerald-50 text-emerald-700 rounded-xl text-center font-bold border border-emerald-200/50";
+      submitBtn.textContent = "SUBMIT SUCCESSFUL";
+    } catch (err) {
+      console.error(err);
+      banner.textContent = "Error: Transmission failed.";
+      banner.className = "block p-4 bg-red-50 text-red-700 rounded-xl text-center font-bold border border-red-200/50";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Requirements";
+    }
+  });
+</script>
+</body>
+</html>

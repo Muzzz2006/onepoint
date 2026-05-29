@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Mode | OnePoint</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden bg-white">
+
+  <header class="w-full py-5 px-6 md:px-16 flex justify-between items-center border-b-2 border-indigo-500/30 bg-[#0F172A] relative z-[100] shadow-xl backdrop-blur-md shrink-0">
+    <div class="flex items-center gap-6">
+      <a href="index.html" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-indigo-600/20 whitespace-nowrap">
+        &larr; Back to Hub
+      </a>
+      
+      <div class="hidden sm:block h-5 w-[1px] bg-slate-700"></div>
+      
+      <span class="hidden sm:inline text-xs font-mono font-bold italic text-slate-400">
+        Active Environment: <span id="templateName" class="text-indigo-400 font-sans not-italic font-extrabold uppercase ml-1">Template</span>
+      </span>
+    </div>
+
+    <div class="text-xl font-extrabold tracking-tight text-white select-none">
+      OnePoint<span class="text-[#6366F1]">.</span>
+    </div>
+  </header>
+
+  <main class="flex-grow w-full bg-slate-900 relative">
+    <iframe id="templateFrame" src="" class="w-full h-full border-none bg-white"></iframe>
+  </main>
+
+  <footer class="py-4 text-center border-t border-[#E2E8F0] text-[11px] text-[#64748B] bg-[#F8FAFC] shrink-0 font-medium">
+    <p>© 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved. // <span class="font-bold text-indigo-600">Preview Layout Shell</span></p>
+  </footer>
+
+  <script>
+    // Extract query configuration metrics safely from parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const templateSrc = urlParams.get('url');
+    const name = urlParams.get('name');
+    
+    if (templateSrc) {
+        // Set frame source seamlessly
+        document.getElementById('templateFrame').src = templateSrc;
+    }
+    if (name) {
+        // Render current template name accurately
+        document.getElementById('templateName').innerText = name;
+    }
+  </script>
+
+</body>
+</html>
