@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Vision | OnePoint Premium Web Architecture</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      background-color: #ffffff;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.2; transform: scale(1.05); }
+    }
+    .animate-glow { animation: pulseGlow 8s ease-in-out infinite; }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+
+  <header class="w-full bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      
+      <div class="flex items-center shrink-0">
+        <a href="./index.html" class="text-xl font-black tracking-tight text-slate-900 hover:opacity-80 transition-opacity">
+          OnePoint<span class="text-indigo-600">.</span>
+        </a>
+      </div>
+      
+      <nav class="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
+        <a href="./index.html" class="hover:text-slate-900 transition-colors">Home</a>
+        <a href="./index.html#features" class="hover:text-slate-900 transition-colors">Features</a>
+        <a href="./catalog.html" class="hover:text-slate-900 transition-colors">Templates</a>
+        <a href="./vision.html" class="text-slate-900 border-b-2 border-indigo-600 pb-1">Platform Vision</a>
+        <a href="./about.html" class="hover:text-slate-900 transition-colors">About Me</a>
+        <a href="./index.html#contact" class="hover:text-slate-900 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="./index.html#contact" class="hidden sm:inline-flex bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-300">
+          Hire Me
+        </a>
+        
+        <button onclick="toggleMobileMenu()" id="opMenuToggle" class="block lg:hidden p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none w-10 h-10 flex flex-col justify-center items-center gap-1 group">
+          <span id="opLine1" class="w-5 h-0.5 bg-current transition-all duration-300"></span>
+          <span id="opLine2" class="w-5 h-0.5 bg-current transition-all duration-300"></span>
+          <span id="opLine3" class="w-5 h-0.5 bg-current transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden w-full bg-white border-b border-slate-200 px-6 py-6 flex flex-col space-y-4 absolute top-full left-0 z-50 shadow-xl">
+      <a href="./index.html" class="text-xs font-bold uppercase tracking-widest text-slate-500 py-2">Home</a>
+      <a href="./catalog.html" class="text-xs font-bold uppercase tracking-widest text-slate-500 py-2">Browse Templates</a>
+      <a href="./vision.html" class="text-xs font-bold uppercase tracking-widest text-indigo-600 py-2">Platform Vision</a>
+      <a href="./about.html" class="text-xs font-bold uppercase tracking-widest text-slate-500 py-2">About Me</a>
+      <a href="./index.html#contact" class="text-xs font-bold uppercase tracking-widest text-slate-500 py-2">Contact</a>
+      <div class="pt-4 border-t border-slate-100">
+        <a href="./index.html#contact" class="w-full text-center bg-slate-900 text-white py-3 rounded-lg text-xs font-bold uppercase tracking-widest block">
+          Hire Me Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative overflow-hidden rounded-2xl border border-indigo-950/20 bg-gradient-to-b from-[#0f1530] to-[#070914] p-8 sm:p-12 lg:p-16 shadow-xl shadow-indigo-950/20">
+      
+      <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-indigo-600/30 rounded-full blur-[100px] animate-glow"></div>
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-600/20 rounded-full blur-[90px] animate-glow" style="animation-delay: 3s;"></div>
+      </div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-[10px] font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 uppercase tracking-widest">
+            The Core Architecture Manifesto
+          </span>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Engineering web layers with <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400">absolute sovereignty.</span>
+          </h1>
+          <p class="max-w-xl text-xs sm:text-sm text-slate-400 font-medium leading-relaxed">
+            The modern web is weighed down by excessive hydration cycles and fragile runtime architectures. OnePoint constructs high-fidelity static layers optimized natively to load instantly, rank flawlessly, and scale beautifully.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 relative hidden lg:block">
+          <div class="p-6 rounded-xl bg-slate-950/60 backdrop-blur-sm border border-slate-800/60 shadow-2xl font-mono text-[11px] text-slate-500 space-y-2">
+            <div class="flex items-center gap-1.5 pb-4 border-b border-slate-900 mb-2">
+              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+              <span class="text-[10px] text-slate-600 ml-2">architecture-config.json</span>
+            </div>
+            <p><span class="text-indigo-400">"performance"</span>: {</p>
+            <p class="pl-4">"dom_interactive": <span class="text-emerald-400">"sub-1s"</span>,</p>
+            <p class="pl-4">"cumulative_layout_shift": <span class="text-emerald-400">0.00</span>,</p>
+            <p class="pl-4">"edge_rendered": <span class="text-amber-400">true</span></p>
+            <p>}</p>
+            <p><span class="text-indigo-400">"ui_layer"</span>: {</p>
+            <p class="pl-4">"framework": <span class="text-emerald-400">"Tailwind_Sovereignty"</span>,</p>
+            <p class="pl-4">"structural_debt": <span class="text-emerald-400">"0%"</span></p>
+            <p>}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 space-y-2">
+      <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest block">Structural Pillars</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Our Core Operational Directives</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <div class="lg:col-span-2 group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Autonomous Deployment Optimization</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
+            We completely eliminate heavy client-side hydration processes by serving clean, pre-compiled static documents globally across edge-native networks. By evaluating and bundling presentation assets during build time rather than execution time, your end-users receive instant access to interactive interfaces, reducing layout friction while maximizing content availability on any device layout instantly.
+          </p>
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+            <div><span class="block text-slate-900 font-bold mb-0.5">Edge Distribution Matrix:</span> Decoupled multi-zone processing layers</div>
+            <div><span class="block text-slate-900 font-bold mb-0.5">Execution Methodology:</span> Complete zero-overhead asset footprint</div>
+          </div>
+        </div>
+        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">01</span>
+      </div>
+
+      <div class="group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Conversion Geometry</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Visual element structures are generated systematically along natural focus tracks. We place call-to-actions, primary value headings, and interface triggers directly where the viewer's eyes rest intuitively, preventing cognitive load while increasing operational performance and form submission indices.
+          </p>
+          <div class="pt-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+            <span class="block text-slate-900 font-bold mb-0.5">Objective Metric:</span> Maximize organic click tracking & response rates
+          </div>
+        </div>
+        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">02</span>
+      </div>
+
+      <div class="group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Code Sovereignty</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            We deliver production files free from proprietary constraints, nested third-party scripts, or custom system runtimes. Our markup provides highly accessible utility arrays that scale without disruption, fitting cleanly into complex backend microservices or continuous integration routines.
+          </p>
+          <div class="pt-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+            <span class="block text-slate-900 font-bold mb-0.5">Code Standards:</span> Pure semantic code layers without vendor lock-in
+          </div>
+        </div>
+        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">03</span>
+      </div>
+
+      <div class="lg:col-span-2 group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Infinite Asset Scalability</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
+            Our build setup relies exclusively on independent utility declarations that prevent presentation configuration files from compounding in weight as you add web layers. By keeping presentation assets modular, team members can modify and release localized components without causing structural layout shifts elsewhere.
+          </p>
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+            <div><span class="block text-slate-900 font-bold mb-0.5">Style Architecture:</span> Linear, bounded asset footprints</div>
+            <div><span class="block text-slate-900 font-bold mb-0.5">Expansion Support:</span> Plug-and-play block construction methods</div>
+          </div>
+        </div>
+        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">04</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="border-t border-slate-100 bg-slate-50/50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-5 space-y-4">
+        <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest block">Structural Benchmarks</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">Zero latency layout mechanics.</h3>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
+          Every interface line we commit targets uncompromised performance scoring indices. We carefully police asset packaging footprints, network load intervals, and viewport render cycles with deep accuracy.
+        </p>
+        <div class="pt-2">
+          <a href="./catalog.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-700 transition-colors group">
+            Explore Master Configurations 
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 grid grid-cols-2 gap-x-8 gap-y-12 border-l border-slate-200 pl-0 lg:pl-12">
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Sub-1s</div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Average DOM Interactive</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Zero</div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Cumulative Layout Shifts</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">100%</div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tailwind Sovereignty</p>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">48 Hrs</div>
+          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Typical Assembly Sprint</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="w-full bg-white border-t border-slate-100 py-20 text-center px-4 sm:px-6 relative overflow-hidden">
+    <div class="max-w-3xl mx-auto space-y-6 relative z-10">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Align your interface platform with real speed metrics.
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
+        Let's deploy your design layers natively. We construct, match your layout schema, and ship your operational interface layers directly live within a 48-hour development window.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="./index.html#contact" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold tracking-widest uppercase px-8 py-3.5 rounded-lg transition-colors shadow-md">
+          Initiate Direct Contract
+        </a>
+        <a href="./catalog.html" class="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold tracking-widest uppercase px-8 py-3.5 rounded-lg border border-slate-200 transition-colors">
+          View Master Catalog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t border-slate-100 py-8 px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+      <p>&copy; 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved.</p>
+      <div class="flex gap-6">
+        <a href="./index.html" class="hover:text-slate-600 transition-colors">Dashboard</a>
+        <a href="./terms.html" class="hover:text-slate-600 transition-colors">Terms</a>
+        <a href="./privacy.html" class="hover:text-slate-600 transition-colors">Privacy Framework</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const line1 = document.getElementById('opLine1');
+      const line2 = document.getElementById('opLine2');
+      const line3 = document.getElementById('opLine3');
+      if (!menu) return;
+
+      const isClosed = menu.classList.contains('hidden');
+      if (isClosed) {
+        menu.classList.remove('hidden');
+        if (line1) line1.classList.add('rotate-45', 'translate-y-1.5');
+        if (line2) line2.classList.add('opacity-0', 'scale-0');
+        if (line3) line3.classList.add('-rotate-45', '-translate-y-1.5');
+      } else {
+        menu.classList.add('hidden');
+        if (line1) line1.classList.remove('rotate-45', 'translate-y-1.5');
+        if (line2) line2.classList.remove('opacity-0', 'scale-0');
+        if (line3) line3.classList.remove('-rotate-45', '-translate-y-1.5');
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -30,7 +30,7 @@
   @keyframes slideDown {
     0% {
       opacity: 0;
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
     100% {
       opacity: 1;
@@ -42,7 +42,7 @@
   @keyframes slideUp {
     0% {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     100% {
       opacity: 1;
@@ -61,201 +61,134 @@
 </style>
 </head>
 <body class="bg-white">
+<body class="bg-white pt-20"> 
+  <div id="header-placeholder"></div>
+  </body>
 
-  <header class="w-full bg-[#0F172A] border-b border-indigo-500/20 sticky top-0 z-[100] shadow-xl">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-      
-      <a href="index.html" class="flex items-center gap-3 group shrink-0 select-none">
-        <div class="text-white font-black tracking-tight text-xl transition-transform duration-300 group-hover:scale-[1.02]">
-          OnePoint<span class="text-[#6366F1] font-black">.</span>
-        </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-xs font-bold uppercase tracking-[0.2em]">
-        <a href="index.html" id="link-hero" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
-          Home
-        </a>
-        <a href="index.html#standards" id="link-standards" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
-          Features
-        </a>
-        <a href="catalog.html" id="link-catalog" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
-          Templates
-        </a>
-        <a href="index.html#about" id="link-about" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
-          About Me
-        </a>
-        <a href="contact.html" id="link-contact" class="nav-item text-stone-300 hover:text-indigo-400 transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-indigo-500 after:transition-all hover:after:w-full">
-          Contact
-        </a>
-      </nav>
-
-      <div class="flex items-center gap-4">
-        <a href="index.html#contact" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/40 transform hover:-translate-y-0.5 active:translate-y-0 shrink-0">
-          Hire Me
-        </a>
-
-        <button id="opMenuToggle" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-10 h-10 group" aria-label="Toggle Navigation">
-          <span id="opLine1" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-          <span id="opLine2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
-          <span id="opLine3" class="w-5 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-        </button>
-      </div>
-
-      <div id="opMobileMenu" class="absolute top-full left-0 w-full bg-[#0F172A] border-b border-white/10 px-6 max-h-0 opacity-0 overflow-hidden pointer-events-none flex flex-col shadow-2xl md:hidden transition-all duration-500 ease-in-out z-50">
-        <a href="index.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5 mt-4 border-t border-white/5">Home</a>
-        <a href="index.html#standards" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Features</a>
-        <a href="catalog.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Templates</a>
-        <a href="index.html#about" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">About Me</a>
-        <a href="contact.html" class="op-mobile-link text-sm font-semibold text-stone-200 hover:text-indigo-400 transition-colors py-3.5">Contact</a>
-        <a href="index.html#contact" class="op-mobile-link text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-4 mb-5 border-t border-white/5">Hire Me &rarr;</a>
-      </div>
-
-    </div>
-  </header>
-
-   <section id="hero" class="relative min-h-[85vh] flex items-center justify-center px-6 md:px-16 py-20 bg-slate-50 border-b border-[#E2E8F0] overflow-hidden">
+  <section id="hero" class="pt-20 relative min-h-0 flex ...">
+  </section>
     
-    <div class="absolute inset-0 pointer-events-none flex flex-col gap-6 rotate-[-4deg] scale-110 justify-center z-0 select-none">
+    <div class="absolute inset-0 pointer-events-none flex flex-col gap-4 sm:gap-6 rotate-[-4deg] scale-105 sm:scale-110 justify-center z-0 select-none opacity-100 sm:opacity-100">
       
-      <div class="flex gap-6 w-[200%] animate-marquee">
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+      <div class="flex gap-4 sm:gap-6 w-[200%] animate-marquee">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">☕ Brewhaven Layout</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🎨 Agency Portfolio</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🚀 SaaS Landing Page</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🌐 E-Commerce UI</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
         
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">☕ Brewhaven Layout</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🎨 Agency Portfolio</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🚀 SaaS Landing Page</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🌐 E-Commerce UI</span>
         </div>
       </div>
       
-      <div class="flex gap-6 w-[200%] animate-marquee-reverse">
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+      <div class="flex gap-4 sm:gap-6 w-[200%] animate-marquee-reverse">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">📊 Corporate Dashboard</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">🏠 Real Estate Grid</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">👗 Premium Boutique</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold shadow-sm">💻 Tech Blog Platform</span>
-          <span class="text-slate-700 z-20 self-end bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded border border-slate-200 shadow-xs">onepoint.ind.in</span>
         </div>
         
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold">📊 Corporate Dashboard</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold">🏠 Real Estate Grid</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
           <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold">👗 Premium Boutique</span>
         </div>
-        <div class="w-80 h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-4 justify-between font-mono text-xs shadow-md">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
+        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
+          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
           <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-          <span class="z-20 bg-[#0F172A] text-white px-2 py-1 rounded w-fit font-bold">💻 Tech Blog Platform</span>
         </div>
       </div>
     </div>
 
-    <div class="max-w-4xl w-full mx-auto relative z-10 px-4 md:px-8">
-      <div id="hero-content" class="bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl rounded-3xl p-8 md:p-14 text-center space-y-6 transition-all duration-700">
+    <div class="max-w-2xl w-full mx-auto relative z-10 px-4 sm:px-6">
+      
+      <div id="hero-content" class="bg-white/40 backdrop-blur-md border border-white/40 shadow-2xl rounded-2xl md:rounded-3xl p-6 md:p-10 text-center space-y-4 md:space-y-5 transition-all duration-700">
         
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white uppercase tracking-wider mx-auto shadow-sm">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900 text-white uppercase tracking-wider mx-auto shadow-sm">
           Premium Web Architecture
         </span>
         
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.15]">
-          Launch your online presence with <br>
+        <h1 class="text-xl sm:text-2xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-snug md:leading-tight">
+          Launch your online presence with <br class="hidden sm:inline">
           <span class="bg-gradient-to-r from-[#4F46E5] via-[#6366F1] to-[#3B82F6] bg-clip-text text-transparent">Absolute Authority.</span>
         </h1>
         
-        <p class="max-w-xl mx-auto text-sm md:text-base text-slate-800 font-semibold leading-relaxed">
+        <p class="max-w-lg mx-auto text-xs md:text-sm text-slate-700 font-semibold leading-relaxed px-2">
           We build elite custom storefronts and ready-to-deploy HTML/Tailwind frameworks engineered explicitly for high-conversion performance.
         </p>
         
-        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 transition-all duration-700">
-          <a href="./catalog.html" class="w-full sm:w-auto bg-[#0F172A] text-white text-center px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out shadow-lg hover:bg-[#4F46E5] hover:shadow-indigo-600/30 transform hover:-translate-y-1 active:translate-y-0">
+        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2 transition-all duration-700">
+          <a href="./catalog.html" class="w-full sm:w-auto bg-[#0F172A] text-white text-center px-6 sm:px-8 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out shadow-lg hover:bg-[#4F46E5] hover:shadow-indigo-600/30 transform hover:-translate-y-1 active:translate-y-0">
             Browse Frameworks
           </a>
-          <a href="#contact" class="w-full sm:w-auto bg-white border border-slate-300 text-[#0F172A] text-center px-8 py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out hover:bg-slate-50 hover:border-[#4F46E5] hover:text-[#4F46E5] shadow-md transform hover:-translate-y-1 active:translate-y-0">
+          <a href="#contact" class="w-full sm:w-auto bg-white border border-slate-300 text-[#0F172A] text-center px-6 sm:px-8 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out hover:bg-slate-50 hover:border-[#4F46E5] hover:text-[#4F46E5] shadow-md transform hover:-translate-y-1 active:translate-y-0">
             Custom Development
           </a>
         </div>
 
       </div>
     </div>
+
+      </div>
+    </div>
   </section>
 
-  <section id="standards" class="py-24 px-6 md:px-16 max-w-7xl mx-auto border-t border-slate-100">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+  <section id="standards" class="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-16 max-w-7xl mx-auto border-t border-slate-100">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-4">
+      <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-3 text-center md:text-left">
         <span class="text-xs font-bold text-[#4F46E5] uppercase tracking-widest block">Our Architecture Philosophy</span>
-        <h2 class="text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight leading-tight">Engineered for digital speed and absolute retention.</h2>
-        <p class="text-sm text-slate-500 leading-relaxed font-medium">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-[#0F172A] tracking-tight leading-tight">Engineered for digital speed and absolute retention.</h2>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
           OnePoint designs premium, clean-code web frameworks that allow businesses to bypass slow development cycles and deploy market-ready experiences instantly.
         </p>
       </div>
 
-      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
+      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div class="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
@@ -265,7 +198,7 @@
           <p class="text-xs text-slate-500 leading-relaxed">Zero bloatware. Every line of HTML and Tailwind configuration is mathematically written for sub-second loading speeds and crisp rendering across devices.</p>
         </div>
 
-        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
+        <div class="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"/>
@@ -276,7 +209,7 @@
           <p class="text-xs text-slate-500 leading-relaxed">We structure our templates based on strict UI/UX conversion principles. Content hierarchies are meticulously optimized to guide your visitors directly toward checkout actions.</p>
         </div>
 
-        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
+        <div class="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
@@ -286,7 +219,7 @@
           <p class="text-xs text-slate-500 leading-relaxed">No messy configurations. Components are clearly mapped, commented, and natively componentized, making backend integrations straightforward for any developer.</p>
         </div>
 
-        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
+        <div class="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200/60 space-y-3">
           <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-[#4F46E5]">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
@@ -300,73 +233,73 @@
     </div>
   </section>
 
-<section id="explore-frameworks" class="w-full bg-[#0F172A] pt-24 pb-24">
-  <div class="max-w-7xl mx-auto px-6 w-full">
+<section id="explore-frameworks" class="w-full bg-[#0F172A] py-14 sm:py-20 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
     
-    <div class="mb-12 text-center md:text-left">
-      <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Explore Active Frameworks</h2>
-      <p class="text-sm md:text-base text-slate-400 max-w-2xl leading-relaxed font-medium mt-2">
+    <div class="mb-10 text-center md:text-left">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">Explore Active Frameworks</h2>
+      <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-2xl leading-relaxed font-medium mt-1">
         Deploy premium, conversion-optimized HTML/Tailwind web layers designed to look flawless and process storefront workflows instantly.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
         <div>
-          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
             <img src="brewhaven-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">E-Commerce</span>
           </div>
-          <div class="px-1 space-y-2">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Bean & Brew Commerce</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm">₹4,999</span>
+          <div class="px-1 space-y-1.5">
+            <div class="flex justify-between items-baseline gap-2">
+              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Bean & Brew Commerce</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹4,999</span>
             </div>
-            <p class="text-xs text-[#64748B] leading-relaxed">A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.</p>
+            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.</p>
           </div>
         </div>
-        <div class="pt-5 flex gap-2">
+        <div class="pt-4 sm:pt-5 flex gap-2">
           <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
           <a href="contact.html?asset=brewhaven" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
         </div>
       </div>
 
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
         <div>
-          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
              <img src="aura-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Premium UI</span>
           </div>
-          <div class="px-1 space-y-2">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Aesthetic Storefront</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm">₹8,499</span>
+          <div class="px-1 space-y-1.5">
+            <div class="flex justify-between items-baseline gap-2">
+              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Aesthetic Storefront</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹8,499</span>
             </div>
-            <p class="text-xs text-[#64748B] leading-relaxed">Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward platforms.</p>
+            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward platforms.</p>
           </div>
         </div>
-        <div class="pt-5 flex gap-2">
+        <div class="pt-4 sm:pt-5 flex gap-2">
           <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
           <a href="contact.html?asset=aura" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
         </div>
       </div>
 
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
         <div>
-          <div class="h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-5">
+          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
             <img src="nexus-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Corporate</span>
           </div>
-          <div class="px-1 space-y-2">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors">Nexus Corporate Layout</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm">₹6,200</span>
+          <div class="px-1 space-y-1.5">
+            <div class="flex justify-between items-baseline gap-2">
+              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Nexus Corporate Layout</h3>
+              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹6,200</span>
             </div>
-            <p class="text-xs text-[#64748B] leading-relaxed">An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.</p>
+            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.</p>
           </div>
         </div>
-        <div class="pt-5 flex gap-2">
+        <div class="pt-4 sm:pt-5 flex gap-2">
           <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
           <a href="contact.html?asset=nexus" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
         </div>
@@ -374,8 +307,8 @@
 
     </div>
 
-    <div class="mt-16 text-center">
-      <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
+    <div class="mt-12 text-center">
+      <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
         More Templates
         <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
@@ -386,26 +319,26 @@
   </div>
 </section>
 
-  <section id="about" class="w-full max-w-4xl mx-auto px-6 py-20 border-t border-slate-100">
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+  <section id="about" class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-t border-slate-100">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
     
-    <div class="md:col-span-5 space-y-4">
+    <div class="md:col-span-5 space-y-3 text-center md:text-left">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/60">
         <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
         <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Our Philosophy</span>
       </div>
-      <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Simple, functional web development.</h2>
-      <p class="text-sm text-slate-500 leading-relaxed">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Simple, functional web development.</h2>
+      <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
         OnePoint was built to fix a simple problem: web development has become overcomplicated and wrapped in tech jargon. 
       </p>
-      <p class="text-sm text-slate-500 leading-relaxed">
+      <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
         We don't sell bloated features you won't use or make promises we can't keep. We build clean, reliable digital storefronts and custom web architecture tailored to exactly what your business needs to run smoothly.
       </p>
     </div>
 
-    <div class="md:col-span-7 space-y-4">
+    <div class="md:col-span-7 space-y-3.5">
       
-      <div class="p-5 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
         <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">01</div>
         <div class="space-y-1">
           <h3 class="text-sm font-bold text-slate-800">Ready-To-Go Templates</h3>
@@ -415,7 +348,7 @@
         </div>
       </div>
 
-      <div class="p-5 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
         <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">02</div>
         <div class="space-y-1">
           <h3 class="text-sm font-bold text-slate-800">Bespoke Code from Scratch</h3>
@@ -425,7 +358,7 @@
         </div>
       </div>
 
-      <div class="p-5 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
         <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">03</div>
         <div class="space-y-1">
           <h3 class="text-sm font-bold text-slate-800">Complete Launch Handling</h3>
@@ -439,23 +372,23 @@
   </div>
 </section>
 
- <section id="contact" class="w-full bg-[#0F172A] py-24 border-t border-slate-800/60 flex items-center justify-center">
-  <div class="max-w-3xl mx-auto px-6 text-center space-y-6">
+ <section id="contact" class="w-full bg-[#0F172A] py-14 sm:py-20 border-t border-slate-800/60 flex items-center justify-center">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4">
     
-    <span class="inline-flex items-center text-xs font-semibold tracking-widest text-slate-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+    <span class="inline-flex items-center text-[10px] font-semibold tracking-widest text-slate-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
       Ready to Start
     </span>
     
-    <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight max-w-xl mx-auto leading-tight">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight max-w-xl mx-auto leading-tight">
       Submit Your Project Details
     </h2>
     
-    <p class="text-sm md:text-base text-slate-400 max-w-lg mx-auto leading-relaxed font-normal">
+    <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-lg mx-auto leading-relaxed font-normal">
       Send over your brand assets and requirements through our intake portal. We will review your notes and get back to you with a direct price quote and timeline within 24 hours.
     </p>
     
-    <div class="pt-4">
-      <a href="contact.html" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-[#0F172A] text-xs font-bold tracking-wider uppercase px-8 py-4 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group">
+    <div class="pt-2">
+      <a href="contact.html" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-[#0F172A] text-xs font-bold tracking-wider uppercase px-8 py-3.5 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group w-full sm:w-auto">
         Proceed to Project Form
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -466,65 +399,65 @@
   </div>
 </section>
 
-<section id="faq" class="w-full max-w-4xl mx-auto px-6 py-20 animate-fadeIn">
-  <div class="text-center space-y-3 mb-12">
-    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">What to Expect</h2>
-    <p class="text-sm text-slate-500 max-w-md mx-auto">Simple, straightforward answers about how we work together on your website.</p>
+<section id="faq" class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 animate-fadeIn">
+  <div class="text-center space-y-2 mb-10">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">What to Expect</h2>
+    <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">Simple, straightforward answers about how we work together on your website.</p>
   </div>
 
   <div class="space-y-3">
     
     <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 text-left outline-none group">
-        <span class="text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What exactly do you deliver?</span>
+      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What exactly do you deliver?</span>
         <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </button>
       <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-5 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
           If you choose a <strong>Template</strong>, we deliver a ready-to-use storefront styled with your specific brand colors, logo, and content setup within 1 to 2 days. If you choose a <strong>Custom Project</strong>, we design and code a website from scratch specifically tailored to your business requirements and layout needs.
         </div>
       </div>
     </div>
 
     <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 text-left outline-none group">
-        <span class="text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What happens after I submit this requirements form?</span>
+      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What happens after I submit this requirements form?</span>
         <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </button>
       <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-5 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
           Your details and uploaded images go straight into our internal project tracker. We look over your notes and assets, check our availability, and get back to you via email or phone within 24 hours to confirm the details, share a final price quote, and set a start date.
         </div>
       </div>
     </div>
 
     <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 text-left outline-none group">
-        <span class="text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Can I change my template choice or project details later?</span>
+      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Can I change my template choice or project details later?</span>
         <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </button>
       <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-5 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
           Yes, absolutely. This intake form is just to kick off the conversation and help us understand what you need. Nothing is locked in yet. When we contact you to discuss the project, you are completely free to switch templates, add requirements, or change your project type.
         </div>
       </div>
     </div>
 
     <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-5 text-left outline-none group">
-        <span class="text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Do you help with hosting, domains, and getting the site live?</span>
+      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Do you help with hosting, domains, and getting the site live?</span>
         <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </button>
       <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-5 pt-0 text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
           Yes. We don't just hand over code files and leave you to figure it out. We help connect your custom domain, set up the hosting environment, launch the site live, and run basic checks to make sure everything loads fast and correctly on both desktop and mobile devices.
         </div>
       </div>
@@ -532,6 +465,9 @@
 
   </div>
 </section>
+
+<div id="footer-placeholder"></div>
+<script src="components.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -563,83 +499,8 @@
   });
 </script>
 
-  <footer class="bg-[#0F172A] text-slate-400 border-t-2 border-indigo-500/20 pt-16 pb-8 px-6 md:px-16 font-medium">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-12 border-b border-slate-800">
-        
-        <div class="lg:col-span-5 space-y-5">
-          <a href="#home" class="inline-block text-xl font-extrabold tracking-tight text-white transition-transform duration-300 hover:scale-105">
-            OnePoint<span class="text-[#6366F1]">.</span>
-          </a>
-          <p class="text-slate-400 text-xs md:text-sm leading-relaxed max-w-sm">
-            Engineered software ecosystems for modern digital storefronts. We build high-conversion, pixel-perfect HTML/Tailwind frameworks optimized for absolute performance.
-          </p>
-          <div class="space-y-3">
-            <p class="text-xs text-indigo-400/80 font-mono">Location: India // Global Deployment</p>
-            <div class="flex items-center gap-3 pt-1">
-              <a href="https://x.com" target="_blank" aria-label="Follow OnePoint on X" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://github.com" target="_blank" aria-label="Explore OnePoint Repositories" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.061.069-.061 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.479C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
-              </a>
-              <a href="https://linkedin.com" target="_blank" aria-label="Connect with OnePoint on LinkedIn" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-              <a href="https://instagram.com" target="_blank" aria-label="Follow OnePoint Workspace on Instagram" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-indigo-600 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 transform hover:-translate-y-0.5">
-                <svg class="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-3 lg:col-start-7 space-y-4">
-          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Platform Directory</h4>
-          <ul class="space-y-2.5 text-xs uppercase tracking-wider font-semibold">
-            <li><a href="#home" class="hover:text-indigo-400 transition-colors">Return to Top</a></li>
-            <li><a href="#explore-frameworks" class="hover:text-indigo-400 transition-colors">The Storefront</a></li>
-            <li><a href="#standards" class="hover:text-indigo-400 transition-colors">Our Standards</a></li>
-            <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Bespoke Requests</a></li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-3 space-y-4">
-          <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white">Active Frameworks</h4>
-          <ul class="space-y-2.5 text-xs tracking-wide">
-            <li>
-              <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
-                <span>Bean & Brew Commerce</span>
-                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.0.4</span>
-              </a>
-            </li>
-            <li>
-              <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
-                <span>Aesthetic Storefront Engine</span>
-                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v2.1.0</span>
-              </a>
-            </li>
-            <li>
-              <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="hover:text-indigo-400 transition-colors flex justify-between items-center group">
-                <span>Nexus Corporate Layout</span>
-                <span class="text-[10px] font-mono text-slate-500 group-hover:text-indigo-400">v1.1.2</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-500 text-center md:text-left">
-        <p>&copy; 2026 ONEPOINT (onepoint.ind.in). All software architectures reserved.</p>
-        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          <a href="./terms.html" class="hover:text-white transition-colors">Terms of Service</a>
-          <a href="./privacy.html " class="hover:text-white transition-colors">Privacy Framework</a>
-          <a href="https://wa.me/919999999999" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Support Operations &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
+<div id="footer-placeholder"></div>
+<script src="components.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -652,7 +513,6 @@
           catalogLink.classList.add('text-[#4F46E5]', 'font-extrabold', 'after:w-full');
         }
       } else {
-        // CHANGED: "div#hero" changed to "section#hero" to accurately reference your markup element type
         const sections = document.querySelectorAll("section#hero, section#standards, section#explore-frameworks, section#about, section#contact");
         const navLinks = {
           'hero': document.getElementById('link-hero'),
@@ -709,45 +569,83 @@
       if (heroContent) heroObserver.observe(heroContent);
     });
 
-    // 3. MOBILE RESPONSIVE DRAWERS TRANSITION ENGINE
-    const opMenuToggle = document.getElementById('opMenuToggle');
-    const opMobileMenu = document.getElementById('opMobileMenu');
-    const opMobileLinks = document.querySelectorAll('.op-mobile-link');
-    const opLine1 = document.getElementById('opLine1');
-    const opLine2 = document.getElementById('opLine2');
-    const opLine3 = document.getElementById('opLine3');
+    // 3. MOBILE RESPONSIVE NAVIGATION CONTROLS WITH MORPHING HAMBURGER
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('opLine1');
+  const line2 = document.getElementById('opLine2');
+  const line3 = document.getElementById('opLine3');
+  
+  if (!menu) return;
+  
+  const isClosed = menu.classList.contains('hidden');
+  
+  if (isClosed) {
+    // Open menu drawer
+    menu.classList.remove('hidden');
+    // Transform lines into a cross (X)
+    if (line1) line1.classList.add('rotate-45', 'translate-y-1.5');
+    if (line2) line2.classList.add('opacity-0', 'scale-0');
+    if (line3) line3.classList.add('-rotate-45', '-translate-y-1.5');
+  } else {
+    resetMobileMenu();
+  }
+}
 
-    function toggleOpDropdown() {
-      const isClosed = opMobileMenu.classList.contains('pointer-events-none');
-      if (isClosed) {
-        opMobileMenu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
-        opMobileMenu.classList.add('max-h-[400px]', 'opacity-100', 'py-6');
-        opLine1.classList.add('rotate-45', 'translate-y-1.5');
-        opLine2.classList.add('opacity-0', 'scale-0');
-        opLine3.classList.add('-rotate-45', '-translate-y-1.5');
-      } else {
-        resetOpMenu();
-      }
-    }
+function resetMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('opLine1');
+  const line2 = document.getElementById('opLine2');
+  const line3 = document.getElementById('opLine3');
+  
+  // Close drawer
+  if (menu) menu.classList.add('hidden');
+  // Revert cross back into 3 horizontal lines
+  if (line1) line1.classList.remove('rotate-45', 'translate-y-1.5');
+  if (line2) line2.classList.remove('opacity-0', 'scale-0');
+  if (line3) line3.classList.remove('-rotate-45', '-translate-y-1.5');
+}
 
-    function resetOpMenu() {
-      opMobileMenu.classList.remove('max-h-[400px]', 'opacity-100', 'py-6');
-      opMobileMenu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none', 'py-0');
-      opLine1.classList.remove('rotate-45', 'translate-y-1.5');
-      opLine2.classList.remove('opacity-0', 'scale-0');
-      opLine3.classList.remove('-rotate-45', '-translate-y-1.5');
-    }
-
-    if(opMenuToggle) {
-      opMenuToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleOpDropdown(); });
-    }
-    opMobileLinks.forEach(link => link.addEventListener('click', () => resetOpMenu()));
+function toggleMobileAccordion(id) {
+  const targetPanel = document.getElementById(id);
+  if (!targetPanel) return;
+  
+  // Determine if the clicked panel is currently open
+  const isOpen = !targetPanel.classList.contains('hidden') && targetPanel.offsetHeight > 0;
+  
+  // 1. Find and close ALL mobile sub-menus cleanly
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    // Selects all submenus starting with 'mobile-' except the main menu container itself
+    const allPanels = mobileMenu.querySelectorAll('[id^="mobile-"]:not(#mobile-menu)');
     
-    document.addEventListener('click', (e) => {
-      if (opMobileMenu && !opMobileMenu.classList.contains('pointer-events-none') && !opMenuToggle.contains(e.target) && !opMobileMenu.contains(e.target)) {
-        resetOpMenu();
+    allPanels.forEach(panel => {
+      panel.classList.add('hidden');
+      panel.classList.remove('block'); // Cleans up the initial 'block' layout on the Home tab
+      
+      // Reset arrow indicators back to 0 degrees
+      const triggerBtn = panel.previousElementSibling;
+      const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
+      if (indicator) {
+        indicator.style.transform = 'rotate(0deg)';
       }
     });
+  }
+
+  // 2. If the clicked panel was closed, open it now
+  if (!isOpen) {
+    targetPanel.classList.remove('hidden');
+    targetPanel.classList.add('block');
+    
+    // Rotate current arrow indicator to 180 degrees
+    const triggerBtn = targetPanel.previousElementSibling;
+    const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
+    if (indicator) {
+      indicator.style.transform = 'rotate(180deg)';
+    }
+  }
+}
+
   </script>
 
  <div class="fixed bottom-4 right-4 z-50 flex items-center group">
