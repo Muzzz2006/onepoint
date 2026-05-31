@@ -1,170 +1,138 @@
-
-<header class="fixed top-0 left-0 w-full z-[100] bg-[#0F172A]/100 backdrop-blur-md border-b border-slate-800 py-2 px-6 md:px-16 transition-all duration-300">
-  <div class="max-w-7xl mx-auto flex items-center justify-between relative">
+<header class="fixed top-0 left-0 w-full z-[100] bg-[#0F172A] border-b border-slate-800 py-0 h-14 px-6 md:px-12 transition-all duration-300">
+  <div class="w-full h-full flex items-center justify-between relative">
     
     <div class="flex items-center shrink-0 select-none">
-      <a href="./index.html" class="text-xl font-black tracking-tight text-white whitespace-nowrap transition-transform duration-300 hover:scale-[1.01]">
-        OnePoint<span class="text-indigo-500">.</span>
+      <a href="./index.html" class="text-2xl font-black tracking-tight text-white whitespace-nowrap transition-transform duration-300 hover:scale-[1.01]">
+        OnePoint<span class="text-[#4F46E5]">.</span>
       </a>
     </div>
     
-    <div class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-bold uppercase tracking-widest text-slate-300">
-      
-      <div class="relative group py-1.5">
-        <button class="text-white border-b-2 border-indigo-500 pb-0.5 flex items-center gap-1.5 cursor-pointer whitespace-nowrap transition-colors">
-          Home <span class="text-[9px] text-slate-400 group-hover:rotate-180 transition-transform duration-200 shrink-0">▼</span>
-        </button>
-        <div class="absolute top-full left-0 mt-1 w-52 bg-[#1E293B] border border-slate-800 rounded-xl p-3 space-y-1 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 normal-case tracking-normal font-medium">
-          <a href="#hero" class="block px-3 py-2 text-white bg-slate-800 rounded-lg text-[11px] font-bold">Main Dashboard</a>
-          <a href="./vision.html" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Platform Vision</a>
+    <div class="hidden lg:flex items-center gap-2 xl:gap-4 text-[11px] font-bold uppercase tracking-widest text-slate-300">
+      <div class="relative group py-2 px-3">
+        <a href="./index.html" id="nav-home" class="nav-link flex items-center gap-1 hover:text-[#4F46E5] transition-colors py-1 border-b-2 border-transparent">
+          Home <span class="text-[7px] text-slate-500 group-hover:rotate-180 transition-transform duration-300">▼</span>
+        </a>
+        <div class="absolute top-full left-0 mt-2 w-56 bg-[#0F172A] border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50 normal-case tracking-normal font-medium">
+          <a href="./index.html#hero" id="drop-dashboard" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all">Main Dashboard</a>
+          <a href="./vision.html" id="drop-vision" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">Platform Vision</a>
         </div>
       </div>
 
-      <div class="relative group py-1.5">
-        <button class="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap">
-          Features <span class="text-[9px] text-slate-500 group-hover:rotate-180 transition-transform duration-200 shrink-0">▼</span>
+      <div class="relative group py-2 px-3">
+        <button class="flex items-center gap-1 hover:text-[#4F46E5] transition-colors py-1 border-b-2 border-transparent">
+          Features <span class="text-[7px] text-slate-500 group-hover:rotate-180 transition-transform duration-300">▼</span>
         </button>
-        <div class="absolute top-full left-0 mt-1 w-56 bg-[#1E293B] border border-slate-800 rounded-xl p-3 space-y-1 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 normal-case tracking-normal font-medium">
-          <a href="#features" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">AI Processing Engine</a>
-          <a href="#speed" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Optimized Infrastructure</a>
-          <a href="#seo" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">SEO Domination Layer</a>
+        <div class="absolute top-full left-0 mt-2 w-56 bg-[#0F172A] border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50 normal-case tracking-normal font-medium">
+          <a href="./index.html#features" id="drop-features" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all">AI Processing Engine</a>
+          <a href="./index.html#speed" id="drop-speed" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">Optimized Infrastructure</a>
+          <a href="./index.html#seo" id="drop-seo" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">SEO Domination Layer</a>
         </div>
       </div>
 
-      <div class="relative group py-1.5">
-        <button class="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap">
-          Templates <span class="text-[9px] text-slate-500 group-hover:rotate-180 transition-transform duration-200 shrink-0">▼</span>
-        </button>
-        <div class="absolute top-full left-0 mt-1 w-56 bg-[#1E293B] border border-slate-800 rounded-xl p-3 space-y-1 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 normal-case tracking-normal font-medium">
-          <a href="./catalog.html" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">View Production Catalog</a>
-          <a href="./catalog.html#ecommerce" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">High-Conversion Storefronts</a>
-          <a href="./catalog.html#landing" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Elite Landing Protocols</a>
+      <div class="relative group py-2 px-3">
+        <a href="./catalog.html" id="nav-templates" class="nav-link flex items-center gap-1 hover:text-[#4F46E5] transition-colors py-1 border-b-2 border-transparent">
+          Templates <span class="text-[7px] text-slate-500 group-hover:rotate-180 transition-transform duration-300">▼</span>
+        </a>
+        <div class="absolute top-full left-0 mt-2 w-60 bg-[#0F172A] border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50 normal-case tracking-normal font-medium">
+          <a href="./catalog.html" id="drop-catalog" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all">View Production Catalog</a>
+          <a href="./catalog.html#ecommerce" id="drop-ecommerce" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">High-Conversion Storefronts</a>
+          <a href="./catalog.html#landing" id="drop-landing" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">Elite Landing Protocols</a>
         </div>
       </div>
 
-      <div class="relative group py-1.5">
-        <button class="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap">
-          About Me <span class="text-[9px] text-slate-500 group-hover:rotate-180 transition-transform duration-200 shrink-0">▼</span>
-        </button>
-        <div class="absolute top-full left-0 mt-1 w-52 bg-[#1E293B] border border-slate-800 rounded-xl p-3 space-y-1 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 normal-case tracking-normal font-medium">
-          <a href="./about.html" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">The Blueprint & Mission</a>
-          <a href="./about.html#founder" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Md Muzammil Shaid</a>
+      <div class="relative group py-2 px-3">
+        <a href="./about.html" id="nav-about" class="nav-link flex items-center gap-1 hover:text-[#4F46E5] transition-colors py-1 border-b-2 border-transparent">
+          About Me <span class="text-[7px] text-slate-500 group-hover:rotate-180 transition-transform duration-300">▼</span>
+        </a>
+        <div class="absolute top-full left-0 mt-2 w-56 bg-[#0F172A] border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50 normal-case tracking-normal font-medium">
+          <a href="./about.html" id="drop-blueprint" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all">The Blueprint & Mission</a>
+          <a href="./about.html#founder" id="drop-founder" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">Md Muzammil Shaid</a>
         </div>
       </div>
 
-      <div class="relative group py-1.5">
-        <button class="hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer whitespace-nowrap">
-          Contact <span class="text-[9px] text-slate-500 group-hover:rotate-180 transition-transform duration-200 shrink-0">▼</span>
-        </button>
-        <div class="absolute top-full left-0 mt-1 w-52 bg-[#1E293B] border border-slate-800 rounded-xl p-3 space-y-1 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 normal-case tracking-normal font-medium">
-          <a href="#contact" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Initiate Contract</a>
-          <a href="mailto:your-email@domain.com" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-[11px] transition-colors">Direct Secure Email</a>
+      <div class="relative group py-2 px-3">
+        <a href="./contact.html" id="nav-contact" class="nav-link flex items-center gap-1 hover:text-[#4F46E5] transition-colors py-1 border-b-2 border-transparent">
+          Contact <span class="text-[7px] text-slate-500 group-hover:rotate-180 transition-transform duration-300">▼</span>
+        </a>
+        <div class="absolute top-full left-0 mt-2 w-56 bg-[#0F172A] border border-slate-800 rounded-xl p-2 shadow-2xl opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 z-50 normal-case tracking-normal font-medium">
+          <a href="./contact.html" id="drop-contract" class="drop-link block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all">Initiate Contract</a>
+          <a href="mailto:shaidmuzammil8@gmail.com" class="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-xs font-semibold transition-all mt-0.5">Direct Secure Email</a>
         </div>
       </div>
-
     </div>
 
     <div class="flex items-center gap-4 shrink-0">
-      <a href="#contact" class="hidden sm:block bg-[#4F46E5] hover:bg-indigo-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-indigo-600/20 whitespace-nowrap">
+      <a href="./index.html#contact" class="hidden sm:block bg-[#4F46E5] hover:bg-indigo-600 text-white px-5 py-2 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 shadow-md shadow-indigo-600/20 hover:scale-[1.02]">
         Hire Me
       </a>
       
-      <button onclick="toggleMobileMenu()" id="opMenuToggle" class="block lg:hidden p-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus:outline-none flex flex-col justify-center items-center gap-1 w-9 h-9 group" aria-label="Toggle Menu">
-        <span id="opLine1" class="w-4 h-0.5 bg-current transition-all duration-300 origin-center"></span>
-        <span id="opLine2" class="w-4 h-0.5 bg-current transition-all duration-300"></span>
-        <span id="opLine3" class="w-4 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+      <button id="opMenuToggle" class="block lg:hidden relative rounded-xl bg-slate-900 border border-slate-800 text-white hover:text-[#4F46E5] focus:outline-none w-10 h-10 transition-all duration-300 z-[110]" aria-label="Toggle Menu">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-3 flex flex-col justify-between items-center pointer-events-none">
+          <span id="opLine1" class="w-full h-0.5 bg-white transition-all duration-300" style="transform-origin: center;"></span>
+          <span id="opLine2" class="w-full h-0.5 bg-white transition-all duration-300"></span>
+          <span id="opLine3" class="w-full h-0.5 bg-white transition-all duration-300" style="transform-origin: center;"></span>
+        </div>
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-[#0F172A] border-b border-slate-800 px-6 py-6 flex flex-col space-y-4 shadow-2xl z-50 lg:hidden">
-      <div class="space-y-1">
-        <button onclick="toggleMobileAccordion('mobile-home')" class="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest text-white py-2">
-          Home <span class="text-indigo-400 text-[10px] transition-transform duration-200">▼</span>
+    <div id="mobile-menu" class="invisible opacity-0 -translate-y-2 pointer-events-none fixed top-[56px] left-0 right-0 w-full bg-[#0F172A] border-b border-slate-800 p-3 flex flex-col space-y-0.5 shadow-2xl z-[100] lg:hidden transform origin-top transition-all duration-300 ease-in-out">
+      
+      <div class="border-b border-slate-800/60 pb-1">
+        <button onclick="toggleMobileAccordion('mobile-home')" class="w-full flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-white py-1">
+          Home <span id="arrow-mobile-home" class="text-[8px] text-slate-500 transition-transform duration-200">▼</span>
         </button>
-        <div id="mobile-home" class="block pl-4 border-l border-indigo-500 space-y-2 py-1 text-[11px] font-semibold text-slate-300">
-          <a href="#" class="block py-1 text-indigo-400 font-bold">Main Dashboard</a>
-          <a href="./vision.html" class="block py-1 hover:text-white">Platform Vision</a>
+        <div id="mobile-home" class="block space-y-0.5 mt-0.5 pl-2 text-xs">
+          <a href="./index.html#hero" id="mob-dashboard" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Main Dashboard</a>
+          <a href="./vision.html" id="mob-vision" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Platform Vision</a>
         </div>
       </div>
 
-      <div class="space-y-1">
-        <button onclick="toggleMobileAccordion('mobile-features')" class="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-300 py-2">
-          Features <span class="text-slate-500 text-[10px] transition-transform duration-200">▼</span>
+      <div class="border-b border-slate-800/60 pb-1">
+        <button onclick="toggleMobileAccordion('mobile-features')" class="w-full flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-slate-300 py-1">
+          Features <span id="arrow-mobile-features" class="text-[8px] text-slate-500 transition-transform duration-200">▼</span>
         </button>
-        <div id="mobile-features" class="hidden pl-4 border-l border-slate-800 space-y-2 py-1 text-[11px] font-semibold text-slate-400">
-          <a href="#features" class="block py-1 hover:text-white">AI Processing Engine</a>
-          <a href="#speed" class="block py-1 hover:text-white">Optimized Infrastructure</a>
-          <a href="#seo" class="block py-1 hover:text-white">SEO Domination Layer</a>
+        <div id="mobile-features" class="hidden space-y-0.5 mt-0.5 pl-2 text-xs">
+          <a href="./index.html#features" id="mob-features" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">AI Processing Engine</a>
+          <a href="./index.html#speed" id="mob-speed" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Optimized Infrastructure</a>
+          <a href="./index.html#seo" id="mob-seo" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">SEO Domination Layer</a>
         </div>
       </div>
 
-      <div class="space-y-1">
-        <button onclick="toggleMobileAccordion('mobile-templates')" class="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-300 py-2">
-          Templates <span class="text-slate-500 text-[10px] transition-transform duration-200">▼</span>
+      <div class="border-b border-slate-800/60 pb-1">
+        <button onclick="toggleMobileAccordion('mobile-templates')" class="w-full flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-slate-300 py-1">
+          Templates <span id="arrow-mobile-templates" class="text-[8px] text-slate-500 transition-transform duration-200">▼</span>
         </button>
-        <div id="mobile-templates" class="hidden pl-4 border-l border-slate-800 space-y-2 py-1 text-[11px] font-semibold text-slate-400">
-          <a href="./catalog.html" class="block py-1 hover:text-white">View Production Catalog</a>
-          <a href="./catalog.html#ecommerce" class="block py-1 hover:text-white">High-Conversion Storefronts</a>
-          <a href="./catalog.html#landing" class="block py-1 hover:text-white">Elite Landing Protocols</a>
+        <div id="mobile-templates" class="hidden space-y-0.5 mt-0.5 pl-2 text-xs">
+          <a href="./catalog.html" id="mob-catalog" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">View Production Catalog</a>
+          <a href="./catalog.html#ecommerce" id="mob-ecommerce" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">High-Conversion Storefronts</a>
+          <a href="./catalog.html#landing" id="mob-landing" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Elite Landing Protocols</a>
         </div>
       </div>
 
-      <div class="space-y-1">
-        <button onclick="toggleMobileAccordion('mobile-about')" class="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-300 py-2">
-          About Me <span class="text-slate-500 text-[10px] transition-transform duration-200">▼</span>
+      <div class="border-b border-slate-800/60 pb-1">
+        <button onclick="toggleMobileAccordion('mobile-about')" class="w-full flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-slate-300 py-1">
+          About Me <span id="arrow-mobile-about" class="text-[8px] text-slate-500 transition-transform duration-200">▼</span>
         </button>
-        <div id="mobile-about" class="hidden pl-4 border-l border-slate-800 space-y-2 py-1 text-[11px] font-semibold text-slate-400">
-          <a href="./about.html" class="block py-1 hover:text-white">The Blueprint & Mission</a>
-          <a href="./about.html#founder" class="block py-1 hover:text-white">Md Muzammil Shaid</a>
+        <div id="mobile-about" class="hidden space-y-0.5 mt-0.5 pl-2 text-xs">
+          <a href="./about.html" id="mob-blueprint" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">The Blueprint & Mission</a>
+          <a href="./about.html#founder" id="mob-founder" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Md Muzammil Shaid</a>
         </div>
       </div>
 
-      <div class="space-y-1">
-        <button onclick="toggleMobileAccordion('mobile-contact')" class="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-300 py-2">
-          Contact <span class="text-slate-500 text-[10px] transition-transform duration-200">▼</span>
+      <div class="pb-2">
+        <button onclick="toggleMobileAccordion('mobile-contact')" class="w-full flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-slate-300 py-1">
+          Contact <span id="arrow-mobile-contact" class="text-[8px] text-slate-500 transition-transform duration-200">▼</span>
         </button>
-        <div id="mobile-contact" class="hidden pl-4 border-l border-slate-800 space-y-2 py-1 text-[11px] font-semibold text-slate-400">
-          <a href="#contact" class="block py-1 hover:text-white">Initiate Contract</a>
-          <a href="mailto:your-email@domain.com" class="block py-1 hover:text-white">Direct Secure Email</a>
+        <div id="mobile-contact" class="hidden space-y-0.5 mt-0.5 pl-2 text-xs">
+          <a href="./contact.html" id="mob-contract" class="mob-link block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Initiate Contract</a>
+          <a href="mailto:shaidmuzammil8@gmail.com" class="block py-1 px-2.5 text-slate-400 hover:text-white font-semibold rounded-lg hover:bg-slate-800/40">Direct Secure Email</a>
         </div>
       </div>
 
-      <div class="pt-4 border-t border-slate-800">
-        <a href="#contact" class="w-full text-center bg-[#4F46E5] text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest block transition-colors hover:bg-indigo-600 shadow-lg shadow-indigo-600/10">
-          Hire Me Now
-        </a>
-      </div>
+      <a href="./index.html#contact" class="sm:hidden block w-full text-center bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-md mt-1">
+        Hire Me
+      </a>
     </div>
 
   </div>
 </header>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.faq-trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const parent = trigger.closest('.faq-item');
-        const content = parent.querySelector('.faq-content');
-        const icon = parent.querySelector('.faq-icon');
-        
-        const isOpen = !content.classList.contains('max-h-0');
-        
-        // Close all other open accordion tracks cleanly
-        document.querySelectorAll('.faq-content').forEach(el => {
-          el.style.maxHeight = '0px';
-          el.classList.add('max-h-0', 'opacity-0');
-        });
-        document.querySelectorAll('.faq-icon').forEach(el => el.classList.remove('rotate-180'));
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('bg-slate-50/50', 'border-slate-300'));
-
-        // If it wasn't open, slide it down smoothly
-        if (!isOpen) {
-          content.classList.remove('max-h-0', 'opacity-0');
-          content.style.maxHeight = content.scrollHeight + "px";
-          icon.classList.add('rotate-180');
-          parent.classList.add('bg-slate-50/50', 'border-slate-300');
-        }
-      });
-    });
-  });
-</script>

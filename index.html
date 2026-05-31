@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden w-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,6 +50,24 @@
     }
   }
 
+  @keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
   /* Target animation triggers controlled by JavaScript */
   .trigger-slide {
     animation: slideDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
@@ -60,118 +78,99 @@
   }
 </style>
 </head>
-<body class="bg-white">
-<body class="bg-white pt-20"> 
-  <div id="header-placeholder"></div>
-  </body>
+<body class="bg-white pt-0 overflow-x-hidden w-full antialiased min-h-screen flex flex-col justify-between">
 
-  <section id="hero" class="pt-20 relative min-h-0 flex ...">
-  </section>
+  <div id="header-placeholder"></div>
+
+<section id="hero" class="relative top-[50px] min-h-0 flex flex-col justify-center items-center overflow-hidden bg-white w-full pt-4 pb-6 sm:pb-12">
     
-    <div class="absolute inset-0 pointer-events-none flex flex-col gap-4 sm:gap-6 rotate-[-4deg] scale-105 sm:scale-110 justify-center z-0 select-none opacity-100 sm:opacity-100">
+    <div class="absolute inset-0 pointer-events-none flex flex-col gap-4 sm:gap-6 rotate-[-2.5deg] sm:rotate-[-4deg] scale-100 sm:scale-110 justify-center z-0 select-none opacity-100 py-12">
       
-      <div class="flex gap-4 sm:gap-6 w-[200%] animate-marquee">
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+      <div class="flex gap-4 sm:gap-6 w-max animate-marquee whitespace-nowrap">
+        <div class="flex gap-4 sm:gap-6 shrink-0">
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
         </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+        <div class="flex gap-4 sm:gap-6 shrink-0" aria-hidden="true">
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
         </div>
       </div>
       
-      <div class="flex gap-4 sm:gap-6 w-[200%] animate-marquee-reverse">
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+      <div class="flex gap-4 sm:gap-6 w-max animate-marquee-reverse whitespace-nowrap">
+        <div class="flex gap-4 sm:gap-6 shrink-0">
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
         </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
-        </div>
-        <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden flex flex-col p-3 sm:p-4 justify-between font-mono text-[10px] sm:text-xs shadow-md shrink-0">
-          <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover opacity-100">
-          <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+        <div class="flex gap-4 sm:gap-6 shrink-0" aria-hidden="true">
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="nexus-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="aura-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
+          <div class="w-52 h-32 sm:w-80 sm:h-48 rounded-xl border border-slate-300 bg-slate-900 relative overflow-hidden shadow-md">
+            <img src="brewhaven-preview.png" class="absolute inset-0 w-full h-full object-cover" alt="Preview">
+            <div class="absolute inset-0 bg-slate-950/20 z-10"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="max-w-2xl w-full mx-auto relative z-10 px-4 sm:px-6">
-      
-      <div id="hero-content" class="bg-white/40 backdrop-blur-md border border-white/40 shadow-2xl rounded-2xl md:rounded-3xl p-6 md:p-10 text-center space-y-4 md:space-y-5 transition-all duration-700">
-        
-        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900 text-white uppercase tracking-wider mx-auto shadow-sm">
+    <div class="max-w-md sm:max-w-2xl w-full mx-auto relative z-10 px-4 py-6">
+      <div id="hero-content" class="bg-white/40 backdrop-blur-md border border-white/40 shadow-2xl rounded-2xl p-5 sm:p-10 text-center space-y-4 transition-all duration-700 mx-auto max-w-[92%] sm:max-w-full">
+        <span class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-slate-900 text-white uppercase tracking-wider mx-auto shadow-sm">
           Premium Web Architecture
         </span>
         
-        <h1 class="text-xl sm:text-2xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-snug md:leading-tight">
-          Launch your online presence with <br class="hidden sm:inline">
-          <span class="bg-gradient-to-r from-[#4F46E5] via-[#6366F1] to-[#3B82F6] bg-clip-text text-transparent">Absolute Authority.</span>
+        <h1 class="text-xl sm:text-2xl md:text-4xl font-black tracking-tight text-[#0F172A] leading-tight">
+          Launch your online presence <br> with <span class="bg-gradient-to-r from-[#4F46E5] via-[#6366F1] to-[#3B82F6] bg-clip-text text-transparent">Absolute Authority.</span>
         </h1>
         
-        <p class="max-w-lg mx-auto text-xs md:text-sm text-slate-700 font-semibold leading-relaxed px-2">
+        <p class="max-w-md mx-auto text-[11px] sm:text-xs md:text-sm text-slate-700 font-semibold leading-relaxed px-2">
           We build elite custom storefronts and ready-to-deploy HTML/Tailwind frameworks engineered explicitly for high-conversion performance.
         </p>
         
-        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2 transition-all duration-700">
-          <a href="./catalog.html" class="w-full sm:w-auto bg-[#0F172A] text-white text-center px-6 sm:px-8 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out shadow-lg hover:bg-[#4F46E5] hover:shadow-indigo-600/30 transform hover:-translate-y-1 active:translate-y-0">
-            Browse Frameworks
-          </a>
-          <a href="#contact" class="w-full sm:w-auto bg-white border border-slate-300 text-[#0F172A] text-center px-6 sm:px-8 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 ease-out hover:bg-slate-50 hover:border-[#4F46E5] hover:text-[#4F46E5] shadow-md transform hover:-translate-y-1 active:translate-y-0">
-            Custom Development
-          </a>
-        </div>
-
-      </div>
-    </div>
-
+        <div id="hero-buttons" class="flex flex-col sm:flex-row justify-center items-center gap-2.5 pt-2 transition-all duration-700">
+  <a href="./catalog.html" class="w-full sm:w-auto bg-[#0F172A] text-white text-center px-6 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 shadow-lg hover:bg-[#4F46E5] transform hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-100">
+    Browse Frameworks
+  </a>
+  <a href="#contact" class="w-full sm:w-auto bg-white border border-slate-300 text-[#0F172A] text-center px-6 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 hover:bg-slate-50 border-slate-300 transform hover:-translate-y-1 hover:scale-[1.03] active:translate-y-0 active:scale-100 hover:border-slate-400 hover:shadow-md">
+    Custom Development
+  </a>
+</div>
       </div>
     </div>
   </section>
@@ -233,274 +232,267 @@
     </div>
   </section>
 
-<section id="explore-frameworks" class="w-full bg-[#0F172A] py-14 sm:py-20 md:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-    
-    <div class="mb-10 text-center md:text-left">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">Explore Active Frameworks</h2>
-      <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-2xl leading-relaxed font-medium mt-1">
-        Deploy premium, conversion-optimized HTML/Tailwind web layers designed to look flawless and process storefront workflows instantly.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+  <section id="explore-frameworks" class="w-full bg-[#0F172A] py-14 sm:py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
       
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
-            <img src="brewhaven-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">E-Commerce</span>
-          </div>
-          <div class="px-1 space-y-1.5">
-            <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Bean & Brew Commerce</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹4,999</span>
-            </div>
-            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.</p>
-          </div>
-        </div>
-        <div class="pt-4 sm:pt-5 flex gap-2">
-          <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
-          <a href="contact.html?asset=brewhaven" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
-        </div>
+      <div class="mb-10 text-center md:text-left">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">Explore Active Frameworks</h2>
+        <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-2xl leading-relaxed font-medium mt-1">
+          Deploy premium, conversion-optimized HTML/Tailwind web layers designed to look flawless and process storefront workflows instantly.
+        </p>
       </div>
 
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
-             <img src="aura-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Premium UI</span>
-          </div>
-          <div class="px-1 space-y-1.5">
-            <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Aesthetic Storefront</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹8,499</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
+              <img src="brewhaven-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Preview">
+              <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">E-Commerce</span>
             </div>
-            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward platforms.</p>
+            <div class="px-1 space-y-1.5">
+              <div class="flex justify-between items-baseline gap-2">
+                <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Bean & Brew Commerce</h3>
+                <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹4,999</span>
+              </div>
+              <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">A minimalist culinary experience system for specialty coffee hubs, high-end kitchens, and local roasters.</p>
+            </div>
+          </div>
+          <div class="pt-4 sm:pt-5 flex gap-2">
+            <a href="preview.html?url=./brewhaven/index.html&name=Bean %26 Brew Commerce" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+            <a href="contact.html?asset=brewhaven" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
           </div>
         </div>
-        <div class="pt-4 sm:pt-5 flex gap-2">
-          <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
-          <a href="contact.html?asset=aura" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+
+        <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
+               <img src="aura-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Preview">
+              <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Premium UI</span>
+            </div>
+            <div class="px-1 space-y-1.5">
+              <div class="flex justify-between items-baseline gap-2">
+                <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Aesthetic Storefront</h3>
+                <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹8,499</span>
+              </div>
+              <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">Engineered exclusively for premium apparel lines, modern publishing workspaces, or design-forward platforms.</p>
+            </div>
+          </div>
+          <div class="pt-4 sm:pt-5 flex gap-2">
+            <a href="preview.html?url=./aura/index.html&name=Aesthetic Storefront Engine" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+            <a href="contact.html?asset=aura" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+          </div>
         </div>
+
+        <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
+              <img src="nexus-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Preview">
+              <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Corporate</span>
+            </div>
+            <div class="px-1 space-y-1.5">
+              <div class="flex justify-between items-baseline gap-2">
+                <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Nexus Corporate Layout</h3>
+                <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹6,200</span>
+              </div>
+              <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.</p>
+            </div>
+          </div>
+          <div class="pt-4 sm:pt-5 flex gap-2">
+            <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
+            <a href="contact.html?asset=nexus" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
-            <img src="nexus-preview.png" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">Corporate</span>
-          </div>
-          <div class="px-1 space-y-1.5">
-            <div class="flex justify-between items-baseline gap-2">
-              <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">Nexus Corporate Layout</h3>
-              <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">₹6,200</span>
-            </div>
-            <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">An ultra-premium corporate ecosystem with case study blocks, dark sub-panels, and seamless lead tracking grids.</p>
-          </div>
-        </div>
-        <div class="pt-4 sm:pt-5 flex gap-2">
-          <a href="preview.html?url=./nexus/index.html&name=Nexus Corporate Layout" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
-          <a href="contact.html?asset=nexus" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
-        </div>
+      <div class="mt-12 text-center">
+        <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
+          More Templates
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
       </div>
 
     </div>
-
-    <div class="mt-12 text-center">
-      <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
-        More Templates
-        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <section id="about" class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 border-t border-slate-100">
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
-    
-    <div class="md:col-span-5 space-y-3 text-center md:text-left">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/60">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
-        <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Our Philosophy</span>
-      </div>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Simple, functional web development.</h2>
-      <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-        OnePoint was built to fix a simple problem: web development has become overcomplicated and wrapped in tech jargon. 
-      </p>
-      <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-        We don't sell bloated features you won't use or make promises we can't keep. We build clean, reliable digital storefronts and custom web architecture tailored to exactly what your business needs to run smoothly.
-      </p>
-    </div>
-
-    <div class="md:col-span-7 space-y-3.5">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
       
-      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
-        <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">01</div>
-        <div class="space-y-1">
-          <h3 class="text-sm font-bold text-slate-800">Ready-To-Go Templates</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            Carefully structured layout setups. We integrate your brand assets, pick your colors, map your domain, and hand over a functional system within 1 to 2 days. 
-          </p>
+      <div class="md:col-span-5 space-y-3 text-center md:text-left">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/60">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
+          <span class="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Our Philosophy</span>
         </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Simple, functional web development.</h2>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+          OnePoint was built to fix a simple problem: web development has become overcomplicated and wrapped in tech jargon. 
+        </p>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+          We don't sell bloated features you won't use or make promises we can't keep. We build clean, reliable digital storefronts and custom web architecture tailored to exactly what your business needs to run smoothly.
+        </p>
       </div>
 
-      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
-        <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">02</div>
-        <div class="space-y-1">
-          <h3 class="text-sm font-bold text-slate-800">Bespoke Code from Scratch</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            When standard templates don't fit your operational scale, we plan, wireframe, and program clean frontend structures mapped uniquely to your project requirements.
-          </p>
+      <div class="md:col-span-7 space-y-3.5">
+        <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">01</div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-slate-800">Ready-To-Go Templates</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              Carefully structured layout setups. We integrate your brand assets, pick your colors, map your domain, and hand over a functional system within 1 to 2 days. 
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
-        <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">03</div>
-        <div class="space-y-1">
-          <h3 class="text-sm font-bold text-slate-800">Complete Launch Handling</h3>
-          <p class="text-xs text-slate-500 leading-relaxed">
-            We don't just email you zip files. We configure your cloud server host properties, point your DNS settings correctly, set up security keys, and make sure the site works on mobile devices before going live.
-          </p>
+        <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">02</div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-slate-800">Bespoke Code from Scratch</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              When standard templates don't fit your operational scale, we plan, wireframe, and program clean frontend structures mapped uniquely to your project requirements.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 border border-slate-200/80 rounded-2xl bg-white shadow-sm flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0 border border-slate-100 font-bold text-sm">03</div>
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-slate-800">Complete Launch Handling</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              We don't just email you zip files. We configure your cloud server host properties, point your DNS settings correctly, set up security keys, and make sure the site works on mobile devices before going live.
+            </p>
+          </div>
         </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
- <section id="contact" class="w-full bg-[#0F172A] py-14 sm:py-20 border-t border-slate-800/60 flex items-center justify-center">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4">
-    
-    <span class="inline-flex items-center text-[10px] font-semibold tracking-widest text-slate-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
-      Ready to Start
-    </span>
-    
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight max-w-xl mx-auto leading-tight">
-      Submit Your Project Details
-    </h2>
-    
-    <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-lg mx-auto leading-relaxed font-normal">
-      Send over your brand assets and requirements through our intake portal. We will review your notes and get back to you with a direct price quote and timeline within 24 hours.
-    </p>
-    
-    <div class="pt-2">
-      <a href="contact.html" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-[#0F172A] text-xs font-bold tracking-wider uppercase px-8 py-3.5 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group w-full sm:w-auto">
-        Proceed to Project Form
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
+  <section id="contact" class="w-full bg-[#0F172A] py-14 sm:py-20 border-t border-slate-800/60 flex items-center justify-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4">
+      <span class="inline-flex items-center text-[10px] font-semibold tracking-widest text-slate-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+        Ready to Start
+      </span>
+      
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight max-w-xl mx-auto leading-tight">
+        Submit Your Project Details
+      </h2>
+      
+      <p class="text-xs sm:text-sm md:text-base text-slate-400 max-w-lg mx-auto leading-relaxed font-normal">
+        Send over your brand assets and requirements through our intake portal. We will review your notes and get back to you with a direct price quote and timeline within 24 hours.
+      </p>
+      
+      <div class="pt-2">
+        <a href="contact.html" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-[#0F172A] text-xs font-bold tracking-wider uppercase px-8 py-3.5 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group w-full sm:w-auto">
+          Proceed to Project Form
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
     </div>
-    
-  </div>
-</section>
+  </section>
 
-<section id="faq" class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 animate-fadeIn">
-  <div class="text-center space-y-2 mb-10">
-    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">What to Expect</h2>
-    <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">Simple, straightforward answers about how we work together on your website.</p>
-  </div>
+  <section id="faq" class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 animate-fadeIn">
+    <div class="text-center space-y-2 mb-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">What to Expect</h2>
+      <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">Simple, straightforward answers about how we work together on your website.</p>
+    </div>
 
-  <div class="space-y-3">
-    
-    <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
-        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What exactly do you deliver?</span>
-        <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </button>
-      <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
-          If you choose a <strong>Template</strong>, we deliver a ready-to-use storefront styled with your specific brand colors, logo, and content setup within 1 to 2 days. If you choose a <strong>Custom Project</strong>, we design and code a website from scratch specifically tailored to your business requirements and layout needs.
+    <div class="space-y-3">
+      <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+          <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What exactly do you deliver?</span>
+          <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </button>
+        <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
+          <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+            If you choose a <strong>Template</strong>, we deliver a ready-to-use storefront styled with your specific brand colors, logo, and content setup within 1 to 2 days. If you choose a <strong>Custom Project</strong>, we design and code a website from scratch specifically tailored to your business requirements and layout needs.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+          <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What happens after I submit this requirements form?</span>
+          <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </button>
+        <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
+          <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+            Your details and uploaded images go straight into our internal project tracker. We look over your notes and assets, check our availability, and get back to you via email or phone within 24 hours to confirm the details, share a final price quote, and set a start date.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+          <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Can I change my template choice or project details later?</span>
+          <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </button>
+        <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
+          <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+            Yes, absolutely. This intake form is just to kick off the conversation and help us understand what you need. Nothing is locked in yet. When we contact you to discuss the project, you are completely free to switch templates, add requirements, or change your project type.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
+        <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
+          <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Do you help with hosting, domains, and getting the site live?</span>
+          <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </button>
+        <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
+          <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
+            Yes. We don't just hand over code files and leave you to figure it out. We help connect your custom domain, set up the hosting environment, launch the site live, and run basic checks to make sure everything loads fast and correctly on both desktop and mobile devices.
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
-        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">What happens after I submit this requirements form?</span>
-        <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </button>
-      <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
-          Your details and uploaded images go straight into our internal project tracker. We look over your notes and assets, check our availability, and get back to you via email or phone within 24 hours to confirm the details, share a final price quote, and set a start date.
-        </div>
-      </div>
-    </div>
+  <div id="footer-placeholder"></div>
+  
+  <script src="components.js"></script>
 
-    <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
-        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Can I change my template choice or project details later?</span>
-        <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </button>
-      <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
-          Yes, absolutely. This intake form is just to kick off the conversation and help us understand what you need. Nothing is locked in yet. When we contact you to discuss the project, you are completely free to switch templates, add requirements, or change your project type.
-        </div>
-      </div>
-    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const parent = trigger.closest('.faq-item');
+          const content = parent.querySelector('.faq-content');
+          const icon = parent.querySelector('.faq-icon');
+          
+          const isOpen = !content.classList.contains('max-h-0');
+          
+          // Close all other open accordion tracks cleanly
+          document.querySelectorAll('.faq-content').forEach(el => {
+            el.style.maxHeight = '0px';
+            el.classList.add('max-h-0', 'opacity-0');
+          });
+          document.querySelectorAll('.faq-icon').forEach(el => el.classList.remove('rotate-180'));
+          document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('bg-slate-50/50', 'border-slate-300'));
 
-    <div class="faq-item border border-slate-200/80 rounded-2xl bg-white overflow-hidden transition-all duration-200 shadow-sm hover:border-slate-300">
-      <button type="button" class="faq-trigger w-full flex items-center justify-between p-4 sm:p-5 text-left outline-none group">
-        <span class="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-slate-950 transition-colors">Do you help with hosting, domains, and getting the site live?</span>
-        <span class="faq-icon flex-shrink-0 ml-4 text-slate-400 group-hover:text-slate-900 transition-all duration-200 transform">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </button>
-      <div class="faq-content max-h-0 transition-all duration-300 ease-in-out opacity-0 overflow-hidden">
-        <div class="p-4 sm:p-5 pt-0 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-50">
-          Yes. We don't just hand over code files and leave you to figure it out. We help connect your custom domain, set up the hosting environment, launch the site live, and run basic checks to make sure everything loads fast and correctly on both desktop and mobile devices.
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div id="footer-placeholder"></div>
-<script src="components.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.faq-trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const parent = trigger.closest('.faq-item');
-        const content = parent.querySelector('.faq-content');
-        const icon = parent.querySelector('.faq-icon');
-        
-        const isOpen = !content.classList.contains('max-h-0');
-        
-        // Close all other open accordion tracks cleanly
-        document.querySelectorAll('.faq-content').forEach(el => {
-          el.style.maxHeight = '0px';
-          el.classList.add('max-h-0', 'opacity-0');
+          // If it wasn't open, slide it down smoothly
+          if (!isOpen) {
+            content.classList.remove('max-h-0', 'opacity-0');
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.classList.add('rotate-180');
+            parent.classList.add('bg-slate-50/50', 'border-slate-300');
+          }
         });
-        document.querySelectorAll('.faq-icon').forEach(el => el.classList.remove('rotate-180'));
-        document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('bg-slate-50/50', 'border-slate-300'));
-
-        // If it wasn't open, slide it down smoothly
-        if (!isOpen) {
-          content.classList.remove('max-h-0', 'opacity-0');
-          content.style.maxHeight = content.scrollHeight + "px";
-          icon.classList.add('rotate-180');
-          parent.classList.add('bg-slate-50/50', 'border-slate-300');
-        }
       });
     });
-  });
-</script>
-
-<div id="footer-placeholder"></div>
-<script src="components.js"></script>
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -570,85 +562,73 @@
     });
 
     // 3. MOBILE RESPONSIVE NAVIGATION CONTROLS WITH MORPHING HAMBURGER
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const line1 = document.getElementById('opLine1');
-  const line2 = document.getElementById('opLine2');
-  const line3 = document.getElementById('opLine3');
-  
-  if (!menu) return;
-  
-  const isClosed = menu.classList.contains('hidden');
-  
-  if (isClosed) {
-    // Open menu drawer
-    menu.classList.remove('hidden');
-    // Transform lines into a cross (X)
-    if (line1) line1.classList.add('rotate-45', 'translate-y-1.5');
-    if (line2) line2.classList.add('opacity-0', 'scale-0');
-    if (line3) line3.classList.add('-rotate-45', '-translate-y-1.5');
-  } else {
-    resetMobileMenu();
-  }
-}
-
-function resetMobileMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const line1 = document.getElementById('opLine1');
-  const line2 = document.getElementById('opLine2');
-  const line3 = document.getElementById('opLine3');
-  
-  // Close drawer
-  if (menu) menu.classList.add('hidden');
-  // Revert cross back into 3 horizontal lines
-  if (line1) line1.classList.remove('rotate-45', 'translate-y-1.5');
-  if (line2) line2.classList.remove('opacity-0', 'scale-0');
-  if (line3) line3.classList.remove('-rotate-45', '-translate-y-1.5');
-}
-
-function toggleMobileAccordion(id) {
-  const targetPanel = document.getElementById(id);
-  if (!targetPanel) return;
-  
-  // Determine if the clicked panel is currently open
-  const isOpen = !targetPanel.classList.contains('hidden') && targetPanel.offsetHeight > 0;
-  
-  // 1. Find and close ALL mobile sub-menus cleanly
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenu) {
-    // Selects all submenus starting with 'mobile-' except the main menu container itself
-    const allPanels = mobileMenu.querySelectorAll('[id^="mobile-"]:not(#mobile-menu)');
-    
-    allPanels.forEach(panel => {
-      panel.classList.add('hidden');
-      panel.classList.remove('block'); // Cleans up the initial 'block' layout on the Home tab
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const line1 = document.getElementById('opLine1');
+      const line2 = document.getElementById('opLine2');
+      const line3 = document.getElementById('opLine3');
       
-      // Reset arrow indicators back to 0 degrees
-      const triggerBtn = panel.previousElementSibling;
-      const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
-      if (indicator) {
-        indicator.style.transform = 'rotate(0deg)';
+      if (!menu) return;
+      
+      const isClosed = menu.classList.contains('hidden');
+      
+      if (isClosed) {
+        menu.classList.remove('hidden');
+        if (line1) line1.classList.add('rotate-45', 'translate-y-1.5');
+        if (line2) line2.classList.add('opacity-0', 'scale-0');
+        if (line3) line3.classList.add('-rotate-45', '-translate-y-1.5');
+      } else {
+        resetMobileMenu();
       }
-    });
-  }
-
-  // 2. If the clicked panel was closed, open it now
-  if (!isOpen) {
-    targetPanel.classList.remove('hidden');
-    targetPanel.classList.add('block');
-    
-    // Rotate current arrow indicator to 180 degrees
-    const triggerBtn = targetPanel.previousElementSibling;
-    const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
-    if (indicator) {
-      indicator.style.transform = 'rotate(180deg)';
     }
-  }
-}
 
+    function resetMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const line1 = document.getElementById('opLine1');
+      const line2 = document.getElementById('opLine2');
+      const line3 = document.getElementById('opLine3');
+      
+      if (menu) menu.classList.add('hidden');
+      if (line1) line1.classList.remove('rotate-45', 'translate-y-1.5');
+      if (line2) line2.classList.remove('opacity-0', 'scale-0');
+      if (line3) line3.classList.remove('-rotate-45', '-translate-y-1.5');
+    }
+
+    function toggleMobileAccordion(id) {
+      const targetPanel = document.getElementById(id);
+      if (!targetPanel) return;
+      
+      const isOpen = !targetPanel.classList.contains('hidden') && targetPanel.offsetHeight > 0;
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        const allPanels = mobileMenu.querySelectorAll('[id^="mobile-"]:not(#mobile-menu)');
+        
+        allPanels.forEach(panel => {
+          panel.classList.add('hidden');
+          panel.classList.remove('block');
+          
+          const triggerBtn = panel.previousElementSibling;
+          const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
+          if (indicator) {
+            indicator.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
+
+      if (!isOpen) {
+        targetPanel.classList.remove('hidden');
+        targetPanel.classList.add('block');
+        
+        const triggerBtn = targetPanel.previousElementSibling;
+        const indicator = triggerBtn ? triggerBtn.querySelector('span') : null;
+        if (indicator) {
+          indicator.style.transform = 'rotate(180deg)';
+        }
+      }
+    }
   </script>
 
- <div class="fixed bottom-4 right-4 z-50 flex items-center group">
+  <div class="fixed bottom-4 right-4 z-50 flex items-center group">
     <span class="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-[#0d1527] border border-white/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-stone-200 shadow-2xl opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 select-none">
       Chat with us
     </span>
