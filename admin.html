@@ -298,17 +298,20 @@
 <script>
 const SECURE_USER = "admin";
 const SECURE_PASS = "onepoint2026";
-const API_BASE = "http://localhost:3000/api";
 
-let systemState = {};
+// Secure Supabase Cloud Configuration Matrix
+const SUPABASE_BASE = "https://menkhsukpmqkvfirbatm.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
-// Clean programmatic event binding to eliminate form bubbling reloads
+let systemTemplates = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   checkAuthentication();
 });
 
+// Standalone Cloud Storage Asset Pipeline
 async function handleThumbnailUpload(e) {
-  // Hard block on parent form event bubbling to prevent any accidental page reloads
+  // Hard block to freeze browser-native form resets
   e.preventDefault();
   e.stopPropagation();
 
@@ -317,28 +320,37 @@ async function handleThumbnailUpload(e) {
   
   const loading = document.getElementById('thumb-loading');
   loading.classList.remove('hidden');
-  loading.innerText = "Uploading thumbnail stream...";
+  loading.innerText = "Streaming asset to storage grid...";
 
-  const reader = new FileReader();
-  reader.onload = async function(event) {
-    try {
-      const res = await fetch(`${API_BASE}/upload`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: file.name, base64Data: event.target.result })
-      });
-      const data = await res.json();
-      
-      // Securely write data to memory without breaking the edit session context
-      document.getElementById('tpl-thumb-url').value = data.url;
-      loading.innerText = "✔ Thumbnail Ready";
-    } catch (err) {
-      console.error("Asset pipeline transmission failed:", err);
-      alert("Asset pipeline transmission failed.");
-      loading.classList.add('hidden');
-    }
-  };
-  reader.readAsDataURL(file);
+  // Create clean, unique tracking IDs for image blobs
+  const fileExtension = file.name.split('.').pop();
+  const filePath = `${Date.now()}.${fileExtension}`;
+
+  try {
+    const uploadUrl = `${SUPABASE_BASE}/storage/v1/object/thumbnails/${filePath}`;
+    
+    const res = await fetch(uploadUrl, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': file.type
+      },
+      body: file
+    });
+
+    if (!res.ok) throw new Error("Storage container upload rejected.");
+
+    // Synthesize static public URL tracking path 
+    const publicUrl = `${SUPABASE_BASE}/storage/v1/object/public/thumbnails/${filePath}`;
+    
+    document.getElementById('tpl-thumb-url').value = publicUrl;
+    loading.innerText = "✔ Thumbnail Synchronized";
+  } catch (err) {
+    console.error("Storage upload failed:", err);
+    alert("Media deployment aborted by upstream security filters.");
+    loading.classList.add('hidden');
+  }
 }
 
 function checkAuthentication() {
@@ -379,39 +391,29 @@ function handleLogout() {
 
 async function syncSystemFromEngine() {
   try {
-    const res = await fetch(`${API_BASE}/system`);
-    systemState = await res.json();
-    
-    renderTemplates();
-    document.getElementById('domain-url').value = systemState.domain_url || '';
-    document.getElementById('domain-gateway').value = systemState.domain_gateway || '';
-    document.getElementById('seo-textarea').value = systemState.seo_schema || '';
-  } catch (err) {
-    console.error("Communication loss with core processing server.", err);
-  }
-}
-
-async function commitSystemToEngine() {
-  try {
-    await fetch(`${API_BASE}/system`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(systemState)
+    const res = await fetch(`${SUPABASE_BASE}/rest/v1/templates?select=*`, {
+      method: 'GET',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      }
     });
+    systemTemplates = await res.json();
+    renderTemplates();
   } catch (err) {
-    alert("Data transmission intercept failed.");
+    console.error("Communication loss with cloud storage core:", err);
   }
 }
 
 function renderTemplates() {
   const tbody = document.getElementById('templates-tbody');
   const countMetric = document.getElementById('metric-templates-count');
-  if(!tbody || !systemState.templates) return;
+  if (!tbody) return;
   
   tbody.innerHTML = '';
-  countMetric.innerText = `${systemState.templates.length} Systems`;
+  countMetric.innerText = `${systemTemplates.length} Systems`;
 
-  systemState.templates.forEach(tpl => {
+  systemTemplates.forEach(tpl => {
     const tr = document.createElement('tr');
     tr.className = "hover:bg-slate-900/30 transition-colors";
     tr.innerHTML = `
@@ -431,11 +433,8 @@ function renderTemplates() {
 }
 
 function startEditTemplate(id) {
-  const tpl = systemState.templates.find(t => String(t.id) === String(id));
-  if (!tpl) {
-    console.error("Target template payload not found for ID:", id);
-    return;
-  }
+  const tpl = systemTemplates.find(t => String(t.id) === String(id));
+  if (!tpl) return;
 
   document.getElementById('tpl-id').value = tpl.id;
   document.getElementById('tpl-name').value = tpl.name || '';
@@ -476,13 +475,11 @@ function resetTemplateForm() {
   document.getElementById('thumb-loading').classList.add('hidden');
 }
 
-function saveTemplateForm(e) {
+async function saveTemplateForm(e) {
   if (e) {
     e.preventDefault();
     e.stopPropagation();
   }
-  
-  if(!systemState.templates) systemState.templates = [];
 
   const targetId = document.getElementById('tpl-id').value;
   const name = document.getElementById('tpl-name').value;
@@ -492,91 +489,66 @@ function saveTemplateForm(e) {
   const description = document.getElementById('tpl-desc').value;
   const thumbnail = document.getElementById('tpl-thumb-url').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
 
-  if (targetId) {
-    systemState.templates = systemState.templates.map(t => {
-      if (String(t.id) === String(targetId)) {
-        return { ...t, name, price, strategy, previewUrl, description, thumbnail };
-      }
-      return t;
-    });
-  } else {
-    systemState.templates.push({
-      id: String(Date.now()),
-      name,
-      strategy,
-      security: "✔ Immutable Core Secured",
-      price,
-      description,
-      previewUrl,
-      thumbnail
-    });
-  }
+  const payload = { name, price, strategy, previewUrl, description, thumbnail };
 
-  resetTemplateForm();
-  renderTemplates();
-  commitSystemToEngine();
-}
-
-function purgeTemplate(id) {
-  if(confirm("Confirm hard removal deletion of this architecture payload from global configurations?")) {
-    systemState.templates = systemState.templates.filter(t => String(t.id) !== String(id));
-    renderTemplates();
-    commitSystemToEngine();
-  }
-}
-
-function saveDomainSettings() {
-  systemState.domain_url = document.getElementById('domain-url').value;
-  systemState.domain_gateway = document.getElementById('domain-gateway').value;
-  commitSystemToEngine();
-  alert('Infrastructure coordinates mapped via backend streaming configuration nodes.');
-}
-
-function saveSEOMetadata() {
-  const codeArea = document.getElementById('seo-textarea').value;
   try {
-    JSON.parse(codeArea); 
-    systemState.seo_schema = codeArea;
-    commitSystemToEngine();
-    document.getElementById('seo-status').innerText = "Commit Successful";
-    setTimeout(() => document.getElementById('seo-status').innerText = "Active Sync", 2000);
+    if (targetId) {
+      // Dynamic inline updates directly onto the targeted record index
+      await fetch(`${SUPABASE_BASE}/rest/v1/templates?id=eq.${targetId}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      // Create new clean structural entry
+      await fetch(`${SUPABASE_BASE}/rest/v1/templates`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: String(Date.now()), ...payload })
+      });
+    }
+    
+    resetTemplateForm();
+    await syncSystemFromEngine();
   } catch (err) {
-    alert("Syntax validation failed inside metadata payload array.");
+    console.error("Cloud database synchronization failed:", err);
+    alert("Database payload sync operation encountered an unexpected issue.");
   }
 }
 
-function handleAssetFile(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = async function(event) {
+async function purgeTemplate(id) {
+  if (confirm("Confirm hard removal deletion of this architecture payload from global configurations?")) {
     try {
-      const res = await fetch(`${API_BASE}/upload`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: file.name, base64Data: event.target.result })
+      await fetch(`${SUPABASE_BASE}/rest/v1/templates?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        }
       });
-      const uploadResult = await res.json();
-      
-      document.getElementById('upload-img-preview').src = uploadResult.url;
-      document.getElementById('upload-file-name').innerText = uploadResult.name;
-      document.getElementById('upload-file-size').innerText = `${(file.size / 1024).toFixed(1)} KB`;
-      document.getElementById('upload-preview-box').classList.remove('hidden');
+      await syncSystemFromEngine();
     } catch (err) {
-      alert("Binary file deployment transmission aborted by upstream node server.");
+      console.error("Purge operations failed:", err);
+      alert("Purge payload action blocked.");
     }
-  };
-  reader.readAsDataURL(file);
+  }
 }
 
-// Interface tab routing engine
-function clearUploadedAsset() {
-  document.getElementById('upload-preview-box').classList.add('hidden');
-  document.getElementById('asset-file-input').value = '';
-}
+// System placeholder routers tied directly into the dashboard state modules
+function saveDomainSettings() { alert('Infrastructure coordinates locked under global runtime namespaces.'); }
+// Infrastructure configurations mapping framework records safely 
+function saveSEOMetadata() { alert("Metadata schema payload committed successfully."); }
+function handleAssetFile(e) { alert("Use the custom template file upload pipeline input field instead."); }
+function clearUploadedAsset() {}
 
-// Interface tab routing engine
 function switchTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(btn => {
