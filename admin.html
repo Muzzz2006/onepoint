@@ -311,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Standalone Cloud Storage Asset Pipeline
 async function handleThumbnailUpload(e) {
-  // Hard block to freeze browser-native form resets
   e.preventDefault();
   e.stopPropagation();
 
@@ -322,7 +321,6 @@ async function handleThumbnailUpload(e) {
   loading.classList.remove('hidden');
   loading.innerText = "Streaming asset to storage grid...";
 
-  // Create clean, unique tracking IDs for image blobs
   const fileExtension = file.name.split('.').pop();
   const filePath = `${Date.now()}.${fileExtension}`;
 
@@ -341,7 +339,6 @@ async function handleThumbnailUpload(e) {
 
     if (!res.ok) throw new Error("Storage container upload rejected.");
 
-    // Synthesize static public URL tracking path 
     const publicUrl = `${SUPABASE_BASE}/storage/v1/object/public/thumbnails/${filePath}`;
     
     document.getElementById('tpl-thumb-url').value = publicUrl;
@@ -418,7 +415,7 @@ function renderTemplates() {
     tr.className = "hover:bg-slate-900/30 transition-colors";
     tr.innerHTML = `
       <td class="p-4 font-bold text-white">
-        <div>${tpl.name || 'Unnamed Framework'}</div>
+        <div>${tpl.title || 'Unnamed Framework'}</div>
         <div class="text-[10px] text-slate-400 font-medium">Price: ₹${tpl.price || '0.00'}</div>
       </td>
       <td class="p-4"><span class="bg-indigo-950 text-indigo-400 border border-indigo-900/50 px-2 py-0.5 rounded text-[10px]">${tpl.strategy || 'Static Edge'}</span></td>
@@ -437,12 +434,12 @@ function startEditTemplate(id) {
   if (!tpl) return;
 
   document.getElementById('tpl-id').value = tpl.id;
-  document.getElementById('tpl-name').value = tpl.name || '';
+  document.getElementById('tpl-name').value = tpl.title || '';
   document.getElementById('tpl-price').value = tpl.price || '';
   document.getElementById('tpl-strategy').value = tpl.strategy || 'Zero-Hydration Static';
-  document.getElementById('tpl-preview').value = tpl.previewUrl || '';
+  document.getElementById('tpl-preview').value = tpl.path || '';
   document.getElementById('tpl-desc').value = tpl.description || '';
-  document.getElementById('tpl-thumb-url').value = tpl.thumbnail || '';
+  document.getElementById('tpl-thumb-url').value = tpl.image_url || '';
 
   document.getElementById('form-heading').innerText = "Modify Template Fields";
   document.getElementById('submit-form-btn').innerText = "Update Template Structure";
@@ -452,7 +449,7 @@ function startEditTemplate(id) {
   document.getElementById('cancel-edit-btn').classList.remove('hidden');
 
   const loading = document.getElementById('thumb-loading');
-  if (tpl.thumbnail) {
+  if (tpl.image_url) {
     loading.innerText = "✔ Keeping Current Image File";
     loading.classList.remove('hidden');
   } else {
@@ -482,18 +479,17 @@ async function saveTemplateForm(e) {
   }
 
   const targetId = document.getElementById('tpl-id').value;
-  const name = document.getElementById('tpl-name').value;
+  const title = document.getElementById('tpl-name').value;
   const price = document.getElementById('tpl-price').value || "0.00";
   const strategy = document.getElementById('tpl-strategy').value;
-  const previewUrl = document.getElementById('tpl-preview').value;
+  const path = document.getElementById('tpl-preview').value;
   const description = document.getElementById('tpl-desc').value;
-  const thumbnail = document.getElementById('tpl-thumb-url').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
+  const image_url = document.getElementById('tpl-thumb-url').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
 
-  const payload = { name, price, strategy, previewUrl, description, thumbnail };
+  const payload = { title, price, strategy, path, description, image_url };
 
   try {
     if (targetId) {
-      // Dynamic inline updates directly onto the targeted record index
       await fetch(`${SUPABASE_BASE}/rest/v1/templates?id=eq.${targetId}`, {
         method: 'PATCH',
         headers: {
@@ -504,7 +500,6 @@ async function saveTemplateForm(e) {
         body: JSON.stringify(payload)
       });
     } else {
-      // Create new clean structural entry
       await fetch(`${SUPABASE_BASE}/rest/v1/templates`, {
         method: 'POST',
         headers: {
@@ -542,9 +537,7 @@ async function purgeTemplate(id) {
   }
 }
 
-// System placeholder routers tied directly into the dashboard state modules
 function saveDomainSettings() { alert('Infrastructure coordinates locked under global runtime namespaces.'); }
-// Infrastructure configurations mapping framework records safely 
 function saveSEOMetadata() { alert("Metadata schema payload committed successfully."); }
 function handleAssetFile(e) { alert("Use the custom template file upload pipeline input field instead."); }
 function clearUploadedAsset() {}
