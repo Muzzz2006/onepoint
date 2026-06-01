@@ -18,470 +18,461 @@
     </div>
 
     <form id="project-intake-form" class="bg-white border border-slate-100 rounded-[32px] p-8 md:p-12 shadow-[0_20px_50px_rgba(11,19,43,0.04)] space-y-10 relative max-w-2xl mx-auto transition-all duration-300">
-
-
-    <h2 class="text-3xl font-extrabold tracking-tight text-slate-900">Project Requirements</h2>
-    <p class="text-sm text-slate-500 leading-relaxed">Provide your specifications below to engineer your custom storefront solution.</p>
-  </div>
-
-  <div id="status-banner" class="hidden text-xs font-bold p-4 rounded-xl text-center"></div>
-
-  <div class="space-y-6">
-    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
-      <span class="w-4 h-[1px] bg-slate-200"></span> 01. Identity Details
-    </h3>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div class="space-y-1.5">
-        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Owner / Client Name <span class="text-red-500">*</span></label>
-        <input type="text" id="client_name" required placeholder="e.g., Alexander Wright" 
-               class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
-      </div>
-      <div class="space-y-1.5">
-        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand / Project Name <span class="text-red-500">*</span></label>
-        <input type="text" id="brand_name" required placeholder="e.g., Nexus Digital" 
-               class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-  <div class="space-y-1.5">
-    <label class="text-[11px] font-bold text-slate-700 tracking-wide">Contact Email <span class="text-red-500">*</span></label>
-    <input type="email" id="client_email" placeholder="alex@brand.com" required 
-           class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
-  </div>
-  
-  <div class="space-y-1.5">
-    <label class="text-[11px] font-bold text-slate-700 tracking-wide">Mobile Number <span class="text-red-500">*</span></label>
-    <div class="flex items-center bg-white border border-slate-200 rounded-xl focus-within:border-slate-900 focus-within:ring-4 focus-within:ring-slate-900/5 transition-all duration-200 overflow-hidden">
-      
-      <select id="country_code" required 
-              class="bg-transparent pl-3 pr-7 py-3 text-sm outline-none cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_0.4rem_center] bg-no-repeat bg-[length:1em] w-24 flex-shrink-0 text-slate-700 font-medium border-r border-slate-150 transition-colors duration-200">
-        <option value="+91" selected>🇮🇳 +91</option>
-        <option value="+1">🇺🇸 +1</option>
-        <option value="+44">🇬🇧 +44</option>
-        <option value="+971">🇦🇪 +971</option>
-        <option value="+65">🇸🇬 +65</option>
-        <option value="+61">🇦🇺 +61</option>
-        <option value="+49">🇩🇪 +49</option>
-        <option value="+33">🇫🇷 +33</option>
-        <option value="+39">🇮🇹 +39</option>
-        <option value="+34">🇪🇸 +34</option>
-        <option value="+27">🇿🇦 +27</option>
-      </select>
-      
-      <input type="tel" id="client_phone" placeholder="00000 00000" required 
-             class="w-full bg-transparent px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none border-0 focus:ring-0">
-             
-    </div>
-  </div>
-</div>
-
-  <div class="space-y-6">
-    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
-      <span class="w-4 h-[1px] bg-slate-200"></span> 02. Project Architecture
-    </h3>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
-      <div class="space-y-1.5">
-        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Project Type <span class="text-red-500">*</span></label>
-        <div class="relative">
-          <select id="project_scope" name="project_scope" required 
-                  class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
-            <option value="" disabled selected>Select Architecture...</option>
-            <option value="Template">Template System</option>
-            <option value="Custom Website">Custom Architecture</option>
-          </select>
-        </div>
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight text-slate-900">Project Requirements</h2>
+        <p class="text-sm text-slate-500 leading-relaxed">Provide your specifications below to engineer your custom storefront solution.</p>
       </div>
 
-      <div class="space-y-1.5">
-        <label class="text-[11px] font-bold text-slate-700 tracking-wide">Budget Range (INR) <span class="text-red-500">*</span></label>
-        <div class="relative">
-          <select id="project_budget" required 
-                  class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
-            <option value="" disabled selected>Select Allocation...</option>
-            <option value="Under ₹5,000">Under ₹5,000</option>
-            <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
-            <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
-            <option value="₹20,000+">₹20,000+</option>
-          </select>
-        </div>
-      </div>
-    </div>
+      <div id="status-banner" class="hidden text-xs font-bold p-4 rounded-xl text-center"></div>
 
-    <div id="template-options" class="hidden space-y-1.5 relative">
-      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Select Template Configuration <span class="text-red-500">*</span></label>
-      <div class="relative">
-        <div id="template-dropdown-trigger" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm cursor-pointer flex justify-between items-center outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all duration-200">
-          <div class="flex items-center gap-3">
-            <img id="selected-template-img" src="" class="w-6 h-6 rounded-md object-cover border border-slate-200 hidden">
-            <span id="selected-template-text" class="text-slate-400">Choose a production template layout...</span>
+      <div class="space-y-6">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+          <span class="w-4 h-[1px] bg-slate-200"></span> 01. Identity Details
+        </h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Owner / Client Name <span class="text-red-500">*</span></label>
+            <input type="text" id="client_name" required placeholder="e.g., Alexander Wright" 
+                   class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
           </div>
-          <img src="https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500" class="w-5 h-5">
-        </div>
-        <div id="template-dropdown-menu" class="hidden absolute top-full left-0 z-50 w-full mt-1.5 bg-white border border-slate-200 rounded-xl shadow-xl max-h-60 overflow-y-auto outline-none transition-all duration-150">
-          <div class="p-4 text-xs text-slate-400 italic">Querying cloud systems...</div>
-        </div>
-      </div>
-      <input type="hidden" id="selected_template_val" name="selected_template">
-    </div>
-
-    <div class="space-y-1.5">
-      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Detailed Requirements <span class="text-red-500">*</span></label>
-      <textarea id="project_details" rows="5" required placeholder="Describe functionalities, design direction, page structure targets..." 
-                class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none resize-none duration-200 leading-relaxed"></textarea>
-    </div>
-  </div>
-
-  <div class="space-y-6">
-    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
-      <span class="w-4 h-[1px] bg-slate-200"></span> 03. Assets & Verification
-    </h3>
-
-    <div class="space-y-1.5">
-      <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand Assets <span class="text-slate-400 font-normal">(Optional)</span></label>
-      <div id="drop-zone" class="border-2 border-dashed border-slate-200 hover:border-slate-400 bg-slate-50/50 rounded-2xl p-8 text-center transition-all duration-200 group cursor-pointer">
-        <input type="file" id="client_file" class="hidden" multiple onchange="handleFile(event)">
-        <label for="client_file" class="cursor-pointer block space-y-2">
-          <div class="mx-auto w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm text-slate-500 group-hover:scale-110 transition-transform duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-            </svg>
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand / Project Name <span class="text-red-500">*</span></label>
+            <input type="text" id="brand_name" required placeholder="e.g., Nexus Digital" 
+                   class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
           </div>
-          <div>
-            <p class="text-sm text-slate-700 font-semibold">Drop asset files or <span class="text-slate-950 underline decoration-1 underline-offset-2">browse</span></p>
-            <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase mt-1">Maximum 5 imagery items</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Contact Email <span class="text-red-500">*</span></label>
+            <input type="email" id="client_email" placeholder="alex@brand.com" required 
+                   class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none duration-200">
           </div>
-        </label>
-        <div id="thumbnail-container" class="mt-4 flex flex-wrap gap-2 justify-center"></div>
-        <div id="file-info" class="mt-3 text-xs text-slate-950 font-bold hidden"></div>
+          
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Mobile Number <span class="text-red-500">*</span></label>
+            <div class="flex items-center bg-white border border-slate-200 rounded-xl focus-within:border-slate-900 focus-within:ring-4 focus-within:ring-slate-900/5 transition-all duration-200 overflow-hidden">
+              <select id="country_code" required 
+                      class="bg-transparent pl-3 pr-7 py-3 text-sm outline-none cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_0.4rem_center] bg-no-repeat bg-[length:1em] w-24 flex-shrink-0 text-slate-700 font-medium border-r border-slate-150 transition-colors duration-200">
+                <option value="+91" selected>🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+27">🇿🇦 +27</option>
+              </select>
+              <input type="tel" id="client_phone" placeholder="00000 00000" required 
+                     class="w-full bg-transparent px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none border-0 focus:ring-0">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="flex items-start gap-3 bg-slate-50 border border-slate-200/50 p-4 rounded-xl">
-      <div class="flex items-center h-5">
-        <input type="checkbox" id="terms_agreement" required 
-               class="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900 accent-slate-950 cursor-pointer">
+      <div class="space-y-6">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+          <span class="w-4 h-[1px] bg-slate-200"></span> 02. Project Architecture
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Project Type <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <select id="project_scope" name="project_scope" required 
+                      class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
+                <option value="" disabled selected>Select Architecture...</option>
+                <option value="Template">Template System</option>
+                <option value="Custom Website">Custom Architecture</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-bold text-slate-700 tracking-wide">Budget Range (INR) <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <select id="project_budget" required 
+                      class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 cursor-pointer appearance-none bg-[url('https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500')] bg-[right_1rem_center] bg-no-repeat bg-[length:1.2em] text-slate-700 transition-all duration-200">
+                <option value="" disabled selected>Select Allocation...</option>
+                <option value="Under ₹5,000">Under ₹5,000</option>
+                <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+                <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+                <option value="₹20,000+">₹20,000+</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="template-options" class="hidden space-y-1.5 relative">
+          <label class="text-[11px] font-bold text-slate-700 tracking-wide">Select Template Configuration <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <div id="template-dropdown-trigger" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm cursor-pointer flex justify-between items-center outline-none focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all duration-200">
+              <div class="flex items-center gap-3">
+                <img id="selected-template-img" src="" class="w-6 h-6 rounded-md object-cover border border-slate-200 hidden">
+                <span id="selected-template-text" class="text-slate-400">Choose a production template layout...</span>
+              </div>
+              <img src="https://api.iconify.design/heroicons/chevron-down-20-solid.svg?color=slate-500" class="w-5 h-5">
+            </div>
+            <div id="template-dropdown-menu" class="hidden absolute top-full left-0 z-50 w-full mt-1.5 bg-white border border-slate-200 rounded-xl shadow-xl max-h-60 overflow-y-auto outline-none transition-all duration-150">
+              <div class="p-4 text-xs text-slate-400 italic">Querying cloud systems...</div>
+            </div>
+          </div>
+          <input type="hidden" id="selected_template_val" name="selected_template">
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-bold text-slate-700 tracking-wide">Detailed Requirements <span class="text-red-500">*</span></label>
+          <textarea id="project_details" rows="5" required placeholder="Describe functionalities, design direction, page structure targets..." 
+                    class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-slate-900 focus:ring-4 focus:ring-slate-900/5 transition-all outline-none resize-none duration-200 leading-relaxed"></textarea>
+        </div>
       </div>
-      <label for="terms_agreement" class="text-xs text-slate-500 leading-normal cursor-pointer select-none">
-        I verify these entries and agree to the 
-        <a href="./terms.html" target="_blank" class="text-slate-900 font-bold hover:underline">Terms & Conditions</a> 
-        and 
-        <a href="./privacy.html" target="_blank" class="text-slate-900 font-bold hover:underline">Privacy Policy</a>. <span class="text-red-500">*</span>
-      </label>
-    </div>
-  </div>
 
-  <button type="submit" id="submit-btn" 
-          class="w-full bg-slate-950 text-white font-bold text-sm py-4 rounded-xl hover:bg-slate-900 transition-all active:scale-[0.99] shadow-md hover:shadow-lg shadow-slate-950/10 tracking-wide">
-    SUBMIT
-  </button>
-</form>
+      <div class="space-y-6">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+          <span class="w-4 h-[1px] bg-slate-200"></span> 03. Assets & Verification
+        </h3>
+
+        <div class="space-y-1.5">
+          <label class="text-[11px] font-bold text-slate-700 tracking-wide">Brand Assets <span class="text-slate-400 font-normal">(Optional)</span></label>
+          <div id="drop-zone" class="border-2 border-dashed border-slate-200 hover:border-slate-400 bg-slate-50/50 rounded-2xl p-8 text-center transition-all duration-200 group cursor-pointer">
+            <input type="file" id="client_file" class="hidden" multiple onchange="handleFile(event)">
+            <label for="client_file" class="cursor-pointer block space-y-2">
+              <div class="mx-auto w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm text-slate-500 group-hover:scale-110 transition-transform duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-slate-700 font-semibold">Drop asset files or <span class="text-slate-950 underline decoration-1 underline-offset-2">browse</span></p>
+                <p class="text-[10px] text-slate-400 font-medium tracking-wide uppercase mt-1">Maximum 5 imagery items</p>
+              </div>
+            </label>
+            <div id="thumbnail-container" class="mt-4 flex flex-wrap gap-2 justify-center"></div>
+            <div id="file-info" class="mt-3 text-xs text-slate-950 font-bold hidden"></div>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 bg-slate-50 border border-slate-200/50 p-4 rounded-xl">
+          <div class="flex items-center h-5">
+            <input type="checkbox" id="terms_agreement" required 
+                   class="w-4 h-4 rounded border-slate-300 text-slate-900 focus:ring-slate-900 accent-slate-950 cursor-pointer">
+          </div>
+          <label for="terms_agreement" class="text-xs text-slate-500 leading-normal cursor-pointer select-none">
+            I verify these entries and agree to the 
+            <a href="./terms.html" target="_blank" class="text-slate-900 font-bold hover:underline">Terms & Conditions</a> 
+            and 
+            <a href="./privacy.html" target="_blank" class="text-slate-900 font-bold hover:underline">Privacy Policy</a>. <span class="text-red-500">*</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn" 
+              class="w-full bg-slate-950 text-white font-bold text-sm py-4 rounded-xl hover:bg-slate-900 transition-all active:scale-[0.99] shadow-md hover:shadow-lg shadow-slate-950/10 tracking-wide">
+        SUBMIT
+      </button>
+    </form>
   </main>
 
- <div id="footer-placeholder"></div>
+  <div id="footer-placeholder"></div>
   
   <script src="components.js"></script>
 
- <script>
-  // 1. Configuration Constants
-  const GOOGLE_SCRIPT_WEBHOOK = "https://script.google.com/macros/s/AKfycbzrRsZfIh2Khxv86VqpOPtxWYtNnZWZCXHD6fOOqnFEWqtRIeoX_hLQIonwNMe4rWTb/exec";
-  const DYNAMIC_TEMPLATE_URL = "https://script.google.com/macros/s/AKfycbwSlULgBO82IZynOl1l4jfVMhVuzbQYQGYZ8O_2_klmtZK99z8zu7FBoYG4MTQdf4AH/exec";
-  
-  const form = document.getElementById('project-intake-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const banner = document.getElementById('status-banner');
-  const dropZone = document.getElementById('drop-zone');
-  const projectScope = document.getElementById('project_scope');
-  const templateOptions = document.getElementById('template-options');
-  const menu = document.getElementById('template-dropdown-menu');
-  const trigger = document.getElementById('template-dropdown-trigger');
+  <script>
+    // 1. Configuration Constants
+    const GOOGLE_SCRIPT_WEBHOOK = "https://script.google.com/macros/s/AKfycbzrRsZfIh2Khxv86VqpOPtxWYtNnZWZCXHD6fOOqnFEWqtRIeoX_hLQIonwNMe4rWTb/exec";
+    const SUPABASE_URL = "https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/templates";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
+    
+    const form = document.getElementById('project-intake-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const banner = document.getElementById('status-banner');
+    const dropZone = document.getElementById('drop-zone');
+    const projectScope = document.getElementById('project_scope');
+    const templateOptions = document.getElementById('template-options');
+    const menu = document.getElementById('template-dropdown-menu');
+    const trigger = document.getElementById('template-dropdown-trigger');
 
-  // Unified global file registry tracking raw values alongside base64 data strings
-  let uploadedFiles = [];
+    let uploadedFiles = [];
 
-  // FIXED: Standardized Drive asset compiler avoiding cross-origin display blocks
-  function cleanDriveUrl(url) {
-    if (!url) return '';
-    const clean = url.trim();
-    if (clean.includes('drive.google.com')) {
-      let fileId = '';
-      if (clean.includes('/d/')) {
-        fileId = clean.split('/d/')[1].split('/')[0];
-      } else if (clean.includes('id=')) {
-        fileId = clean.split('id=')[1].split('&')[0];
-      }
-      if (fileId) {
-        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w200`;
+    // --- A. Dynamic Live Template Loading from Supabase Matrix ---
+    async function loadTemplates() {
+      try {
+        const response = await fetch(`${SUPABASE_URL}?select=*`, {
+          method: 'GET',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        
+        if (!response.ok) throw new Error("Database pipeline unreachable.");
+        const catalog = await response.json();
+
+        if (!catalog || catalog.length === 0) {
+          menu.innerHTML = '<div class="p-4 text-xs text-slate-400 italic">No templates found in database.</div>';
+          return;
+        }
+
+        menu.innerHTML = catalog.map(item => {
+          const name = item.title || item.name || "Unnamed Framework";
+          const correctImage = item.image_url || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=80&h=80&fit=crop";
+          
+          return `
+            <div class="template-option p-3 hover:bg-slate-50 cursor-pointer flex items-center gap-4 border-b border-slate-100 last:border-0 transition-colors" 
+                 data-value="${item.id || name}">
+              <img src="${correctImage}" 
+                   class="w-10 h-10 rounded-lg object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0" 
+                   onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=80;h=80&fit=crop';">
+              <span class="template-title text-sm font-semibold text-slate-700 pointer-events-none">${name}</span>
+            </div>
+          `;
+        }).join('');
+
+        // --- B. URL Parameter Auto-Selection Hook ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const preSelectedAssetId = urlParams.get('asset');
+
+        if (preSelectedAssetId) {
+          const matchingOption = menu.querySelector(`[data-value="${preSelectedAssetId}"]`);
+          if (matchingOption) {
+            const templateName = matchingOption.querySelector('.template-title').textContent;
+            const imageSrc = matchingOption.querySelector('img').src;
+
+            document.getElementById('selected-template-text').textContent = templateName;
+            document.getElementById('selected-template-text').className = "text-sm font-bold text-slate-800";
+            document.getElementById('selected_template_val').value = preSelectedAssetId;
+            
+            const triggerImg = document.getElementById('selected-template-img');
+            triggerImg.src = imageSrc;
+            triggerImg.classList.remove('hidden');
+          }
+        }
+
+      } catch (error) {
+        console.error("Error loading templates:", error);
+        menu.innerHTML = '<div class="p-4 text-xs text-red-500 font-bold">Failed to connect to template database.</div>';
       }
     }
-    return clean;
-  }
 
-  // --- A. Dynamic Template Loading ---
-  async function loadTemplates() {
-    try {
-      const response = await fetch(DYNAMIC_TEMPLATE_URL);
-      const catalog = await response.json();
+    // --- C. Event Delegation & Choice Display Handling ---
+    menu.addEventListener('click', (e) => {
+      const option = e.target.closest('.template-option');
+      if (!option) return;
+      
+      e.stopPropagation();
+      const templateName = option.querySelector('.template-title').textContent;
+      const templateId = option.getAttribute('data-value');
+      const imageSrc = option.querySelector('img').src;
 
-      console.log("Checking sheet data format:", catalog);
+      document.getElementById('selected-template-text').textContent = templateName;
+      document.getElementById('selected-template-text').className = "text-sm font-bold text-slate-800";
+      document.getElementById('selected_template_val').value = templateId;
+      
+      const triggerImg = document.getElementById('selected-template-img');
+      triggerImg.src = imageSrc;
+      triggerImg.classList.remove('hidden');
 
-      if (!catalog || catalog.length === 0) {
-        menu.innerHTML = '<div class="p-4 text-xs text-slate-400 italic">No templates found in database.</div>';
+      menu.classList.add('hidden');
+    });
+
+    // --- D. UI Toggles & Global Handlers ---
+    function toggleTemplateSection() {
+      if (projectScope.value === 'Template') {
+        templateOptions.classList.remove('hidden');
+      } else {
+        templateOptions.classList.add('hidden');
+        menu.classList.add('hidden');
+      }
+    }
+
+    projectScope.addEventListener('change', toggleTemplateSection);
+    
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+
+    toggleTemplateSection();
+    loadTemplates();
+
+    // --- E. Optimized File Handling ---
+    function handleFile(e) {
+      const files = Array.from(e.target.files || e.dataTransfer.files);
+      const imageFiles = files.filter(file => file.type.startsWith('image/'));
+
+      if (uploadedFiles.length + imageFiles.length > 5) {
+        alert("System limit reached: You can upload a maximum of 5 brand asset images.");
+        syncFileInput();
         return;
       }
 
-      menu.innerHTML = catalog.map(item => {
-        const rawUrl = item.ImageURL || item.imageurl || item["Image URL"] || item.Image_URL || "";
-        const correctImage = cleanDriveUrl(rawUrl);
+      let itemsProcessed = 0;
+      imageFiles.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          uploadedFiles.push({
+            name: file.name,
+            data: event.target.result.split(',')[1],
+            rawFile: file                           
+          });
+          
+          itemsProcessed++;
+          if (itemsProcessed === imageFiles.length) {
+            renderThumbnails();
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function renderThumbnails() {
+      const container = document.getElementById('thumbnail-container');
+      const fileInfo = document.getElementById('file-info');
+      container.innerHTML = '';
+
+      if (uploadedFiles.length === 0) {
+        fileInfo.classList.add('hidden');
+        syncFileInput();
+        return;
+      }
+
+      fileInfo.classList.remove('hidden');
+      fileInfo.textContent = `✓ ${uploadedFiles.length} file(s) selected`;
+
+      uploadedFiles.forEach((fileItem, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'relative w-16 h-16 group';
+
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(fileItem.rawFile);
+        img.className = 'w-full h-full object-cover rounded-xl border border-slate-200 shadow-sm group-hover:border-slate-400 transition-colors duration-200';
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 bg-slate-950 text-white rounded-full flex items-center justify-center text-xs font-bold hover:bg-red-500 hover:scale-110 transition-all duration-150 shadow-sm border border-white focus:outline-none';
+        removeBtn.innerHTML = '&times;';
         
-        return `
-          <div class="template-option p-3 hover:bg-slate-50 cursor-pointer flex items-center gap-4 border-b border-slate-100 last:border-0 transition-colors" 
-               data-value="${item.ID || item.Name}">
-            <img src="${correctImage}" 
-                 class="w-10 h-10 rounded-lg object-cover bg-slate-100 border border-slate-200 shadow-sm flex-shrink-0" 
-                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=80;h=80&fit=crop';">
-            <span class="template-title text-sm font-semibold text-slate-700 pointer-events-none">${item.Name}</span>
-          </div>
-        `;
-      }).join('');
+        removeBtn.onclick = function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          removeFile(index);
+        };
 
-    } catch (error) {
-      console.error("Error loading templates:", error);
-      menu.innerHTML = '<div class="p-4 text-xs text-red-500 font-bold">Failed to connect to template database.</div>';
-    }
-  }
+        wrapper.appendChild(img);
+        wrapper.appendChild(removeBtn);
+        container.appendChild(wrapper);
+      });
 
-  // --- B. Event Delegation & Choice Display Handling ---
-  menu.addEventListener('click', (e) => {
-    const option = e.target.closest('.template-option');
-    if (!option) return;
-    
-    e.stopPropagation();
-    const templateName = option.querySelector('.template-title').textContent;
-    const templateId = option.getAttribute('data-value');
-    const imageSrc = option.querySelector('img').src;
-
-    document.getElementById('selected-template-text').textContent = templateName;
-    document.getElementById('selected-template-text').className = "text-sm font-bold text-slate-800";
-    document.getElementById('selected_template_val').value = templateId;
-    
-    const triggerImg = document.getElementById('selected-template-img');
-    triggerImg.src = imageSrc;
-    triggerImg.classList.remove('hidden');
-
-    menu.classList.add('hidden');
-  });
-
-  // --- C. UI Toggles & Global Handlers ---
-  function toggleTemplateSection() {
-    if (projectScope.value === 'Template') {
-      templateOptions.classList.remove('hidden');
-    } else {
-      templateOptions.classList.add('hidden');
-      menu.classList.add('hidden');
-    }
-  }
-
-  projectScope.addEventListener('change', toggleTemplateSection);
-  
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('hidden');
-  });
-
-  document.addEventListener('click', () => {
-    menu.classList.add('hidden');
-  });
-
-  toggleTemplateSection();
-  loadTemplates();
-
-  // --- D. Optimized File Handling & Individual Removal Mechanics ---
-  function handleFile(e) {
-    const files = Array.from(e.target.files || e.dataTransfer.files);
-    const imageFiles = files.filter(file => file.type.startsWith('image/'));
-
-    // Check boundary threshold limit before modifying file arrays
-    if (uploadedFiles.length + imageFiles.length > 5) {
-      alert("System limit reached: You can upload a maximum of 5 brand asset images.");
       syncFileInput();
-      return;
     }
 
-    let itemsProcessed = 0;
-    imageFiles.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        uploadedFiles.push({
-          name: file.name,
-          data: event.target.result.split(',')[1], // Keeps base64 payload structure safe for Google Script
-          rawFile: file                           // Tracking object references for native UI browser sync operations
-        });
+    function removeFile(index) {
+      uploadedFiles.splice(index, 1);
+      renderThumbnails();
+    }
+
+    function syncFileInput() {
+      const fileInput = document.getElementById('client_file');
+      const dataTransfer = new DataTransfer();
+      uploadedFiles.forEach(item => {
+        if (item.rawFile) dataTransfer.items.add(item.rawFile);
+      });
+      fileInput.files = dataTransfer.files;
+    }
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
+    });
+    dropZone.addEventListener('drop', (e) => handleFile(e));
+
+    // --- F. Form Submission Matrix ---
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SUBMITTING...";
+
+      const data = {
+        client_name: document.getElementById('client_name').value,
+        brand_name: document.getElementById('brand_name').value,
+        client_email: document.getElementById('client_email').value,
+        client_phone: `'${document.getElementById('country_code').value} ${document.getElementById('client_phone').value}`,
+        project_scope: projectScope.value,
+        selected_template: document.getElementById('selected_template_val').value || "N/A",
+        project_budget: document.getElementById('project_budget').value,
+        project_details: document.getElementById('project_details').value,
+        files: uploadedFiles.map(f => ({ name: f.name, data: f.data }))
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_WEBHOOK, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
         
-        itemsProcessed++;
-        if (itemsProcessed === imageFiles.length) {
-          renderThumbnails();
+        // Clear form entries after successful sheet pipeline transfer
+        form.reset();
+        uploadedFiles = [];
+        renderThumbnails();
+        toggleTemplateSection();
+
+        // Launch the system success feedback modal
+        const modalWrapper = document.getElementById('success-modal');
+        const modalCard = document.getElementById('modal-card');
+        if (modalWrapper && modalCard) {
+          modalWrapper.classList.remove('opacity-0', 'pointer-events-none');
+          modalCard.classList.remove('scale-95');
+          modalCard.classList.add('scale-100');
         }
-      };
-      reader.readAsDataURL(file);
-    });
-  }
 
-  function renderThumbnails() {
-    const container = document.getElementById('thumbnail-container');
-    const fileInfo = document.getElementById('file-info');
-    container.innerHTML = '';
-
-    if (uploadedFiles.length === 0) {
-      fileInfo.classList.add('hidden');
-      syncFileInput();
-      return;
-    }
-
-    fileInfo.classList.remove('hidden');
-    fileInfo.textContent = `✓ ${uploadedFiles.length} file(s) selected`;
-
-    // Map active structures to generate independent close-badges
-    uploadedFiles.forEach((fileItem, index) => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'relative w-16 h-16 group';
-
-      const img = document.createElement('img');
-      img.src = URL.createObjectURL(fileItem.rawFile);
-      img.className = 'w-full h-full object-cover rounded-xl border border-slate-200 shadow-sm group-hover:border-slate-400 transition-colors duration-200';
-
-      const removeBtn = document.createElement('button');
-      removeBtn.type = 'button';
-      removeBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 bg-slate-950 text-white rounded-full flex items-center justify-center text-xs font-bold hover:bg-red-500 hover:scale-110 transition-all duration-150 shadow-sm border border-white focus:outline-none';
-      removeBtn.innerHTML = '&times;';
-      
-      removeBtn.onclick = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        removeFile(index);
-      };
-
-      wrapper.appendChild(img);
-      wrapper.appendChild(removeBtn);
-      container.appendChild(wrapper);
+        submitBtn.disabled = false;
+        submitBtn.textContent = "SUBMIT";
+      } catch (err) {
+        console.error(err);
+        banner.textContent = "Error: Submission failed.";
+        banner.className = "block p-4 bg-red-50 text-red-700 rounded-xl text-center font-bold border border-red-200/50";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "SUBMIT";
+      }
     });
 
-    syncFileInput();
-  }
+    // --- G. Modal Cleanup Event Observers ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalWrapper = document.getElementById('success-modal');
+      const modalCard = document.getElementById('modal-card');
+      const closeModalBtn = document.getElementById('close-modal-btn');
 
-  function removeFile(index) {
-    uploadedFiles.splice(index, 1);
-    renderThumbnails();
-  }
-
-  function syncFileInput() {
-    const fileInput = document.getElementById('client_file');
-    const dataTransfer = new DataTransfer();
-    uploadedFiles.forEach(item => {
-      if (item.rawFile) dataTransfer.items.add(item.rawFile);
+      if (modalWrapper && closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+          modalWrapper.classList.add('opacity-0', 'pointer-events-none');
+          if (modalCard) {
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+          }
+        });
+      }
     });
-    fileInput.files = dataTransfer.files;
-  }
+  </script>
 
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropZone.addEventListener(eventName, (e) => { e.preventDefault(); e.stopPropagation(); });
-  });
-  dropZone.addEventListener('drop', (e) => handleFile(e));
-
-  // --- E. Form Submission Matrix ---
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = "SUBMITTING...";
-
-    // Combines the country code picker value with numerical entries into a single string payload array
-    const data = {
-      client_name: document.getElementById('client_name').value,
-      brand_name: document.getElementById('brand_name').value,
-      client_email: document.getElementById('client_email').value,
-      
-      // FIXED: Prepended single quote (') strings to force text parsing in Google Sheets cells
-      client_phone: `'${document.getElementById('country_code').value} ${document.getElementById('client_phone').value}`,
-      
-      project_scope: projectScope.value,
-      selected_template: document.getElementById('selected_template_val').value || "N/A",
-      project_budget: document.getElementById('project_budget').value,
-      project_details: document.getElementById('project_details').value,
-      // Maps active image registers back into exact structured data sets expected by your Google sheet backend
-      files: uploadedFiles.map(f => ({ name: f.name, data: f.data }))
-    };
-
-    try {
-      await fetch(GOOGLE_SCRIPT_WEBHOOK, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
-      banner.textContent = "SUCCESS: Submission complete.";
-      banner.className = "block p-4 bg-emerald-50 text-emerald-700 rounded-xl text-center font-bold border border-emerald-200/50";
-      submitBtn.textContent = "SUBMITTED";
-    } catch (err) {
-      console.error(err);
-      banner.textContent = "Error: Submission failed.";
-      banner.className = "block p-4 bg-red-50 text-red-700 rounded-xl text-center font-bold border border-red-200/50";
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit Requirements";
-    }
-  });
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Select elements (Make sure your form tag has id="contact-form")
-    const contactForm = document.getElementById('contact-form') || document.querySelector('form');
-    const modalWrapper = document.getElementById('success-modal');
-    const modalCard = document.getElementById('modal-card');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-
-    if (contactForm && modalWrapper) {
-      // 2. Handle Form Submission
-      contactForm.addEventListener('submit', (e) => {
-        // Prevent default page reload if handling via JS
-        e.preventDefault(); 
-
-        // Show the modal with smooth transitions
-        modalWrapper.classList.remove('opacity-0', 'pointer-events-none');
-        modalCard.classList.remove('scale-95');
-        modalCard.classList.add('scale-100');
-
-        // Optional: Clear form entries after submission
-        contactForm.reset();
-      });
-
-      // 3. Handle Closing the Modal
-      closeModalBtn.addEventListener('click', () => {
-        modalWrapper.classList.add('opacity-0', 'pointer-events-none');
-        modalCard.classList.remove('scale-100');
-        modalCard.classList.add('scale-95');
-      });
-    }
-  });
-
-</script>
-
-<div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-  
-  <div class="bg-white/95 backdrop-blur-md border border-slate-200 max-w-md w-full p-6 sm:p-8 rounded-2xl shadow-2xl text-center space-y-4 transform scale-95 transition-transform duration-300" id="modal-card">
-    
-    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 shadow-sm animate-bounce">
-      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-      </svg>
+  <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white/95 backdrop-blur-md border border-slate-200 max-w-md w-full p-6 sm:p-8 rounded-2xl shadow-2xl text-center space-y-4 transform scale-95 transition-transform duration-300" id="modal-card">
+      <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 shadow-sm animate-bounce">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-black text-[#0F172A] tracking-tight">Project Details Received!</h3>
+      <p class="text-sm text-slate-600 font-medium leading-relaxed px-2">
+        Thank you for reaching out to OnePoint. Our team is reviewing your requirements, and we will contact you shortly to initiate the architecture process.
+      </p>
+      <button id="close-modal-btn" type="button" class="w-full bg-[#0F172A] text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-[#4F46E5] shadow-md transform active:scale-98">
+        Got it, Thanks!
+      </button>
     </div>
-
-    <h3 class="text-xl font-black text-[#0F172A] tracking-tight">
-      Project Details Received!
-    </h3>
-    <p class="text-sm text-slate-600 font-medium leading-relaxed px-2">
-      Thank you for reaching out to OnePoint. Our team is reviewing your requirements, and we will contact you shortly to initiate the architecture process.
-    </p>
-
-    <button id="close-modal-btn" type="button" class="w-full bg-[#0F172A] text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-[#4F46E5] shadow-md transform active:scale-98">
-      Got it, Thanks!
-    </button>
-
   </div>
-</div>
 </body>
 </html>
