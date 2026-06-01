@@ -32,162 +32,129 @@
   <script src="components.js"></script>
 
   <script>
-    // Dynamic Google Sheets Loader Engine (With Instant SWR Caching)
-    document.addEventListener('DOMContentLoaded', () => {
-      const DYNAMIC_TEMPLATE_URL = "https://script.google.com/macros/s/AKfycbwSlULgBO82IZynOl1l4jfVMhVuzbQYQGYZ8O_2_klmtZK99z8zu7FBoYG4MTQdf4AH/exec";
-      const catalogGrid = document.getElementById('catalog-grid');
-      const CACHE_KEY = 'onepoint_catalog_data';
+  document.addEventListener('DOMContentLoaded', () => {
+    const LOCAL_API_URL = "http://localhost:3000/api/system";
+    const catalogGrid = document.getElementById('catalog-grid');
 
-      // Converts Google Drive direct links automatically into optimized card thumbnail streams
-      function cleanDriveUrl(url) {
-        if (!url) return '';
-        const clean = url.trim();
-        if (clean.includes('drive.google.com')) {
-          let fileId = '';
-          if (clean.includes('/d/')) {
-            fileId = clean.split('/d/')[1].split('/')[0];
-          } else if (clean.includes('id=')) {
-            fileId = clean.split('id=')[1].split('&')[0];
-          }
-          if (fileId) {
-            return `https://drive.google.com/thumbnail?id=${fileId}&sz=w600`;
-          }
-        }
-        return clean;
+    // Syncs and parses localized node architecture arrays cleanly
+    function renderCatalogHTML(templates) {
+      if (!templates || templates.length === 0) {
+        catalogGrid.innerHTML = `
+          <div class="col-span-full text-center py-20 text-slate-400 text-sm font-medium">
+            No active software architectures found in localized engine rows.
+          </div>
+        `;
+        return;
       }
 
-      // Renders the HTML items directly into the grid
-      function renderCatalogHTML(catalog) {
-        if (!catalog || catalog.length === 0) {
-          catalogGrid.innerHTML = `
-            <div class="col-span-full text-center py-20 text-slate-400 text-sm font-medium">
-              No active software architectures found in database.
-            </div>
-          `;
-          return;
+      catalogGrid.innerHTML = templates.map(item => {
+        // Fallback structures reading values if properties are mixed-case
+        const name = item.name || item.Name || "Unnamed Framework";
+        const correctImage = item.thumbnail || item.Thumbnail || item.imageurl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
+        
+        // Robust calculation shielding template arrays against ₹NaN conversion errors
+        const rawPrice = item.price || item.Price || "";
+        let formattedPrice = "Contact Us";
+        if (rawPrice && !isNaN(rawPrice)) {
+          formattedPrice = `₹${Number(rawPrice).toLocaleString('en-IN')}`;
+        } else if (rawPrice) {
+          formattedPrice = String(rawPrice).includes('₹') ? rawPrice : `₹${rawPrice}`;
         }
+        
+        const category = item.strategy || item.Strategy || "Static Edge";
+        const description = item.description || item.Description || "Premium conversion-optimized template setup built on clean web architecture layers.";
+        
+        const assetSlug = item.id || item.Id || name;
+        const inlineSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        
+        // Exact variable check reading preview parameters passed down by admin form inputs
+        const previewPath = item.previewUrl || item.previewURL || item.previewpath || `./${inlineSlug}/index.html`;
 
-        catalogGrid.innerHTML = catalog.map(item => {
-          const name = item.Name || item.name || "Unnamed Framework";
-          const rawUrl = item.ImageURL || item.imageurl || item["Image URL"] || item.Image_URL || "";
-          const correctImage = cleanDriveUrl(rawUrl);
-          
-          const rawPrice = item.Price || item.price || "";
-          const formattedPrice = rawPrice ? (String(rawPrice).includes('₹') ? rawPrice : `₹${Number(rawPrice).toLocaleString('en-IN')}`) : "Contact Us";
-          
-          const category = item.Category || item.category || "Storefront";
-          const description = item.Description || item.description || "Premium conversion-optimized template setup built on clean web architecture layers.";
-          
-          const assetSlug = item.ID || item.Name;
-          const inlineSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-          const previewPath = item.PreviewURL || item.previewurl || `./${inlineSlug}/index.html`;
-
-          return `
-            <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-3.5 sm:p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
-                  <img src="${correctImage}" 
-                       class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                       onerror="this.onerror=null; this.parentNode.querySelector('.fallback-label').style.display='block'; this.style.display='none';">
-                  <span class="fallback-label hidden text-slate-400 font-mono text-[11px] uppercase tracking-widest px-4 text-center">${name} Canvas</span>
-                  <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">${category}</span>
-                </div>
-                
-                <div class="px-1 space-y-1.5">
-                  <div class="flex justify-between items-baseline gap-2">
-                    <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">${name}</h3>
-                    <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">${formattedPrice}</span>
-                  </div>
-                  <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">${description}</p>
-                </div>
+        return `
+          <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-3.5 sm:p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
+                <img src="${correctImage}" 
+                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                     onerror="this.onerror=null; this.parentNode.querySelector('.fallback-label').style.display='block'; this.style.display='none';">
+                <span class="fallback-label hidden text-slate-400 font-mono text-[11px] uppercase tracking-widest px-4 text-center">${name} Canvas</span>
+                <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm">${category}</span>
               </div>
               
-              <div class="pt-4 sm:pt-5 flex gap-2">
-                <a href="preview.html?url=${encodeURIComponent(previewPath)}&name=${encodeURIComponent(name)}" 
-                   class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">
-                  Live Preview
-                </a>
-                <a href="contact.html?asset=${encodeURIComponent(assetSlug)}" 
-                   class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">
-                  Acquire Asset
-                </a>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
-      // Generates an interactive visual pulsing skeleton while loading on cold-start
-      function renderSkeletons() {
-        let skeletonHTML = '';
-        for (let i = 0; i < 6; i++) {
-          skeletonHTML += `
-            <div class="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 sm:p-4 space-y-4 sm:space-y-5 animate-pulse">
-              <div class="h-40 sm:h-48 bg-slate-200/80 rounded-xl"></div>
-              <div class="space-y-3 px-1">
-                <div class="flex justify-between gap-4">
-                  <div class="h-4 w-2/3 bg-slate-200 rounded"></div>
-                  <div class="h-4 w-1/4 bg-slate-200 rounded"></div>
+              <div class="px-1 space-y-1.5">
+                <div class="flex justify-between items-baseline gap-2">
+                  <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">${name}</h3>
+                  <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">${formattedPrice}</span>
                 </div>
-                <div class="h-3 w-full bg-slate-100 rounded"></div>
-                <div class="h-3 w-5/6 bg-slate-100 rounded"></div>
-              </div>
-              <div class="pt-2 flex gap-2">
-                <div class="h-9 flex-1 bg-slate-100 rounded-lg"></div>
-                <div class="h-9 flex-1 bg-slate-200/60 rounded-lg"></div>
+                <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">${description}</p>
               </div>
             </div>
-          `;
-        }
-        catalogGrid.innerHTML = skeletonHTML;
-      }
+            
+            <div class="pt-4 sm:pt-5 flex gap-2">
+              <a href="preview.html?url=${encodeURIComponent(previewPath)}&name=${encodeURIComponent(name)}" 
+                 class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">
+                Live Preview
+              </a>
+              <a href="contact.html?asset=${encodeURIComponent(assetSlug)}" 
+                 class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">
+                 Acquire Asset
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
 
-      async function initializeCatalog() {
-        const cachedRawData = localStorage.getItem(CACHE_KEY);
-        let hasCache = false;
-
-        if (cachedRawData) {
-          try {
-            const cachedJson = JSON.parse(cachedRawData);
-            if (cachedJson && cachedJson.length > 0) {
-              renderCatalogHTML(cachedJson);
-              hasCache = true;
-            }
-          } catch(e) {
-            console.error("Cache compilation corrupted, bypassing:", e);
-          }
-        }
-
-        if (!hasCache) {
-          renderSkeletons();
-        }
-
-        try {
-          const response = await fetch(DYNAMIC_TEMPLATE_URL);
-          const freshData = await response.json();
-
-          if (freshData && freshData.length > 0) {
-            const stringifiedFresh = JSON.stringify(freshData);
-            if (stringifiedFresh !== cachedRawData) {
-              localStorage.setItem(CACHE_KEY, stringifiedFresh);
-              renderCatalogHTML(freshData);
-            }
-          }
-        } catch (error) {
-          console.error("Operational crash tracking catalog validation:", error);
-          if (!hasCache) {
-            catalogGrid.innerHTML = `
-              <div class="col-span-full text-center py-20 text-red-500 text-sm font-bold">
-                Failed to sync with active cloud framework database. Please reload application page.
+    // Renders interactive placeholder blocks on initial sync delays
+    function renderSkeletons() {
+      let skeletonHTML = '';
+      for (let i = 0; i < 3; i++) {
+        skeletonHTML += `
+          <div class="bg-white border border-[#E2E8F0] rounded-2xl p-3.5 sm:p-4 space-y-4 sm:space-y-5 animate-pulse">
+            <div class="h-40 sm:h-48 bg-slate-200/80 rounded-xl"></div>
+            <div class="space-y-3 px-1">
+              <div class="flex justify-between gap-4">
+                <div class="h-4 w-2/3 bg-slate-200 rounded"></div>
+                <div class="h-4 w-1/4 bg-slate-200 rounded"></div>
               </div>
-            `;
-          }
-        }
+              <div class="h-3 w-full bg-slate-100 rounded"></div>
+              <div class="h-3 w-5/6 bg-slate-100 rounded"></div>
+            </div>
+            <div class="pt-2 flex gap-2">
+              <div class="h-9 flex-1 bg-slate-100 rounded-lg"></div>
+              <div class="h-9 flex-1 bg-slate-200/60 rounded-lg"></div>
+            </div>
+          </div>
+        `;
       }
+      catalogGrid.innerHTML = skeletonHTML;
+    }
 
-      initializeCatalog();
-    });
-  </script>
+    async function initializeCatalog() {
+      renderSkeletons();
+
+      try {
+        const response = await fetch(LOCAL_API_URL);
+        const freshState = await response.json();
+
+        if (freshState && freshState.templates) {
+          renderCatalogHTML(freshState.templates);
+        } else {
+          renderCatalogHTML([]);
+        }
+      } catch (error) {
+        console.error("Operational connection terminal break:", error);
+        catalogGrid.innerHTML = `
+          <div class="col-span-full text-center py-20 text-red-500 text-sm font-bold">
+            Transmission Loss. Ensure your server.js background environment engine is active on port 3000.
+          </div>
+        `;
+      }
+    }
+
+    initializeCatalog();
+  });
+</script>
 
 </body>
 </html>

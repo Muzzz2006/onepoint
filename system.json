@@ -1,0 +1,17 @@
+{
+  "templates": [
+    {
+      "id": "1780310236107",
+      "name": "brewhaven",
+      "strategy": "Zero-Hydration Static",
+      "security": "✔ Immutable Core Secured",
+      "price": "10000",
+      "description": "A premium coffee shop website designed with a warm and inviting aesthetic, featuring menu showcases, brand storytelling, and online reservations.",
+      "previewUrl": "./brewhaven/index.html",
+      "thumbnail": "http://localhost:3000/uploads/1780310234685_brewhaven_thumbnail.png"
+    }
+  ],
+  "domain_url": "platform.onepoint.premium",
+  "domain_gateway": "edge-routing.onepoint-infrastructure.net",
+  "seo_schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"WebArchitecturePlatform\"\n}"
+}

@@ -3,237 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Platform Vision | OnePoint Premium Web Architecture</title>
+  <title>Platform Vision & Education | OnePoint Premium Web Architecture</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { 
       font-family: 'Plus Jakarta Sans', sans-serif; 
-      background-color: #ffffff;
     }
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.1; transform: scale(1); }
-      50% { opacity: 0.2; transform: scale(1.05); }
+      0%, 100% { opacity: 0.05; transform: scale(1); }
+      50% { opacity: 0.1; transform: scale(1.05); }
     }
     .animate-glow { animation: pulseGlow 8s ease-in-out infinite; }
   </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="bg-white text-slate-900 antialiased selection:bg-indigo-600 selection:text-white min-h-screen">
 
   <div id="header-placeholder"></div>
 
-  <section class="pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="relative overflow-hidden rounded-2xl border border-indigo-950/20 bg-gradient-to-b from-[#0f1530] to-[#070914] p-8 sm:p-12 lg:p-16 shadow-xl shadow-indigo-950/20">
-      
-      <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
-        <div class="absolute -top-20 -right-20 w-96 h-96 bg-indigo-600/30 rounded-full blur-[100px] animate-glow"></div>
-        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-600/20 rounded-full blur-[90px] animate-glow" style="animation-delay: 3s;"></div>
+  <main class="pt-24 pb-16 px-6 md:px-12 max-w-7xl mx-auto text-slate-900">
+  
+    <div class="text-center max-w-4xl mx-auto mb-16 space-y-4">
+      <span class="text-[#4F46E5] text-[11px] font-bold uppercase tracking-widest bg-indigo-600/10 px-3 py-1 rounded-full border border-indigo-500/20">
+        The Core Architecture Manifesto
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none text-slate-900">
+        Engineering web layers with <span class="text-[#4F46E5]">absolute speed & sovereignty.</span>
+      </h1>
+      <p class="text-slate-600 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed pt-2">
+        The modern web is weighed down by excessive hydration cycles, bloated bundles, and fragile runtime dependencies. OnePoint constructs high-fidelity static layers optimized natively to load instantly, rank flawlessly, and scale beautifully.
+      </p>
+    </div>
+
+    <hr class="border-slate-200 my-12">
+
+    <section id="educational-blueprint" class="mb-20 space-y-6">
+      <div class="flex items-center gap-2 mb-6">
+        <div class="w-1.5 h-4 bg-[#4F46E5] rounded-full"></div>
+        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">Educational Blueprint</span>
+        <h2 class="text-lg font-black tracking-tight text-slate-900">How High-Performance Websites Drive Business Scale</h2>
       </div>
 
-      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-6 text-left">
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-[10px] font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 uppercase tracking-widest">
-            The Core Architecture Manifesto
-          </span>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
-            Engineering web layers with <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-purple-400">absolute sovereignty.</span>
-          </h1>
-          <p class="max-w-xl text-xs sm:text-sm text-slate-400 font-medium leading-relaxed">
-            The modern web is weighed down by excessive hydration cycles and fragile runtime architectures. OnePoint constructs high-fidelity static layers optimized natively to load instantly, rank flawlessly, and scale beautifully.
-          </p>
-        </div>
-
-        <div class="lg:col-span-5 relative hidden lg:block">
-          <div class="p-6 rounded-xl bg-slate-950/60 backdrop-blur-sm border border-slate-800/60 shadow-2xl font-mono text-[11px] text-slate-500 space-y-2">
-            <div class="flex items-center gap-1.5 pb-4 border-b border-slate-900 mb-2">
-              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
-              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
-              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
-              <span class="text-[10px] text-slate-600 ml-2">architecture-config.json</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
             </div>
-            <p><span class="text-indigo-400">"performance"</span>: {</p>
-            <p class="pl-4">"dom_interactive": <span class="text-emerald-400">"sub-1s"</span>,</p>
-            <p class="pl-4">"cumulative_layout_shift": <span class="text-emerald-400">0.00</span>,</p>
-            <p class="pl-4">"edge_rendered": <span class="text-amber-400">true</span></p>
-            <p>}</p>
-            <p><span class="text-indigo-400">"ui_layer"</span>: {</p>
-            <p class="pl-4">"framework": <span class="text-emerald-400">"Tailwind_Sovereignty"</span>,</p>
-            <p class="pl-4">"structural_debt": <span class="text-emerald-400">"0%"</span></p>
-            <p>}</p>
+            <h4 class="text-lg font-bold tracking-tight text-white">How Architecture Translates to Business Growth</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              At its core, a website acts as your 24/7 digital storefront. Every second of delay on a traditional website directly degrades customer retention, driving bounce rates upward and destroying marketing conversion ratios. When a website is engineered with zero server dependencies, it loads instantaneously—capturing user attention exactly when it is highest.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              Traditional setups operate by fetching data from slow, remote databases every single time a visitor clicks a link. OnePoint reverses this process: your system works by compiling all data paths, design components, and visual storefront assets into raw static delivery blocks *before* anyone requests them. This makes processing completely bulletproof against high-volume traffic drops.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">Demystifying Premium Storefront Templates & AI</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              Many assume web templates are rigid, bloated structures. In reality, modern premium architecture templates function as highly organized, modular code blueprints. They isolate design patterns away from operational logic, giving your engineering teams a clean foundation to launch optimized landing layouts without writing foundational code frameworks from scratch.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              When artificial intelligence layers are woven into these layouts, the template shifts from a passive information hub to a reactive engine. The AI component calculates incoming engagement behaviors to swap promotional assets, adjust visual emphasis fields dynamically, and prepare personalized server responses before the viewer even scrolls.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-12 space-y-2">
-      <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest block">Structural Pillars</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Our Core Operational Directives</h2>
+    <hr class="border-slate-200 my-16">
+
+    <div class="flex items-center gap-2 mb-12">
+      <div class="w-1.5 h-4 bg-[#4F46E5] rounded-full"></div>
+      <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">Structural Pillars</span>
+      <h2 class="text-lg font-black tracking-tight text-slate-900">Our Core Operational Directives</h2>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <section id="rendering-speed" class="mb-16 space-y-6">
+      <div class="border-b border-slate-100 pb-3">
+        <h3 class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+          <span class="text-[#4F46E5] font-mono text-sm">02 /</span> Zero-Hydration Engine & Native Speed
+        </h3>
+      </div>
       
-      <div class="lg:col-span-2 group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
-        <div class="space-y-4">
-          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Autonomous Deployment Optimization</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
-            We completely eliminate heavy client-side hydration processes by serving clean, pre-compiled static documents globally across edge-native networks. By evaluating and bundling presentation assets during build time rather than execution time, your end-users receive instant access to interactive interfaces, reducing layout friction while maximizing content availability on any device layout instantly.
-          </p>
-          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-            <div><span class="block text-slate-900 font-bold mb-0.5">Edge Distribution Matrix:</span> Decoupled multi-zone processing layers</div>
-            <div><span class="block text-slate-900 font-bold mb-0.5">Execution Methodology:</span> Complete zero-overhead asset footprint</div>
-          </div>
-        </div>
-        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">01</span>
-      </div>
-
-      <div class="group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
-        <div class="space-y-4">
-          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Conversion Geometry</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Visual element structures are generated systematically along natural focus tracks. We place call-to-actions, primary value headings, and interface triggers directly where the viewer's eyes rest intuitively, preventing cognitive load while increasing operational performance and form submission indices.
-          </p>
-          <div class="pt-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-            <span class="block text-slate-900 font-bold mb-0.5">Objective Metric:</span> Maximize organic click tracking & response rates
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              01
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">Zero-Hydration Native Speed</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              We eliminate JavaScript execution bottlenecks by pre-compiling UI components into pure, semantic static structures before they reach the user's viewport. This strategic layout model achieves an ultra-low Sub-100ms Time-to-Interactive (TTI) window across both mobile and desktop networks.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              By shifting runtime loads to a strict compile-time architecture, layout elements do not compete for primary main-thread processing power. This results in complete elimination of layout shifts (CLS) and leaves a lightweight DOM asset footprint that processing engines can easily read.
+            </p>
           </div>
         </div>
-        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">02</span>
-      </div>
 
-      <div class="group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
-        <div class="space-y-4">
-          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Code Sovereignty</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            We deliver production files free from proprietary constraints, nested third-party scripts, or custom system runtimes. Our markup provides highly accessible utility arrays that scale without disruption, fitting cleanly into complex backend microservices or continuous integration routines.
-          </p>
-          <div class="pt-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-            <span class="block text-slate-900 font-bold mb-0.5">Code Standards:</span> Pure semantic code layers without vendor lock-in
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              02
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">Global Edge Node Optimization</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              Geography shouldn't dictate application delivery or processing times. We resolve asset latency limitations by distributing pre-compiled static storefront resources down a dynamic multi-region edge server cache layer configured worldwide.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              Our automated asset routing infrastructure targets incoming network handshakes to immediately mirror responses from the closest digital point of presence. This setup eliminates old server roundtrips, resulting in stable platform behavior during viral spikes.
+            </p>
           </div>
         </div>
-        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">03</span>
+      </div>
+    </section>
+
+    <section id="visibility-discovery" class="mb-16 space-y-6">
+      <div class="border-b border-slate-100 pb-3">
+        <h3 class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+          <span class="text-[#4F46E5] font-mono text-sm">03 /</span> Semantic SEO & Discoverability Layer
+        </h3>
       </div>
 
-      <div class="lg:col-span-2 group relative p-8 rounded-2xl bg-slate-50 border border-slate-200/60 hover:border-slate-300 transition-all duration-300 flex flex-col justify-between min-h-[360px]">
-        <div class="space-y-4">
-          <div class="w-10 h-10 rounded-lg bg-indigo-600/5 border border-indigo-600/10 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 tracking-tight">Infinite Asset Scalability</h3>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
-            Our build setup relies exclusively on independent utility declarations that prevent presentation configuration files from compounding in weight as you add web layers. By keeping presentation assets modular, team members can modify and release localized components without causing structural layout shifts elsewhere.
-          </p>
-          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200/60 text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-            <div><span class="block text-slate-900 font-bold mb-0.5">Style Architecture:</span> Linear, bounded asset footprints</div>
-            <div><span class="block text-slate-900 font-bold mb-0.5">Expansion Support:</span> Plug-and-play block construction methods</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              03
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">SEO Domination Layering</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              Search engine crawlers shouldn't need to guess your application logic. We directly build deep, structured, machine-readable JSON-LD schema layers across every content container inside our template deployments.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              This automated data serialization lets modern discovery bots evaluate page properties on the first crawl, protecting your position rankings. Our systems target perfect 100/100 Lighthouse metrics to consistently outpace legacy client-heavy alternatives.
+            </p>
           </div>
         </div>
-        <span class="absolute top-6 right-8 text-4xl font-black text-slate-200/50 select-none group-hover:text-indigo-100/60 transition-colors">04</span>
-      </div>
 
-    </div>
-  </section>
-
-  <section class="border-t border-slate-100 bg-slate-50/50 py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <div class="lg:col-span-5 space-y-4">
-        <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest block">Structural Benchmarks</span>
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">Zero latency layout mechanics.</h3>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
-          Every interface line we commit targets uncompromised performance scoring indices. We carefully police asset packaging footprints, network load intervals, and viewport render cycles with deep accuracy.
-        </p>
-        <div class="pt-2">
-          <a href="./catalog.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-700 transition-colors group">
-            Explore Master Configurations 
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path></svg>
+        <div class="bg-gradient-to-br from-indigo-900 to-[#0F172A] border border-indigo-700 rounded-2xl p-8 flex flex-col justify-between items-start shadow-lg shadow-indigo-950/20">
+          <div class="space-y-3">
+            <span class="text-indigo-400 text-[10px] font-black uppercase tracking-widest bg-indigo-950 px-2.5 py-1 rounded border border-indigo-800">
+              Next Phase Protocol
+            </span>
+            <h4 class="text-xl font-bold tracking-tight text-white">Ready to deploy an uncompromised interface?</h4>
+            <p class="text-indigo-200/70 text-sm leading-relaxed font-medium">
+              Let's transition your digital presence away from slow, overly engineered frameworks and into our lean, static architecture built explicitly for conversions.
+            </p>
+          </div>
+          <a href="./contact.html" class="mt-6 w-full text-center bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-md shadow-indigo-600/20">
+            Initiate Project Development
           </a>
         </div>
       </div>
+    </section>
 
-      <div class="lg:col-span-7 grid grid-cols-2 gap-x-8 gap-y-12 border-l border-slate-200 pl-0 lg:pl-12">
-        <div class="space-y-1">
-          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Sub-1s</div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Average DOM Interactive</p>
-        </div>
-        <div class="space-y-1">
-          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Zero</div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Cumulative Layout Shifts</p>
-        </div>
-        <div class="space-y-1">
-          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">100%</div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tailwind Sovereignty</p>
-        </div>
-        <div class="space-y-1">
-          <div class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">48 Hrs</div>
-          <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Typical Assembly Sprint</p>
-        </div>
+    <section id="security-extensibility" class="mb-16 space-y-6">
+      <div class="border-b border-slate-100 pb-3">
+        <h3 class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+          <span class="text-[#4F46E5] font-mono text-sm">04 /</span> Immutable Security & Atomic Scalability
+        </h3>
       </div>
 
-    </div>
-  </section>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              04
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">Immutable Security Core</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              By removing database query processing from client-side runtime updates, we shrink the external user attack surface area down to near zero. 
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              Static asset delivery provides native insulation against injection vulnerabilities and script attacks. Your application state stays validated behind secure, decoupled compilation environments, safeguarding product catalogs and user flows.
+            </p>
+          </div>
+        </div>
 
-  <section class="w-full bg-white border-t border-slate-100 py-20 text-center px-4 sm:px-6 relative overflow-hidden">
-    <div class="max-w-3xl mx-auto space-y-6 relative z-10">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Align your interface platform with real speed metrics.
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
-        Let's deploy your design layers natively. We construct, match your layout schema, and ship your operational interface layers directly live within a 48-hour development window.
+        <div class="bg-[#0F172A] border border-indigo-900 rounded-2xl p-8 hover:border-indigo-500 transition-all duration-300 flex flex-col justify-between group shadow-lg shadow-indigo-950/20">
+          <div class="space-y-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-sm group-hover:scale-110 transition-transform shadow-md shadow-indigo-600/30">
+              05
+            </div>
+            <h4 class="text-lg font-bold tracking-tight text-white">Atomic System Extensibility</h4>
+            <p class="text-indigo-200/80 text-sm leading-relaxed font-medium">
+              Codebases should scale cleanly over time without breaking brittle, nested dependencies. Our user interface templates rely entirely on isolated visual utility modules.
+            </p>
+            <p class="text-indigo-300/60 text-xs leading-relaxed">
+              This atomic arrangement guarantees style values never cross-contaminate unexpected screens. Teams can confidently update layouts or introduce secondary modules without creating design bugs elsewhere in production.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-16 bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center max-w-3xl mx-auto shadow-sm">
+      <p class="text-xs md:text-sm italic text-slate-600 font-medium leading-relaxed">
+        "We don't build websites that simply load on a device. We engineer uncompromised structural architectures optimized to win on every modern platform metric."
       </p>
-      <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
-        <a href="./index.html#contact" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold tracking-widest uppercase px-8 py-3.5 rounded-lg transition-colors shadow-md">
-          Initiate Direct Contract
-        </a>
-        <a href="./catalog.html" class="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold tracking-widest uppercase px-8 py-3.5 rounded-lg border border-slate-200 transition-colors">
-          View Master Catalog
-        </a>
+      <div class="text-[10px] uppercase font-bold tracking-widest text-[#4F46E5] mt-2">
+        — OnePoint
       </div>
     </div>
-  </section>
+
+  </main>
 
   <div id="footer-placeholder"></div>
-<script src="components.js"></script>
-
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const line1 = document.getElementById('opLine1');
-      const line2 = document.getElementById('opLine2');
-      const line3 = document.getElementById('opLine3');
-      if (!menu) return;
-
-      const isClosed = menu.classList.contains('hidden');
-      if (isClosed) {
-        menu.classList.remove('hidden');
-        if (line1) line1.classList.add('rotate-45', 'translate-y-1.5');
-        if (line2) line2.classList.add('opacity-0', 'scale-0');
-        if (line3) line3.classList.add('-rotate-45', '-translate-y-1.5');
-      } else {
-        menu.classList.add('hidden');
-        if (line1) line1.classList.remove('rotate-45', 'translate-y-1.5');
-        if (line2) line2.classList.remove('opacity-0', 'scale-0');
-        if (line3) line3.classList.remove('-rotate-45', '-translate-y-1.5');
-      }
-    }
-  </script>
+  <script src="components.js"></script>
 
 </body>
 </html>

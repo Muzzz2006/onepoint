@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Kernel Admin | OnePoint Control Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body class="bg-[#0B0F19] text-slate-100 min-h-screen antialiased flex">
+
+  <div id="login-portal" class="fixed inset-0 bg-[#0B0F19] z-50 flex items-center justify-center p-6 hidden">
+    <div class="w-full max-w-md bg-[#0F1524] border border-slate-800 rounded-2xl p-8 space-y-6 shadow-2xl shadow-black/50">
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 rounded-xl bg-[#4F46E5] flex items-center justify-center font-black text-xl text-white shadow-lg shadow-indigo-600/30 mx-auto">
+          1P
+        </div>
+        <h2 class="text-xl font-black tracking-tight text-white pt-2">Terminal Access Protocol</h2>
+        <p class="text-slate-400 text-xs font-medium">Enter administrator credentials to authenticate root access.</p>
+      </div>
+
+      <form onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">User Node ID</label>
+          <input type="text" id="login-user" required placeholder="admin" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+        <div>
+          <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Access Keyphrase</label>
+          <input type="password" id="login-pass" required placeholder="••••••••" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+        <div id="login-error" class="text-xs text-rose-400 font-semibold bg-rose-500/10 border border-rose-500/20 px-3 py-2 rounded-xl hidden">
+          ⚠ Authorization identity token mismatch. Check root logs.
+        </div>
+        <button type="submit" class="w-full bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg shadow-indigo-600/20">
+          Request Cryptographic Handshake
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <aside id="admin-sidebar" class="w-64 border-r border-slate-800 bg-[#0F1524] p-6 flex flex-col justify-between shrink-0 fixed h-full z-10 hidden">
+    <div class="space-y-8">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#4F46E5] flex items-center justify-center font-black text-sm text-white shadow-lg shadow-indigo-600/30">
+          1P
+        </div>
+        <div>
+          <span class="text-sm font-black tracking-tight text-white block">OnePoint Console</span>
+          <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Root Access
+          </span>
+        </div>
+      </div>
+
+      <nav class="space-y-1.5" id="admin-nav">
+        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block px-3 mb-2">Core Controls</span>
+        <button onclick="switchTab('metrics')" id="btn-metrics" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 bg-indigo-600/10 border border-indigo-500/20 rounded-xl text-xs font-bold text-white transition-all text-left">
+          📊 Performance &amp; Traffic
+        </button>
+        <button onclick="switchTab('templates')" id="btn-templates" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
+          📦 Storefront Templates
+        </button>
+        <button onclick="switchTab('seo')" id="btn-seo" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
+          🌐 SEO &amp; Domain Layer
+        </button>
+        <button onclick="switchTab('upload')" id="btn-upload" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
+          📤 Asset Upload Engine
+        </button>
+      </nav>
+    </div>
+
+    <div class="border-t border-slate-800 pt-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-xs text-white">
+          AD
+        </div>
+        <div>
+          <span class="text-xs font-bold text-white block">Root Admin</span>
+          <span class="text-[10px] text-slate-500 block">System Master</span>
+        </div>
+      </div>
+      <button onclick="handleLogout()" class="text-slate-500 hover:text-rose-400 transition-colors" title="Lock Console">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+      </button>
+    </div>
+  </aside>
+
+  <main id="admin-workspace" class="flex-1 pl-72 pr-8 md:pr-12 pt-12 pb-12 space-y-10 min-h-screen hidden">
+    
+    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+      <div>
+        <h1 class="text-2xl font-black tracking-tight text-white">System Sovereignty Terminal</h1>
+        <p class="text-slate-400 text-xs font-medium mt-1">Configure live templates, manage edge nodes, upload assets, and track global analytics.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="flushCDNCache()" class="bg-[#1E1B4B] border border-indigo-900 text-indigo-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all active:scale-95">
+          Flush CDN Cache
+        </button>
+      </div>
+    </header>
+
+    <div id="tab-metrics" class="tab-content active space-y-8">
+      <section class="space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="w-1 h-3 bg-indigo-500 rounded-full"></div>
+          <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Platform Core Vitals &amp; Traffic Logs</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Average Edge Load Speed</span>
+            <div class="text-2xl font-black text-emerald-400 mt-1">42ms</div>
+            <span class="text-[10px] text-slate-400 mt-1 block">⚡ Target sub-100ms benchmark met</span>
+          </div>
+          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Lighthouse Performance Score</span>
+            <div class="text-2xl font-black text-white mt-1">100 / 100</div>
+            <span class="text-[10px] text-emerald-400 mt-1 block">✔ Zero hydration penalties flag</span>
+          </div>
+          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Active Storefront Deployments</span>
+            <div id="metric-templates-count" class="text-2xl font-black text-white mt-1">0 Systems</div>
+            <span class="text-[10px] text-indigo-400 mt-1 block">🔗 Static edge sync active</span>
+          </div>
+          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Crawlers &amp; Requests (24h)</span>
+            <div class="text-2xl font-black text-white mt-1">2,481 hits</div>
+            <span class="text-[10px] text-slate-400 mt-1 block">🔎 Semantic schema fully parsed</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4">
+        <h3 class="text-sm font-bold text-white tracking-tight">Bandwidth Allocation &amp; Traffic Trends</h3>
+        <div class="h-48 flex items-end gap-2 pt-4 border-b border-l border-slate-800 px-4">
+          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[30%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Mon</span></div>
+          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[45%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Tue</span></div>
+          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[75%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Wed</span></div>
+          <div class="bg-indigo-600/50 hover:bg-indigo-600 w-full h-[60%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Thu</span></div>
+          <div class="bg-indigo-600/40 hover:bg-indigo-600 w-full h-[90%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Fri</span></div>
+          <div class="bg-[#4F46E5] w-full h-[98%] rounded-t relative"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-indigo-600 text-white font-bold px-1 rounded">Live</span></div>
+        </div>
+        <div class="flex justify-between text-[10px] text-slate-500 px-4">
+          <span>00:00 Edge Data Nodes</span>
+          <span>12:00 Apex Traffic</span>
+          <span>24:00 Structural Cycle</span>
+        </div>
+      </section>
+    </div>
+
+    <div id="tab-templates" class="tab-content space-y-6">
+      <div class="flex flex-col md:flex-row gap-6">
+        
+        <div class="w-full md:w-1/3 bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4 h-fit">
+          <div class="flex items-center justify-between">
+            <h3 id="form-heading" class="text-sm font-bold text-white tracking-tight">Compile New Template Structure</h3>
+            <button id="cancel-edit-btn" onclick="resetTemplateForm()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white font-bold px-2 py-1 rounded hidden">Cancel Edit</button>
+          </div>
+          
+          <form id="template-form" onsubmit="saveTemplateForm(event)" class="space-y-3">
+            <input type="hidden" id="tpl-id">
+            <input type="hidden" id="tpl-thumb-url">
+
+            <div>
+              <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Blueprint Title</label>
+              <input type="text" id="tpl-name" required placeholder="e.g., Brewhaven Hub" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Price</label>
+                <input type="number" step="0.01" id="tpl-price" required placeholder="59.00" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+              </div>
+              <div>
+                <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Protocol</label>
+                <select id="tpl-strategy" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+                  <option value="Zero-Hydration Static">Static Edge</option>
+                  <option value="Edge Cache Hybrid">Hybrid Array</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Live Preview URL Path</label>
+              <input type="text" id="tpl-preview" required placeholder="e.g., ./brewhaven/index.html" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Template Description</label>
+              <textarea id="tpl-desc" required placeholder="Describe layout features..." class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors h-16 resize-none"></textarea>
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Thumbnail Preview</label>
+              <input type="file" id="tpl-file-input" onchange="handleThumbnailUpload(event); return false;" class="w-full text-xs text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-indigo-600/20 file:text-indigo-400 hover:file:bg-indigo-600/30">
+              <div id="thumb-loading" class="text-[10px] text-indigo-400 font-semibold mt-1 hidden">Uploading thumbnail stream...</div>
+            </div>
+            <button type="button" id="submit-form-btn" class="w-full bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-colors mt-2">
+              Inject Into Production Row
+            </button>
+          </form>
+        </div>
+
+        <div class="flex-1 bg-[#0F1524] border border-slate-800 rounded-xl overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900 text-slate-400 uppercase font-bold text-[10px] border-b border-slate-800 tracking-wider">
+              <tr>
+                <th class="p-4">Template Blueprint Name</th>
+                <th class="p-4">Delivery Strategy</th>
+                <th class="p-4">Global Security State</th>
+                <th class="p-4 text-right">System Action Configuration</th>
+              </tr>
+            </thead>
+            <tbody id="templates-tbody" class="divide-y divide-slate-800/60 font-medium">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-seo" class="tab-content space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-1 h-3 bg-indigo-500 rounded-full"></div>
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Domain Network Coordinates</h3>
+          </div>
+          <p class="text-slate-400 text-xs">Point top-tier domain routing parameters directly to decentralized Anycast edge nodes instantly.</p>
+          
+          <div class="space-y-3 pt-2">
+            <div>
+              <label class="text-[10px] text-slate-500 uppercase font-black tracking-wider block mb-1">Target Base URL</label>
+              <input type="text" id="domain-url" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+            </div>
+            <div>
+              <label class="text-[10px] text-slate-500 uppercase font-black tracking-wider block mb-1">Anycast DNS Routing Server Gateway</label>
+              <input type="text" id="domain-gateway" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-indigo-300 focus:outline-none font-mono focus:border-indigo-500 transition-colors">
+            </div>
+            <button onclick="saveDomainSettings()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition-all">
+              Save Infrastructure Route Changes
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-[#0F172A] border border-indigo-950 rounded-xl p-6 space-y-4 shadow-lg shadow-indigo-950/20">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-1 h-3 bg-indigo-500 rounded-full"></div>
+              <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest">Global JSON-LD Configuration Injection</h3>
+            </div>
+            <span id="seo-status" class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Active Sync</span>
+          </div>
+          <p class="text-slate-400 text-xs">Inject structured context layers natively inside page templates to accelerate bot crawling processing speeds.</p>
+          
+          <div class="pt-1 space-y-3">
+            <textarea id="seo-textarea" class="w-full bg-[#0B0F19] border border-indigo-950 rounded-xl p-3 text-[11px] text-indigo-200/90 font-mono focus:outline-none focus:border-indigo-500 h-32 resize-none leading-relaxed"></textarea>
+            <button onclick="saveSEOMetadata()" class="w-full bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition-all">
+              Commit Global Schema Adjustments
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-upload" class="tab-content space-y-6">
+      <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-8 max-w-2xl mx-auto space-y-6 text-center">
+        <div class="space-y-2">
+          <h3 class="text-lg font-bold text-white tracking-tight">High-Fidelity Media Drag Engine</h3>
+          <p class="text-slate-400 text-xs max-w-md mx-auto">Upload layout assets directly to static system nodes. Images are optimized and parsed directly into your browser's persistent layer storage system.</p>
+        </div>
+
+        <div class="border-2 border-dashed border-slate-700 hover:border-indigo-500 bg-[#0B0F19] rounded-2xl p-8 transition-colors relative group cursor-pointer">
+          <input type="file" id="asset-file-input" onchange="handleAssetFile(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
+          <div class="space-y-3">
+            <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mx-auto text-slate-400 group-hover:text-indigo-400 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+            </div>
+            <div class="text-xs text-slate-300 font-medium">Click workspace area to scan or <span class="text-indigo-400 font-bold">browse your system files</span></div>
+            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Supports PNG, JPG, WEBP formats up to 4MB</div>
+          </div>
+        </div>
+
+        <div id="upload-preview-box" class="hidden border border-slate-800 bg-slate-900/40 rounded-xl p-4 flex items-center gap-4 text-left">
+          <img id="upload-img-preview" class="w-16 h-16 object-cover rounded-lg bg-slate-800 border border-slate-700" src="" alt="Preview">
+          <div class="flex-1 min-w-0">
+            <span id="upload-file-name" class="text-xs font-bold text-white block truncate">asset.png</span>
+            <span id="upload-file-size" class="text-[10px] text-slate-500 block font-semibold">142 KB</span>
+            <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider mt-1 block">✔ Encoded to Virtual Memory</span>
+          </div>
+          <button onclick="clearUploadedAsset()" class="text-xs font-bold text-rose-400 hover:text-rose-300 transition-colors">Delete</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+<script>
+const SECURE_USER = "admin";
+const SECURE_PASS = "onepoint2026";
+const API_BASE = "http://localhost:3000/api";
+
+let systemState = {};
+
+// Clean programmatic event binding to eliminate form bubbling reloads
+document.addEventListener('DOMContentLoaded', () => {
+  checkAuthentication();
+});
+
+async function handleThumbnailUpload(e) {
+  // Hard block on parent form event bubbling to prevent any accidental page reloads
+  e.preventDefault();
+  e.stopPropagation();
+
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  const loading = document.getElementById('thumb-loading');
+  loading.classList.remove('hidden');
+  loading.innerText = "Uploading thumbnail stream...";
+
+  const reader = new FileReader();
+  reader.onload = async function(event) {
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: file.name, base64Data: event.target.result })
+      });
+      const data = await res.json();
+      
+      // Securely write data to memory without breaking the edit session context
+      document.getElementById('tpl-thumb-url').value = data.url;
+      loading.innerText = "✔ Thumbnail Ready";
+    } catch (err) {
+      console.error("Asset pipeline transmission failed:", err);
+      alert("Asset pipeline transmission failed.");
+      loading.classList.add('hidden');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function checkAuthentication() {
+  const authState = sessionStorage.getItem('1p_admin_authenticated');
+  const portal = document.getElementById('login-portal');
+  const sidebar = document.getElementById('admin-sidebar');
+  const workspace = document.getElementById('admin-workspace');
+
+  if (authState === 'true') {
+    portal.classList.add('hidden');
+    sidebar.classList.remove('hidden');
+    sidebar.classList.add('flex');
+    workspace.classList.remove('hidden');
+    syncSystemFromEngine();
+  } else {
+    portal.classList.remove('hidden');
+    sidebar.classList.add('hidden');
+    sidebar.classList.remove('flex');
+    workspace.classList.add('hidden');
+  }
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  if (document.getElementById('login-user').value === SECURE_USER && document.getElementById('login-pass').value === SECURE_PASS) {
+    sessionStorage.setItem('1p_admin_authenticated', 'true');
+    document.getElementById('login-error').classList.add('hidden');
+    checkAuthentication();
+  } else {
+    document.getElementById('login-error').classList.remove('hidden');
+  }
+}
+
+function handleLogout() {
+  sessionStorage.removeItem('1p_admin_authenticated');
+  checkAuthentication();
+}
+
+async function syncSystemFromEngine() {
+  try {
+    const res = await fetch(`${API_BASE}/system`);
+    systemState = await res.json();
+    
+    renderTemplates();
+    document.getElementById('domain-url').value = systemState.domain_url || '';
+    document.getElementById('domain-gateway').value = systemState.domain_gateway || '';
+    document.getElementById('seo-textarea').value = systemState.seo_schema || '';
+  } catch (err) {
+    console.error("Communication loss with core processing server.", err);
+  }
+}
+
+async function commitSystemToEngine() {
+  try {
+    await fetch(`${API_BASE}/system`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(systemState)
+    });
+  } catch (err) {
+    alert("Data transmission intercept failed.");
+  }
+}
+
+function renderTemplates() {
+  const tbody = document.getElementById('templates-tbody');
+  const countMetric = document.getElementById('metric-templates-count');
+  if(!tbody || !systemState.templates) return;
+  
+  tbody.innerHTML = '';
+  countMetric.innerText = `${systemState.templates.length} Systems`;
+
+  systemState.templates.forEach(tpl => {
+    const tr = document.createElement('tr');
+    tr.className = "hover:bg-slate-900/30 transition-colors";
+    tr.innerHTML = `
+      <td class="p-4 font-bold text-white">
+        <div>${tpl.name || 'Unnamed Framework'}</div>
+        <div class="text-[10px] text-slate-400 font-medium">Price: ₹${tpl.price || '0.00'}</div>
+      </td>
+      <td class="p-4"><span class="bg-indigo-950 text-indigo-400 border border-indigo-900/50 px-2 py-0.5 rounded text-[10px]">${tpl.strategy || 'Static Edge'}</span></td>
+      <td class="p-4 text-emerald-400">${tpl.security || '✔ Immutable Core Secured'}</td>
+      <td class="p-4 text-right space-x-3">
+        <button onclick="startEditTemplate('${tpl.id}')" class="text-amber-400 hover:text-amber-300 font-semibold">Edit</button>
+        <button onclick="purgeTemplate('${tpl.id}')" class="text-rose-400 hover:text-rose-300 font-semibold">Purge Asset</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function startEditTemplate(id) {
+  const tpl = systemState.templates.find(t => String(t.id) === String(id));
+  if (!tpl) {
+    console.error("Target template payload not found for ID:", id);
+    return;
+  }
+
+  document.getElementById('tpl-id').value = tpl.id;
+  document.getElementById('tpl-name').value = tpl.name || '';
+  document.getElementById('tpl-price').value = tpl.price || '';
+  document.getElementById('tpl-strategy').value = tpl.strategy || 'Zero-Hydration Static';
+  document.getElementById('tpl-preview').value = tpl.previewUrl || '';
+  document.getElementById('tpl-desc').value = tpl.description || '';
+  document.getElementById('tpl-thumb-url').value = tpl.thumbnail || '';
+
+  document.getElementById('form-heading').innerText = "Modify Template Fields";
+  document.getElementById('submit-form-btn').innerText = "Update Template Structure";
+  
+  document.getElementById('submit-form-btn').classList.remove('bg-[#4F46E5]', 'hover:bg-indigo-600');
+  document.getElementById('submit-form-btn').classList.add('bg-amber-500', 'hover:bg-amber-600');
+  document.getElementById('cancel-edit-btn').classList.remove('hidden');
+
+  const loading = document.getElementById('thumb-loading');
+  if (tpl.thumbnail) {
+    loading.innerText = "✔ Keeping Current Image File";
+    loading.classList.remove('hidden');
+  } else {
+    loading.classList.add('hidden');
+  }
+}
+
+function resetTemplateForm() {
+  document.getElementById('template-form').reset();
+  document.getElementById('tpl-id').value = '';
+  document.getElementById('tpl-thumb-url').value = '';
+  
+  document.getElementById('form-heading').innerText = "Compile New Template Structure";
+  document.getElementById('submit-form-btn').innerText = "Inject Into Production Row";
+  
+  document.getElementById('submit-form-btn').classList.remove('bg-amber-500', 'hover:bg-amber-600');
+  document.getElementById('submit-form-btn').classList.add('bg-[#4F46E5]', 'hover:bg-indigo-600');
+  
+  document.getElementById('cancel-edit-btn').classList.add('hidden');
+  document.getElementById('thumb-loading').classList.add('hidden');
+}
+
+function saveTemplateForm(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
+  if(!systemState.templates) systemState.templates = [];
+
+  const targetId = document.getElementById('tpl-id').value;
+  const name = document.getElementById('tpl-name').value;
+  const price = document.getElementById('tpl-price').value || "0.00";
+  const strategy = document.getElementById('tpl-strategy').value;
+  const previewUrl = document.getElementById('tpl-preview').value;
+  const description = document.getElementById('tpl-desc').value;
+  const thumbnail = document.getElementById('tpl-thumb-url').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
+
+  if (targetId) {
+    systemState.templates = systemState.templates.map(t => {
+      if (String(t.id) === String(targetId)) {
+        return { ...t, name, price, strategy, previewUrl, description, thumbnail };
+      }
+      return t;
+    });
+  } else {
+    systemState.templates.push({
+      id: String(Date.now()),
+      name,
+      strategy,
+      security: "✔ Immutable Core Secured",
+      price,
+      description,
+      previewUrl,
+      thumbnail
+    });
+  }
+
+  resetTemplateForm();
+  renderTemplates();
+  commitSystemToEngine();
+}
+
+function purgeTemplate(id) {
+  if(confirm("Confirm hard removal deletion of this architecture payload from global configurations?")) {
+    systemState.templates = systemState.templates.filter(t => String(t.id) !== String(id));
+    renderTemplates();
+    commitSystemToEngine();
+  }
+}
+
+function saveDomainSettings() {
+  systemState.domain_url = document.getElementById('domain-url').value;
+  systemState.domain_gateway = document.getElementById('domain-gateway').value;
+  commitSystemToEngine();
+  alert('Infrastructure coordinates mapped via backend streaming configuration nodes.');
+}
+
+function saveSEOMetadata() {
+  const codeArea = document.getElementById('seo-textarea').value;
+  try {
+    JSON.parse(codeArea); 
+    systemState.seo_schema = codeArea;
+    commitSystemToEngine();
+    document.getElementById('seo-status').innerText = "Commit Successful";
+    setTimeout(() => document.getElementById('seo-status').innerText = "Active Sync", 2000);
+  } catch (err) {
+    alert("Syntax validation failed inside metadata payload array.");
+  }
+}
+
+function handleAssetFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async function(event) {
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: file.name, base64Data: event.target.result })
+      });
+      const uploadResult = await res.json();
+      
+      document.getElementById('upload-img-preview').src = uploadResult.url;
+      document.getElementById('upload-file-name').innerText = uploadResult.name;
+      document.getElementById('upload-file-size').innerText = `${(file.size / 1024).toFixed(1)} KB`;
+      document.getElementById('upload-preview-box').classList.remove('hidden');
+    } catch (err) {
+      alert("Binary file deployment transmission aborted by upstream node server.");
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// Interface tab routing engine
+function clearUploadedAsset() {
+  document.getElementById('upload-preview-box').classList.add('hidden');
+  document.getElementById('asset-file-input').value = '';
+}
+
+// Interface tab routing engine
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.remove('bg-indigo-600/10', 'border', 'border-indigo-500/20', 'font-bold', 'text-white');
+    btn.classList.add('hover:bg-slate-800/50', 'text-slate-400', 'font-medium');
+  });
+
+  document.getElementById(`tab-${tabId}`).classList.add('active');
+  const targetBtn = document.getElementById(`btn-${tabId}`);
+  targetBtn.classList.remove('hover:bg-slate-800/50', 'text-slate-400', 'font-medium');
+  targetBtn.classList.add('bg-indigo-600/10', 'border', 'border-indigo-500/20', 'font-bold', 'text-white');
+}
+
+function flushCDNCache() { alert("CDN tracking flags updated and nodes hard re-cached."); }
+</script>
+</body>
+</html>
