@@ -265,7 +265,7 @@
       
       e.stopPropagation();
       const templateName = option.querySelector('.template-title').textContent;
-      const templateId = option.getAttribute('data-value');
+      const templateId = templateName;
       const imageSrc = option.querySelector('img').src;
 
       document.getElementById('selected-template-text').textContent = templateName;
