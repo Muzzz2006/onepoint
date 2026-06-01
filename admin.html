@@ -400,28 +400,24 @@ function checkAuthentication() {
     workspace.classList.add('hidden');
   }
 }
-  async function publishBlog() {
+ async function publishBlog() {
   const data = {
     title: document.getElementById('blog-title').value,
     content: document.getElementById('blog-content').value,
     image_url: document.getElementById('blog-img').value
   };
   
-  // Use your existing SUPABASE_KEY constant
   await fetch("https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blogs", {
     method: 'POST',
     headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'apikey': 'sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
+      'Authorization': 'Bearer sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
       'Content-Type': 'application/json',
       'Prefer': 'return=representation'
     },
     body: JSON.stringify(data)
   });
   alert("Blog published successfully!");
-  document.getElementById('blog-title').value = '';
-  document.getElementById('blog-content').value = '';
-  document.getElementById('blog-img').value = '';
 }
 
 function handleLogin(e) {
