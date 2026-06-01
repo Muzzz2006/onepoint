@@ -69,6 +69,9 @@
         <button onclick="switchTab('templates')" id="btn-templates" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
           📦 Storefront Templates
         </button>
+        <button onclick="switchTab('blogs')" id="btn-blogs" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
+          📝 Blog Management
+        </button>
         <button onclick="switchTab('seo')" id="btn-seo" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
           🌐 SEO &amp; Domain Layer
         </button>
@@ -266,7 +269,17 @@
         </div>
       </div>
     </div>
-
+<div id="tab-blogs" class="tab-content space-y-6">
+  <div id="blog-editor" class="bg-slate-900 p-8 rounded-3xl border border-slate-800 mt-10">
+    <h2 class="text-xl font-bold text-white mb-6">Create New Insight</h2>
+    <div class="grid grid-cols-1 gap-4">
+      <input id="blog-title" placeholder="Blog Title" class="bg-slate-800 text-white p-4 rounded-xl border-0">
+      <textarea id="blog-content" placeholder="Full Content" class="bg-slate-800 text-white p-4 rounded-xl border-0 h-32"></textarea>
+      <input id="blog-img" placeholder="Image URL" class="bg-slate-800 text-white p-4 rounded-xl border-0">
+      <button onclick="publishBlog()" class="bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-500">Publish Blog</button>
+    </div>
+  </div>
+</div>
     <div id="tab-upload" class="tab-content space-y-6">
       <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-8 max-w-2xl mx-auto space-y-6 text-center">
         <div class="space-y-2">
@@ -386,6 +399,29 @@ function checkAuthentication() {
     sidebar.classList.remove('flex');
     workspace.classList.add('hidden');
   }
+}
+  async function publishBlog() {
+  const data = {
+    title: document.getElementById('blog-title').value,
+    content: document.getElementById('blog-content').value,
+    image_url: document.getElementById('blog-img').value
+  };
+  
+  // Use your existing SUPABASE_KEY constant
+  await fetch("https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blogs", {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(data)
+  });
+  alert("Blog published successfully!");
+  document.getElementById('blog-title').value = '';
+  document.getElementById('blog-content').value = '';
+  document.getElementById('blog-img').value = '';
 }
 
 function handleLogin(e) {
