@@ -500,18 +500,14 @@ async function saveTemplateForm(e) {
   const descriptionValue = document.getElementById('tpl-desc').value;
   const imageUrlValue = document.getElementById('tpl-thumb-url').value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
 
-  // UNIVERSAL BACKEND FALLBACK PAYLOAD
-  // Send variables both ways to guarantee compatibility with your DB columns!
+  // STRICT PAYLOAD: Matches your Supabase table columns exactly
   const payload = { 
     title: titleValue,
-    name: titleValue,
     price: priceValue,
     strategy: strategyValue,
     path: pathValue,
-    previewUrl: pathValue,
     description: descriptionValue,
-    image_url: imageUrlValue,
-    thumbnail: imageUrlValue
+    image_url: imageUrlValue
   };
 
   try {
