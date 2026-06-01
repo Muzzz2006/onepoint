@@ -50,9 +50,9 @@
       }
 
       catalogGrid.innerHTML = templates.map(item => {
-        // Fallback structures reading values if properties are mixed-case
-        const name = item.name || item.Name || "Unnamed Framework";
-        const correctImage = item.thumbnail || item.Thumbnail || item.imageurl || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
+        // FIXED SCHEMA COORD COUPLING: Pulls directly from title, image_url, and path columns
+        const name = item.title || item.name || item.Name || "Unnamed Framework";
+        const correctImage = item.image_url || item.thumbnail || item.Thumbnail || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500";
         
         // Robust calculation shielding template arrays against ₹NaN conversion errors
         const rawPrice = item.price || item.Price || "";
@@ -67,10 +67,9 @@
         const description = item.description || item.Description || "Premium conversion-optimized template setup built on clean web architecture layers.";
         
         const assetSlug = item.id || item.Id || name;
-        const inlineSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '');
         
-        // Exact variable check reading preview parameters passed down by admin form inputs
-        const previewPath = item.previewUrl || item.previewURL || item.previewpath || `./${inlineSlug}/index.html`;
+        // FIXED PREVIEW ROUTING: Maps path field cleanly to protect preview containers from 404 breaks
+        const previewPath = item.path || item.previewUrl || item.previewURL || "./";
 
         return `
           <div class="group bg-white border border-[#E2E8F0] rounded-2xl p-3.5 sm:p-4 hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
@@ -135,7 +134,6 @@
       renderSkeletons();
 
       try {
-        // Querying live templates with authorization tokens directly bypassing server.js
         const response = await fetch(SUPABASE_URL, {
           method: 'GET',
           headers: {
