@@ -381,16 +381,15 @@ async function handleBlogImageUpload(e) {
 // 3. Update Publish function to gather all images
 async function publishBlog() {
   const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
+  
   const data = {
     title: document.getElementById('blog-title').value,
     content: document.getElementById('blog-content').value,
     image_url: images.join(',') // Saves as comma-separated string in DB
   };
   
-  // ... rest of your fetch logic ...
-}
-    
-    await fetch("https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blogs", {
+  try {
+    const response = await fetch("https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blogs", {
       method: 'POST',
       headers: {
         'apikey': 'sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
@@ -400,8 +399,22 @@ async function publishBlog() {
       },
       body: JSON.stringify(data)
     });
-    alert("Blog published successfully!");
+
+    if (response.ok) {
+      alert("Blog published successfully!");
+      // Optional: Clear out fields after success
+      document.getElementById('blog-title').value = '';
+      document.getElementById('blog-content').value = '';
+      const container = document.getElementById('image-preview-container');
+      if (container) container.innerHTML = '';
+    } else {
+      alert("Error publishing blog.");
+    }
+  } catch (err) {
+    console.error("Publish failed:", err);
+    alert("Network error while publishing.");
   }
+}
   
 // Standalone Cloud Storage Asset Pipeline
 async function handleThumbnailUpload(e) {
