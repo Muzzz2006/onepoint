@@ -72,12 +72,6 @@
         <button onclick="switchTab('blogs')" id="btn-blogs" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
           📝 Blog Management
         </button>
-        <button onclick="switchTab('seo')" id="btn-seo" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
-          🌐 SEO &amp; Domain Layer
-        </button>
-        <button onclick="switchTab('upload')" id="btn-upload" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 rounded-xl text-xs font-medium text-slate-400 hover:text-slate-200 transition-all text-left">
-          📤 Asset Upload Engine
-        </button>
       </nav>
     </div>
 
@@ -242,52 +236,6 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-
-    <div id="tab-seo" class="tab-content space-y-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4">
-          <div class="flex items-center gap-2">
-            <div class="w-1 h-3 bg-indigo-500 rounded-full"></div>
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Domain Network Coordinates</h3>
-          </div>
-          <p class="text-slate-400 text-xs">Point top-tier domain routing parameters directly to decentralized Anycast edge nodes instantly.</p>
-          
-          <div class="space-y-3 pt-2">
-            <div>
-              <label class="text-[10px] text-slate-500 uppercase font-black tracking-wider block mb-1">Target Base URL</label>
-              <input type="text" id="domain-url" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
-            </div>
-            <div>
-              <label class="text-[10px] text-slate-500 uppercase font-black tracking-wider block mb-1">Anycast DNS Routing Server Gateway</label>
-              <input type="text" id="domain-gateway" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-3 py-2 text-xs text-indigo-300 focus:outline-none font-mono focus:border-indigo-500 transition-colors">
-            </div>
-            <button onclick="saveDomainSettings()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition-all">
-              Save Infrastructure Route Changes
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-[#0F172A] border border-indigo-950 rounded-xl p-6 space-y-4 shadow-lg shadow-indigo-950/20">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <div class="w-1 h-3 bg-indigo-500 rounded-full"></div>
-              <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest">Global JSON-LD Configuration Injection</h3>
-            </div>
-            <span id="seo-status" class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Active Sync</span>
-          </div>
-          <p class="text-slate-400 text-xs">Inject structured context layers natively inside page templates to accelerate bot crawling processing speeds.</p>
-          
-          <div class="pt-1 space-y-3">
-            <textarea id="seo-textarea" class="w-full bg-[#0B0F19] border border-indigo-950 rounded-xl p-3 text-[11px] text-indigo-200/90 font-mono focus:outline-none focus:border-indigo-500 h-32 resize-none leading-relaxed"></textarea>
-            <button onclick="saveSEOMetadata()" class="w-full bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition-all">
-              Commit Global Schema Adjustments
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 <div id="tab-blogs" class="tab-content space-y-6">
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     
@@ -341,35 +289,7 @@
 
   </div>
 </div>
-    <div id="tab-upload" class="tab-content space-y-6">
-      <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-8 max-w-2xl mx-auto space-y-6 text-center">
-        <div class="space-y-2">
-          <h3 class="text-lg font-bold text-white tracking-tight">High-Fidelity Media Drag Engine</h3>
-          <p class="text-slate-400 text-xs max-w-md mx-auto">Upload layout assets directly to static system nodes. Images are optimized and parsed directly into your browser's persistent layer storage system.</p>
-        </div>
-
-        <div class="border-2 border-dashed border-slate-700 hover:border-indigo-500 bg-[#0B0F19] rounded-2xl p-8 transition-colors relative group cursor-pointer">
-          <input type="file" id="asset-file-input" onchange="handleAssetFile(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
-          <div class="space-y-3">
-            <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mx-auto text-slate-400 group-hover:text-indigo-400 transition-colors">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-            </div>
-            <div class="text-xs text-slate-300 font-medium">Click workspace area to scan or <span class="text-indigo-400 font-bold">browse your system files</span></div>
-            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Supports PNG, JPG, WEBP formats up to 4MB</div>
-          </div>
-        </div>
-
-        <div id="upload-preview-box" class="hidden border border-slate-800 bg-slate-900/40 rounded-xl p-4 flex items-center gap-4 text-left">
-          <img id="upload-img-preview" class="w-16 h-16 object-cover rounded-lg bg-slate-800 border border-slate-700" src="" alt="Preview">
-          <div class="flex-1 min-w-0">
-            <span id="upload-file-name" class="text-xs font-bold text-white block truncate">asset.png</span>
-            <span id="upload-file-size" class="text-[10px] text-slate-500 block font-semibold">142 KB</span>
-            <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider mt-1 block">✔ Encoded to Virtual Memory</span>
-          </div>
-          <button onclick="clearUploadedAsset()" class="text-xs font-bold text-rose-400 hover:text-rose-300 transition-colors">Delete</button>
-        </div>
-      </div>
-    </div>
+  
 
   </main>
 
