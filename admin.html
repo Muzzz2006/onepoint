@@ -136,46 +136,45 @@
         </div>
       </section>
 
-     <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-6">
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-    <div>
-      <h3 class="text-sm font-bold text-white tracking-tight">Storefront User Traffic Index</h3>
-      <p class="text-[11px] text-slate-500 font-medium">Real-time unique connection matrix pings matching chosen intervals</p>
-    </div>
-    <div class="flex items-center bg-[#0B0F19] p-1 rounded-xl border border-slate-850 gap-1">
-      <button onclick="updateTrafficTimeline(24)" id="filter-24" class="text-[10px] font-bold uppercase tracking-wider text-white bg-[#4F46E5] px-3 py-1.5 rounded-lg transition-all">24 Hours</button>
-      <button onclick="updateTrafficTimeline(168)" id="filter-168" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">7 Days</button>
-      <button onclick="updateTrafficTimeline(720)" id="filter-720" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">30 Days</button>
-      <button onclick="updateTrafficTimeline(8760)" id="filter-8760" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">365 Days</button>
-    </div>
-  </div>
+      <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h3 class="text-sm font-bold text-white tracking-tight">Storefront User Traffic Index</h3>
+            <p class="text-[11px] text-slate-500 font-medium">Real-time unique connection matrix pings matching chosen intervals</p>
+          </div>
+          <div class="flex items-center bg-[#0B0F19] p-1 rounded-xl border border-slate-850 gap-1">
+            <button onclick="updateTrafficTimeline(24)" id="filter-24" class="text-[10px] font-bold uppercase tracking-wider text-white bg-[#4F46E5] px-3 py-1.5 rounded-lg transition-all">24 Hours</button>
+            <button onclick="updateTrafficTimeline(168)" id="filter-168" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">7 Days</button>
+            <button onclick="updateTrafficTimeline(720)" id="filter-720" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">30 Days</button>
+            <button onclick="updateTrafficTimeline(8760)" id="filter-8760" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">365 Days</button>
+          </div>
+        </div>
 
-  <div class="h-48 flex items-end gap-3 pt-4 border-b border-l border-slate-800 px-4 relative">
-    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p1">
-      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p1">0 Hits</span>
-    </div>
-    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p2">
-      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p2">0 Hits</span>
-    </div>
-    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p3">
-      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p3">0 Hits</span>
-    </div>
-    <div class="w-full bg-indigo-600 hover:bg-indigo-500 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p4">
-      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p4">0 Hits</span>
-    </div>
-  </div>
+        <div class="h-48 flex items-end gap-3 pt-4 border-b border-l border-slate-800 px-4 relative">
+          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p1">
+            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p1">0 Hits</span>
+          </div>
+          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p2">
+            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p2">0 Hits</span>
+          </div>
+          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p3">
+            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p3">0 Hits</span>
+          </div>
+          <div class="w-full bg-indigo-600 hover:bg-indigo-500 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p4">
+            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p4">0 Hits</span>
+          </div>
+        </div>
 
-  <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest px-4" id="graph-timeline-labels">
-    <span>Interval Start</span>
-    <span>Midpoint Progress</span>
-    <span>Live Processing Node</span>
-  </div>
-</section>
+        <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest px-4" id="graph-timeline-labels">
+          <span>Interval Start</span>
+          <span>Midpoint Progress</span>
+          <span>Live Processing Node</span>
+        </div>
+      </section>
     </div>
 
     <div id="tab-templates" class="tab-content space-y-6">
       <div class="flex flex-col md:flex-row gap-6">
-        
         <div class="w-full md:w-1/3 bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4 h-fit">
           <div class="flex items-center justify-between">
             <h3 id="form-heading" class="text-sm font-bold text-white tracking-tight">Compile New Template Structure</h3>
@@ -236,60 +235,60 @@
             </tbody>
           </table>
         </div>
-<div id="tab-blogs" class="tab-content space-y-6">
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    
-    <div class="lg:col-span-1 bg-[#0F1524] border border-slate-800 rounded-2xl p-6 space-y-4">
-      <h3 id="blog-form-heading" class="text-md font-bold text-white tracking-tight">New Blog Entry</h3>
-      <form id="blog-form" onsubmit="saveBlogForm(e)" class="space-y-4">
-        <input type="hidden" id="blog-edit-id">
-        <div>
-          <input type="text" id="blog-title" placeholder="Enter Title Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors">
-        </div>
-        <div>
-          <textarea id="blog-content" rows="6" placeholder="Enter Full Content Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors resize-none"></textarea>
-        </div>
-        
-        <div id="drop-zone" class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center cursor-pointer hover:border-indigo-500/50 transition-colors bg-slate-950/20">
-          <p class="text-slate-500 text-xs font-semibold">Drag & drop image here or click to choose</p>
-          <input type="file" id="file-input" class="hidden" accept="image/*">
-          <div id="image-preview-container" class="grid grid-cols-3 gap-2 mt-3 empty:mt-0"></div>
-        </div>
-        
-        <div class="flex gap-2 pt-2">
-          <button type="button" id="cancel-blog-edit-btn" onclick="resetBlogForm()" class="hidden flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-3 rounded-xl transition-all">Cancel</button>
-          <button type="button" id="submit-blog-btn" onclick="publishBlog()" class="flex-[2] bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all">Inject Into Blog Row</button>
-        </div>
-      </form>
-    </div>
-
-    <div class="lg:col-span-2 bg-[#0F1524] border border-slate-800 rounded-2xl overflow-hidden flex flex-col shadow-xl">
-      <div class="p-6 border-b border-slate-850 flex items-center justify-between">
-        <div>
-          <h3 class="text-sm font-black uppercase tracking-wider text-slate-400">Live Blogs Ledger</h3>
-          <p class="text-[11px] text-slate-500 font-medium">Index of active entries hosted on edge distribution servers</p>
-        </div>
-        <span id="metric-blogs-count" class="text-xs font-bold text-indigo-400 bg-indigo-950/40 border border-indigo-900/30 px-2 py-0.5 rounded-md">0 Systems</span>
       </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse text-xs">
-          <thead>
-            <tr class="border-b border-slate-850 text-slate-500 font-bold uppercase tracking-wider bg-slate-950/20">
-              <th class="p-4">Article Metrics</th>
-              <th class="p-4">Data Length</th>
-              <th class="p-4">Sync Integrity</th>
-              <th class="p-4 text-right">Cluster Controls</th>
-            </tr>
-          </thead>
-          <tbody id="blogs-tbody" class="divide-y divide-slate-850 text-slate-450">
-            </tbody>
-        </table>
+    </div> <div id="tab-blogs" class="tab-content space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div class="lg:col-span-1 bg-[#0F1524] border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 id="blog-form-heading" class="text-md font-bold text-white tracking-tight">New Blog Entry</h3>
+          <form id="blog-form" onsubmit="saveBlogForm(e)" class="space-y-4">
+            <input type="hidden" id="blog-edit-id">
+            <div>
+              <input type="text" id="blog-title" placeholder="Enter Title Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors">
+            </div>
+            <div>
+              <textarea id="blog-content" rows="6" placeholder="Enter Full Content Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors resize-none"></textarea>
+            </div>
+            
+            <div id="drop-zone" class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center cursor-pointer hover:border-indigo-500/50 transition-colors bg-slate-950/20">
+              <p class="text-slate-500 text-xs font-semibold">Drag & drop image here or click to choose</p>
+              <input type="file" id="file-input" class="hidden" accept="image/*">
+              <div id="image-preview-container" class="grid grid-cols-3 gap-2 mt-3 empty:mt-0"></div>
+            </div>
+            
+            <div class="flex gap-2 pt-2">
+              <button type="button" id="cancel-blog-edit-btn" onclick="resetBlogForm()" class="hidden flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-3 rounded-xl transition-all">Cancel</button>
+              <button type="button" id="submit-blog-btn" onclick="publishBlog()" class="flex-[2] bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all">Inject Into Blog Row</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="lg:col-span-2 bg-[#0F1524] border border-slate-800 rounded-2xl overflow-hidden flex flex-col shadow-xl">
+          <div class="p-6 border-b border-slate-850 flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-black uppercase tracking-wider text-slate-400">Live Blogs Ledger</h3>
+              <p class="text-[11px] text-slate-500 font-medium">Index of active entries hosted on edge distribution servers</p>
+            </div>
+            <span id="metric-blogs-count" class="text-xs font-bold text-indigo-400 bg-indigo-950/40 border border-indigo-900/30 px-2 py-0.5 rounded-md">0 Systems</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-slate-850 text-slate-500 font-bold uppercase tracking-wider bg-slate-950/20">
+                  <th class="p-4">Article Metrics</th>
+                  <th class="p-4">Data Length</th>
+                  <th class="p-4">Sync Integrity</th>
+                  <th class="p-4 text-right">Cluster Controls</th>
+                </tr>
+              </thead>
+              <tbody id="blogs-tbody" class="divide-y divide-slate-850 text-slate-450">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
-
-  </div>
-</div>
-  
 
   </main>
 
@@ -313,7 +312,7 @@
     if (fileInput) fileInput.onchange = handleBlogImageUpload;
   });
 
- // --- AUTHENTICATION INFRASTRUCTURE MAPPING ---
+  // --- AUTHENTICATION INFRASTRUCTURE MAPPING ---
   function checkAuthentication() {
     const authState = sessionStorage.getItem('1p_admin_authenticated');
     const portal = document.getElementById('login-portal');
@@ -768,27 +767,22 @@
     }
   }
 
- function switchTab(tabId) {
-    // 1. Remove active state from all layout containers
+  function switchTab(tabId) {
+    // 1. Remove active display layout tags across all panels
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     
-    // 2. Clear color formatting styles from all sidebar buttons
+    // 2. Clear focus navigation classes from all sidebar components
     document.querySelectorAll('.nav-btn').forEach(btn => {
       btn.classList.remove('bg-indigo-600/10', 'border', 'border-indigo-500/20', 'font-bold', 'text-white');
       btn.classList.add('hover:bg-slate-800/50', 'text-slate-400', 'font-medium');
     });
     
-    // 3. Mount the target view panel wrapper cleanly
-    const targetTab = document.getElementById(`tab-${tabId}`);
-    if (targetTab) {
-      targetTab.classList.add('active');
-    } else if (tabId === 'blogs') { 
-      // Safe fallback route map if structural mismatches occur
-      const blogFallback = document.getElementById('tab-blogs');
-      if (blogFallback) blogFallback.classList.add('active');
-    }
+    // 3. Mount target system window with plural fallbacks handled safely
+    let targetTab = document.getElementById(`tab-${tabId}`);
+    if (tabId === 'blogs') targetTab = document.getElementById('tab-blogs');
+    if (targetTab) targetTab.classList.add('active');
     
-    // 4. Highlight the selected navigation panel highlight link
+    // 4. Force color formatting highlight states onto active menu link
     const targetBtn = document.getElementById(`btn-${tabId}`);
     if (targetBtn) {
       targetBtn.classList.remove('hover:bg-slate-800/50', 'text-slate-400', 'font-medium');
@@ -796,7 +790,7 @@
     }
   }
 
-  // Flush CDN function
+  // Flush CDN cache terminal command
   function flushCDNCache() { alert("CDN node flags hard re-cached."); }
 </script>
 </body>
