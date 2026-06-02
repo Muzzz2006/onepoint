@@ -270,24 +270,57 @@
       </div>
     </div>
 <div id="tab-blogs" class="tab-content space-y-6">
-<div id="blog-editor" class="bg-slate-900 p-8 rounded-3xl border border-slate-800 mt-10">
-  <h2 class="text-xl font-bold text-white mb-6">Create New Insight</h2>
-  
-  <input type="text" id="blog-title" placeholder="Enter Title Here..." class="w-full bg-slate-800 text-white p-4 rounded-xl border border-slate-700 mb-4">
-  <textarea id="blog-content" placeholder="Enter Full Content Here..." class="w-full h-32 bg-slate-800 text-white p-4 rounded-xl border border-slate-700 mb-4"></textarea>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    
+    <div class="lg:col-span-1 bg-[#0F1524] border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h3 id="blog-form-heading" class="text-md font-bold text-white tracking-tight">Compile New Update Entry</h3>
+      <form id="blog-form" onsubmit="saveBlogForm(e)" class="space-y-4">
+        <input type="hidden" id="blog-edit-id">
+        <div>
+          <input type="text" id="blog-title" placeholder="Enter Title Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors">
+        </div>
+        <div>
+          <textarea id="blog-content" rows="6" placeholder="Enter Full Content Here..." class="w-full bg-[#0B0F19] border border-slate-850 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors resize-none"></textarea>
+        </div>
+        
+        <div id="drop-zone" class="border-2 border-dashed border-slate-800 rounded-xl p-4 text-center cursor-pointer hover:border-indigo-500/50 transition-colors bg-slate-950/20">
+          <p class="text-slate-500 text-xs font-semibold">Drag & drop image here or click to choose</p>
+          <input type="file" id="file-input" class="hidden" accept="image/*">
+          <div id="image-preview-container" class="grid grid-cols-3 gap-2 mt-3 empty:mt-0"></div>
+        </div>
+        
+        <div class="flex gap-2 pt-2">
+          <button type="button" id="cancel-blog-edit-btn" onclick="resetBlogForm()" class="hidden flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-3 rounded-xl transition-all">Cancel</button>
+          <button type="button" id="submit-blog-btn" onclick="publishBlog()" class="flex-[2] bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all">Inject Into Production Row</button>
+        </div>
+      </form>
+    </div>
 
-<div id="drop-zone" class="border-2 border-dashed border-slate-700 rounded-xl p-8 text-center cursor-pointer hover:border-indigo-500 transition-colors">
-  <p class="text-slate-400">Drag & drop image here or click to upload (Max 3)</p>
-  <input type="file" id="file-input" class="hidden" accept="image/*">
-</div>
+    <div class="lg:col-span-2 bg-[#0F1524] border border-slate-800 rounded-2xl overflow-hidden flex flex-col shadow-xl">
+      <div class="p-6 border-b border-slate-850 flex items-center justify-between">
+        <div>
+          <h3 class="text-sm font-black uppercase tracking-wider text-slate-400">Live Articles Ledger</h3>
+          <p class="text-[11px] text-slate-500 font-medium">Index of active entries hosted on edge distribution servers</p>
+        </div>
+        <span id="metric-blogs-count" class="text-xs font-bold text-indigo-400 bg-indigo-950/40 border border-indigo-900/30 px-2 py-0.5 rounded-md">0 Systems</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-850 text-slate-500 font-bold uppercase tracking-wider bg-slate-950/20">
+              <th class="p-4">Article Metrics</th>
+              <th class="p-4">Data Length</th>
+              <th class="p-4">Sync Integrity</th>
+              <th class="p-4 text-right">Cluster Controls</th>
+            </tr>
+          </thead>
+          <tbody id="blogs-tbody" class="divide-y divide-slate-850 text-slate-450">
+            </tbody>
+        </table>
+      </div>
+    </div>
 
-<div id="image-preview-container" class="grid grid-cols-3 gap-4 mt-4"></div>
-
-  <button onclick="publishBlog()" class="mt-6 w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-500">
-    Publish Blog
-  </button>
-</div>
-</div>
+  </div>
 </div>
     <div id="tab-upload" class="tab-content space-y-6">
       <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-8 max-w-2xl mx-auto space-y-6 text-center">
@@ -322,29 +355,114 @@
   </main>
 
 <script>
+  // --- CORE ENGINE CONFIGURATION & GLOBAL CACHE ---
   const SECURE_USER = "admin";
   const SECURE_PASS = "onepoint2026";
   const SUPABASE_BASE = "https://menkhsukpmqkvfirbatm.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
   let systemTemplates = [];
+  let livePlatformBlogs = []; // New local registry array tracking published blogs
 
   document.addEventListener('DOMContentLoaded', () => {
     checkAuthentication();
 
-    // Drag and Drop Setup
+    // Drag and Drop Core Configuration Setup
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('file-input');
     if (dropZone) dropZone.onclick = () => fileInput.click();
     if (fileInput) fileInput.onchange = handleBlogImageUpload;
   });
 
-  // --- BLOG LOGIC ---
+  // --- AUTHENTICATION INFRASTRUCTURE MAPPING ---
+  function checkAuthentication() {
+    const authState = sessionStorage.getItem('1p_admin_authenticated');
+    const portal = document.getElementById('login-portal');
+    const sidebar = document.getElementById('admin-sidebar');
+    const workspace = document.getElementById('admin-workspace');
+    if (authState === 'true') {
+      portal.classList.add('hidden');
+      sidebar.classList.remove('hidden');
+      sidebar.classList.add('flex');
+      workspace.classList.remove('hidden');
+      syncSystemFromEngine();
+      syncBlogsFromEngine(); // Automatically pull blog posts ledger immediately on validation pass
+    } else {
+      portal.classList.remove('hidden');
+      sidebar.classList.add('hidden');
+      sidebar.classList.remove('flex');
+      workspace.classList.add('hidden');
+    }
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    if (document.getElementById('login-user').value === SECURE_USER && document.getElementById('login-pass').value === SECURE_PASS) {
+      sessionStorage.setItem('1p_admin_authenticated', 'true');
+      document.getElementById('login-error').classList.add('hidden');
+      checkAuthentication();
+    } else {
+      document.getElementById('login-error').classList.remove('hidden');
+    }
+  }
+
+  function handleLogout() {
+    sessionStorage.removeItem('1p_admin_authenticated');
+    checkAuthentication();
+  }
+
+
+  // --- BLOG ENGINE DATALAYER PIPELINE ---
+  async function syncBlogsFromEngine() {
+    try {
+      const res = await fetch(`${SUPABASE_BASE}/rest/v1/blog?select=*&order=id.desc`, {
+        method: 'GET',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      livePlatformBlogs = await res.json();
+      renderBlogsLedger();
+    } catch (err) {
+      console.error("Communication loss with blog database row container:", err);
+    }
+  }
+
+  function renderBlogsLedger() {
+    const tbody = document.getElementById('blogs-tbody');
+    const countMetric = document.getElementById('metric-blogs-count');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    countMetric.innerText = `${livePlatformBlogs.length} Logs`;
+
+    livePlatformBlogs.forEach(post => {
+      const tr = document.createElement('tr');
+      tr.className = "hover:bg-slate-900/30 transition-colors";
+      
+      const charCount = post.content ? post.content.length : 0;
+      const imagesCount = post.image_url ? post.image_url.split(',').filter(Boolean).length : 0;
+
+      tr.innerHTML = `
+        <td class="p-4 font-bold text-white">
+          <div class="truncate max-w-[180px]">${post.title || 'Untitled Update'}</div>
+          <div class="text-[10px] text-slate-500 font-medium">Data ID: #${post.id}</div>
+        </td>
+        <td class="p-4 font-medium text-slate-400">
+          <div>${charCount} Characters</div>
+          <div class="text-[10px] text-indigo-400">${imagesCount} Image Asset(s)</div>
+        </td>
+        <td class="p-4 text-emerald-400 font-semibold">✔ Active Production</td>
+        <td class="p-4 text-right space-x-3 whitespace-nowrap">
+          <button type="button" onclick="startEditBlog('${post.id}')" class="text-amber-400 hover:text-amber-300 font-bold">Edit</button>
+          <button type="button" onclick="purgeBlog('${post.id}')" class="text-rose-400 hover:text-rose-300 font-bold">Purge</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
   async function handleBlogImageUpload(e) {
     const file = e.target.files[0];
     const container = document.getElementById('image-preview-container');
-
-    // Limit to 3 images maximum
+    
     if (container.children.length >= 3) {
       alert("Limit reached: You can only upload 3 images.");
       return;
@@ -355,8 +473,8 @@
     const response = await fetch(`${SUPABASE_BASE}/storage/v1/object/blog-images/${fileName}`, {
       method: 'POST',
       headers: {
-        'apikey': 'sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
-        'Authorization': 'Bearer sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
         'Content-Type': file.type
       },
       body: file
@@ -364,60 +482,115 @@
 
     if (response.ok) {
       const publicUrl = `${SUPABASE_BASE}/storage/v1/object/public/blog-images/${fileName}`;
-
-      // Create image preview element with cross removal option
       const wrapper = document.createElement('div');
-      wrapper.className = "relative group";
+      wrapper.className = "relative group shadow-md";
       wrapper.innerHTML = `
-        <img src="${publicUrl}" class="w-full h-32 object-cover rounded-xl border border-slate-700">
-        <button type="button" onclick="this.parentElement.remove()" class="absolute -top-2 -right-2 bg-rose-600 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs shadow-lg">×</button>
+        <img src="${publicUrl}" class="w-full h-16 object-cover rounded-lg border border-slate-800">
+        <button type="button" onclick="this.parentElement.remove()" class="absolute -top-1 -right-1 bg-rose-600 text-white rounded-full w-4 h-4 flex items-center justify-center font-bold text-[9px] shadow-lg">×</button>
       `;
       container.appendChild(wrapper);
-      alert("Image uploaded!");
     } else {
       alert("Upload failed.");
     }
   }
 
-  // Consolidated Single Publish Function
-async function publishBlog() {
-  const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
-  const data = {
-    title: document.getElementById('blog-title').value,
-    content: document.getElementById('blog-content').value,
-    image_url: images.join(',') // Securely commits your multi-upload grid references
-  };
+  // Unified Save / Publish Handler Matrix
+  async function publishBlog() {
+    const targetId = document.getElementById('blog-edit-id').value;
+    const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
+    
+    const data = {
+      title: document.getElementById('blog-title').value,
+      content: document.getElementById('blog-content').value,
+      image_url: images.join(',')
+    };
 
-  try {
-    const response = await fetch(`${SUPABASE_BASE}/rest/v1/blog`, {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY, // Swapped to master key for error-free authentication
-        'Authorization': `Bearer ${SUPABASE_KEY}`, // Swapped to master key
-        'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify(data)
+    try {
+      let url = `${SUPABASE_BASE}/rest/v1/blog`;
+      let method = 'POST';
+
+      if (targetId) {
+        url = `${SUPABASE_BASE}/rest/v1/blog?id=eq.${targetId}`;
+        method = 'PATCH';
+      }
+
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert(targetId ? "Blog entry updated successfully!" : "Blog published safely!");
+        resetBlogForm();
+        await syncBlogsFromEngine();
+      } else {
+        alert("Transaction dropped by database rule validation layers.");
+      }
+    } catch (err) {
+      console.error("Publish action crash error:", err);
+    }
+  }
+
+  function startEditBlog(id) {
+    const post = livePlatformBlogs.find(b => String(b.id) === String(id));
+    if (!post) return;
+
+    document.getElementById('blog-edit-id').value = post.id;
+    document.getElementById('blog-title').value = post.title || '';
+    document.getElementById('blog-content').value = post.content || '';
+    
+    const container = document.getElementById('image-preview-container');
+    container.innerHTML = '';
+    
+    const images = post.image_url ? post.image_url.split(',').filter(Boolean) : [];
+    images.forEach(url => {
+      const wrapper = document.createElement('div');
+      wrapper.className = "relative group shadow-md";
+      wrapper.innerHTML = `
+        <img src="${url}" class="w-full h-16 object-cover rounded-lg border border-slate-800">
+        <button type="button" onclick="this.parentElement.remove()" class="absolute -top-1 -right-1 bg-rose-600 text-white rounded-full w-4 h-4 flex items-center justify-center font-bold text-[9px] shadow-lg">×</button>
+      `;
+      container.appendChild(wrapper);
     });
 
-    if (response.ok) {
-      alert("Blog published successfully!");
-      document.getElementById('blog-title').value = '';
-      document.getElementById('blog-content').value = '';
-      const container = document.getElementById('image-preview-container');
-      if (container) container.innerHTML = '';
-    } else {
-      const errText = await response.text();
-      console.error("Database rejected post:", errText);
-      alert("Error publishing blog. Check database RLS rules.");
-    }
-  } catch (err) {
-    console.error("Publish failed:", err);
-    alert("Network error while publishing.");
+    document.getElementById('blog-form-heading').innerText = "Modify Article Parameters";
+    document.getElementById('submit-blog-btn').innerText = "Update Engine Matrix Rows";
+    document.getElementById('submit-blog-btn').classList.remove('bg-[#4F46E5]', 'hover:bg-indigo-600');
+    document.getElementById('submit-blog-btn').classList.add('bg-amber-500', 'hover:bg-amber-600');
+    document.getElementById('cancel-blog-edit-btn').classList.remove('hidden');
   }
-}
 
-  // --- CORE STOREFRONT TEMPLATES PIPELINE ---
+  function resetBlogForm() {
+    document.getElementById('blog-form').reset();
+    document.getElementById('blog-edit-id').value = '';
+    document.getElementById('image-preview-container').innerHTML = '';
+    document.getElementById('blog-form-heading').innerText = "Compile New Update Entry";
+    document.getElementById('submit-blog-btn').innerText = "Inject Into Production Row";
+    document.getElementById('submit-blog-btn').classList.remove('bg-amber-500', 'hover:bg-amber-600');
+    document.getElementById('submit-blog-btn').classList.add('bg-[#4F46E5]', 'hover:bg-indigo-600');
+    document.getElementById('cancel-blog-edit-btn').classList.add('hidden');
+  }
+
+  async function purgeBlog(id) {
+    if (confirm("Confirm hard removal and deletion of this article entry?")) {
+      try {
+        await fetch(`${SUPABASE_BASE}/rest/v1/blog?id=eq.${id}`, {
+          method: 'DELETE',
+          headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+        });
+        await syncBlogsFromEngine();
+      } catch (err) { console.error(err); }
+    }
+  }
+
+
+  // --- STOREFRONT TEMPLATES PIPELINE CONTROLS ---
   async function handleThumbnailUpload(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -448,41 +621,6 @@ async function publishBlog() {
       alert("Media deployment aborted by upstream security filters.");
       loading.classList.add('hidden');
     }
-  }
-
-  function checkAuthentication() {
-    const authState = sessionStorage.getItem('1p_admin_authenticated');
-    const portal = document.getElementById('login-portal');
-    const sidebar = document.getElementById('admin-sidebar');
-    const workspace = document.getElementById('admin-workspace');
-    if (authState === 'true') {
-      portal.classList.add('hidden');
-      sidebar.classList.remove('hidden');
-      sidebar.classList.add('flex');
-      workspace.classList.remove('hidden');
-      syncSystemFromEngine();
-    } else {
-      portal.classList.remove('hidden');
-      sidebar.classList.add('hidden');
-      sidebar.classList.remove('flex');
-      workspace.classList.add('hidden');
-    }
-  }
-
-  function handleLogin(e) {
-    e.preventDefault();
-    if (document.getElementById('login-user').value === SECURE_USER && document.getElementById('login-pass').value === SECURE_PASS) {
-      sessionStorage.setItem('1p_admin_authenticated', 'true');
-      document.getElementById('login-error').classList.add('hidden');
-      checkAuthentication();
-    } else {
-      document.getElementById('login-error').classList.remove('hidden');
-    }
-  }
-
-  function handleLogout() {
-    sessionStorage.removeItem('1p_admin_authenticated');
-    checkAuthentication();
   }
 
   async function syncSystemFromEngine() {
@@ -607,6 +745,8 @@ async function publishBlog() {
     }
   }
 
+
+  // --- UTILITY WEB CORE ACTIONS ---
   function saveDomainSettings() { alert('Infrastructure coordinates locked.'); }
   function saveSEOMetadata() { alert("Metadata schema payload committed."); }
   function handleAssetFile(e) { alert("Use template pipeline instead."); }
