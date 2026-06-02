@@ -204,7 +204,7 @@
               <div id="thumb-loading" class="text-[10px] text-indigo-400 font-semibold mt-1 hidden">Uploading thumbnail stream...</div>
             </div>
             <button type="button" id="submit-form-btn" class="w-full bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-colors mt-2">
-              Inject Into Production Row
+              Inject Into Catalog Row
             </button>
           </form>
         </div>
@@ -273,7 +273,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     
     <div class="lg:col-span-1 bg-[#0F1524] border border-slate-800 rounded-2xl p-6 space-y-4">
-      <h3 id="blog-form-heading" class="text-md font-bold text-white tracking-tight">Compile New Update Entry</h3>
+      <h3 id="blog-form-heading" class="text-md font-bold text-white tracking-tight">New Blog Entry</h3>
       <form id="blog-form" onsubmit="saveBlogForm(e)" class="space-y-4">
         <input type="hidden" id="blog-edit-id">
         <div>
@@ -291,7 +291,7 @@
         
         <div class="flex gap-2 pt-2">
           <button type="button" id="cancel-blog-edit-btn" onclick="resetBlogForm()" class="hidden flex-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-3 rounded-xl transition-all">Cancel</button>
-          <button type="button" id="submit-blog-btn" onclick="publishBlog()" class="flex-[2] bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all">Inject Into Production Row</button>
+          <button type="button" id="submit-blog-btn" onclick="publishBlog()" class="flex-[2] bg-[#4F46E5] hover:bg-indigo-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all">Inject Into Blog Row</button>
         </div>
       </form>
     </div>
@@ -299,7 +299,7 @@
     <div class="lg:col-span-2 bg-[#0F1524] border border-slate-800 rounded-2xl overflow-hidden flex flex-col shadow-xl">
       <div class="p-6 border-b border-slate-850 flex items-center justify-between">
         <div>
-          <h3 class="text-sm font-black uppercase tracking-wider text-slate-400">Live Articles Ledger</h3>
+          <h3 class="text-sm font-black uppercase tracking-wider text-slate-400">Live Blogs Ledger</h3>
           <p class="text-[11px] text-slate-500 font-medium">Index of active entries hosted on edge distribution servers</p>
         </div>
         <span id="metric-blogs-count" class="text-xs font-bold text-indigo-400 bg-indigo-950/40 border border-indigo-900/30 px-2 py-0.5 rounded-md">0 Systems</span>
@@ -452,7 +452,7 @@
         <td class="p-4 text-emerald-400 font-semibold">✔ Active Production</td>
         <td class="p-4 text-right space-x-3 whitespace-nowrap">
           <button type="button" onclick="startEditBlog('${post.id}')" class="text-amber-400 hover:text-amber-300 font-bold">Edit</button>
-          <button type="button" onclick="purgeBlog('${post.id}')" class="text-rose-400 hover:text-rose-300 font-bold">Purge</button>
+          <button type="button" onclick="purgeBlog('${post.id}')" class="text-rose-400 hover:text-rose-300 font-bold">Delete</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -654,7 +654,7 @@
         <td class="p-4 text-emerald-400">${tpl.security || '✔ Immutable Core Secured'}</td>
         <td class="p-4 text-right space-x-3">
           <button onclick="startEditTemplate('${tpl.id}')" class="text-amber-400 hover:text-amber-300 font-semibold">Edit</button>
-          <button onclick="purgeTemplate('${tpl.id}')" class="text-rose-400 hover:text-rose-300 font-semibold">Purge Asset</button>
+          <button onclick="purgeTemplate('${tpl.id}')" class="text-rose-400 hover:text-rose-300 font-semibold">Delete Asset</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -690,7 +690,7 @@
     document.getElementById('tpl-id').value = '';
     document.getElementById('tpl-thumb-url').value = '';
     document.getElementById('form-heading').innerText = "Compile New Template Structure";
-    document.getElementById('submit-form-btn').innerText = "Inject Into Production Row";
+    document.getElementById('submit-form-btn').innerText = "Inject Into Catalog Row";
     document.getElementById('submit-form-btn').classList.remove('bg-amber-500', 'hover:bg-amber-600');
     document.getElementById('submit-form-btn').classList.add('bg-[#4F46E5]', 'hover:bg-indigo-600');
     document.getElementById('cancel-edit-btn').classList.add('hidden');
