@@ -380,13 +380,13 @@
   }
 
   // Consolidated Single Publish Function
-  async function publishBlog() {
-    const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
-    const data = {
-      title: document.getElementById('blog-title').value,
-      content: document.getElementById('blog-content').value,
-      image_url: images.join(',')
-    };
+ async function publishBlog() {
+  const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
+  const data = {
+    title: document.getElementById('blog-title').value,
+    content: document.getElementById('blog-content').value,
+    image_url: images.join(',') // Securely commits your multi-upload grid references
+  };
 
     try {
       const response = await fetch(`${SUPABASE_BASE}/rest/v1/blogs`, {
