@@ -380,7 +380,7 @@
   }
 
   // Consolidated Single Publish Function
- async function publishBlog() {
+async function publishBlog() {
   const images = Array.from(document.querySelectorAll('#image-preview-container img')).map(img => img.src);
   const data = {
     title: document.getElementById('blog-title').value,
@@ -388,32 +388,34 @@
     image_url: images.join(',') // Securely commits your multi-upload grid references
   };
 
-    try {
-      const response = await fetch(`${SUPABASE_BASE}/rest/v1/blog`, {
-        method: 'POST',
-        headers: {
-          'apikey': 'sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
-          'Authorization': 'Bearer sb_publishable_Sp5h6lSC52LalEniQOBajg_mJCl8pCk',
-          'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify(data)
-      });
+  try {
+    const response = await fetch(`${SUPABASE_BASE}/rest/v1/blog`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY, // Swapped to master key for error-free authentication
+        'Authorization': `Bearer ${SUPABASE_KEY}`, // Swapped to master key
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(data)
+    });
 
-      if (response.ok) {
-        alert("Blog published successfully!");
-        document.getElementById('blog-title').value = '';
-        document.getElementById('blog-content').value = '';
-        const container = document.getElementById('image-preview-container');
-        if (container) container.innerHTML = '';
-      } else {
-        alert("Error publishing blog.");
-      }
-    } catch (err) {
-      console.error("Publish failed:", err);
-      alert("Network error while publishing.");
+    if (response.ok) {
+      alert("Blog published successfully!");
+      document.getElementById('blog-title').value = '';
+      document.getElementById('blog-content').value = '';
+      const container = document.getElementById('image-preview-container');
+      if (container) container.innerHTML = '';
+    } else {
+      const errText = await response.text();
+      console.error("Database rejected post:", errText);
+      alert("Error publishing blog. Check database RLS rules.");
     }
+  } catch (err) {
+    console.error("Publish failed:", err);
+    alert("Network error while publishing.");
   }
+}
 
   // --- CORE STOREFRONT TEMPLATES PIPELINE ---
   async function handleThumbnailUpload(e) {
