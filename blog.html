@@ -46,9 +46,42 @@
   
   <script src="components.js"></script>
  <script>
-  // Modal Functions
+  // Global memory cache to hold blog objects so the modal can read them instantly
+  let localBlogsCache = [];
+
+  // MODAL CORE INTERACTION PIPELINE
   function openBlogModal(blogId) {
     const modal = document.getElementById('blog-modal');
+    const titleEl = document.getElementById('modal-title');
+    const bodyEl = document.getElementById('modal-body');
+    const imagesContainer = document.getElementById('modal-images');
+
+    // Find the specific blog entry from our engine cache
+    const blog = localBlogsCache.find(b => String(b.id) === String(blogId));
+    if (!blog) return;
+
+    // Inject Text Content safely
+    titleEl.innerText = blog.title || 'Untitled Entry';
+    bodyEl.innerText = blog.content || '';
+
+    // Handle Multi-Image Array rendering inside the modal view context
+    imagesContainer.innerHTML = '';
+    const images = blog.image_url ? blog.image_url.split(',') : [];
+    
+    if (images.length > 0) {
+      imagesContainer.classList.remove('hidden');
+      images.forEach(imgUrl => {
+        if (!imgUrl) return;
+        const imgObj = document.createElement('img');
+        imgObj.src = imgUrl;
+        imgObj.className = "w-full h-64 object-cover rounded-2xl snap-center shrink-0 border border-slate-100 shadow-sm";
+        imagesContainer.appendChild(imgObj);
+      });
+    } else {
+      imagesContainer.classList.add('hidden');
+    }
+
+    // Trigger visual reveal animations
     modal.classList.remove('opacity-0', 'pointer-events-none');
     modal.querySelector('div').classList.remove('scale-95');
     modal.querySelector('div').classList.add('scale-100');
@@ -61,10 +94,9 @@
     modal.querySelector('div').classList.remove('scale-100');
   }
 
+  // DYNAMIC FEED DATA SYNC ENGINE
   async function loadBlogs() {
-    // FIX: Swapped endpoint to singular 'blog' to match your database table
     const SUPABASE_URL = "https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blog?select=*&order=id.desc";
-    // FIX: Replaced placeholder with your working master authentication key
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
     try {
@@ -83,25 +115,34 @@
         return;
       }
 
+      // Store in global memory so the modal can read fields without hitting the API again
+      localBlogsCache = blogs;
+
       grid.innerHTML = blogs.map(blog => {
-        // Handles multi-image parsing safely if commas are present
         const imageArray = blog.image_url ? blog.image_url.split(',') : [];
         const displayImage = imageArray[0] || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600";
 
+        // Extract description text and apply strict 180-character limit cutoff bounds
+        const rawContent = blog.content || '';
+        const isTruncated = rawContent.length > 180;
+        const displayContent = isTruncated ? `${rawContent.substring(0, 180)}...` : rawContent;
+
         return `
           <article class="flex flex-col md:flex-row gap-8 items-start border-b border-slate-100 pb-12 group">
-            <div class="w-full md:w-1/3 h-64 md:h-56 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
+            <div class="w-full md:w-1/3 h-64 md:h-56 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0 shadow-sm border border-slate-100">
               <img src="${displayImage}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="flex-grow space-y-4">
+            <div class="flex-grow space-y-4 w-full">
               <div class="flex items-center gap-3">
                 <span class="text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md">Engineering</span>
               </div>
-              <h2 class="text-3xl font-black text-slate-900">${blog.title || 'Untitled Entry'}</h2>
-              <p class="text-slate-600 leading-relaxed">${blog.content || ''}</p>
-              <button onclick="openBlogModal('${blog.id}')" class="inline-flex items-center gap-2 text-sm font-bold border-b-2 border-slate-900 hover:border-indigo-600 hover:text-indigo-600 transition-all">
-                Continue Reading →
-              </button>
+              <h2 class="text-3xl font-black text-slate-900 tracking-tight">${blog.title || 'Untitled Entry'}</h2>
+              <p class="text-slate-600 leading-relaxed text-sm md:text-base">${displayContent}</p>
+              <div class="pt-2">
+                <button onclick="openBlogModal('${blog.id}')" class="inline-flex items-center gap-2 text-sm font-bold border-b-2 border-slate-900 hover:border-indigo-600 hover:text-indigo-600 transition-all pb-0.5">
+                  Continue Reading →
+                </button>
+              </div>
             </div>
           </article>
         `;
