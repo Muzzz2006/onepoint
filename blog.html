@@ -127,8 +127,8 @@
         const isTruncated = rawContent.length > 180;
         const displayContent = isTruncated ? `${rawContent.substring(0, 180)}...` : rawContent;
 
-       return `
-          <article class="bg-[#0F1424] border border-slate-850 rounded-2xl overflow-hidden shadow-lg flex flex-col hover:border-slate-700 transition-all duration-300 group">
+      return `
+          <article class="bg-[#0F1424] border border-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col hover:border-slate-700 transition-all duration-300 group">
             <div class="h-48 overflow-hidden relative border-b border-slate-800/40 shrink-0">
               <img src="${displayImage}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Cover">
             </div>
@@ -138,12 +138,12 @@
                 <div class="flex items-center gap-2">
                   <span class="text-[9px] font-black uppercase tracking-widest text-indigo-400 bg-indigo-950/50 px-2 py-0.5 rounded border border-indigo-900/30">Engineering</span>
                 </div>
-                <h2 class="text-xl font-bold text-slate-900 tracking-tight leading-snug line-clamp-2">${blog.title || 'Untitled Entry'}</h2>
-                <p class="text-slate-500 text-xs leading-relaxed">${displayContent}</p>
+                <h2 class="text-xl font-bold text-white tracking-tight leading-snug line-clamp-2">${blog.title || 'Untitled Entry'}</h2>
+                <p class="text-slate-400 text-xs leading-relaxed">${displayContent}</p>
               </div>
               
               <div class="pt-2 border-t border-slate-800/20">
-                <button onclick="openBlogModal('${blog.id}')" class="inline-flex items-center gap-1 text-xs font-bold text-slate-900 hover:text-indigo-600 border-b border-transparent hover:border-indigo-600 transition-all pb-0.5">
+                <button onclick="openBlogModal('${blog.id}')" class="inline-flex items-center gap-1 text-xs font-bold text-indigo-400 hover:text-indigo-300 border-b border-transparent hover:border-indigo-300 transition-all pb-0.5">
                   Continue Reading →
                 </button>
               </div>
