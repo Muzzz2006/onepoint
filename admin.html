@@ -142,22 +142,41 @@
         </div>
       </section>
 
-      <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-4">
-        <h3 class="text-sm font-bold text-white tracking-tight">Bandwidth Allocation &amp; Traffic Trends</h3>
-        <div class="h-48 flex items-end gap-2 pt-4 border-b border-l border-slate-800 px-4">
-          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[30%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Mon</span></div>
-          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[45%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Tue</span></div>
-          <div class="bg-indigo-600/30 hover:bg-indigo-600 w-full h-[75%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Wed</span></div>
-          <div class="bg-indigo-600/50 hover:bg-indigo-600 w-full h-[60%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Thu</span></div>
-          <div class="bg-indigo-600/40 hover:bg-indigo-600 w-full h-[90%] rounded-t transition-all duration-300 relative group"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-slate-900 px-1 rounded opacity-0 group-hover:opacity-100">Fri</span></div>
-          <div class="bg-[#4F46E5] w-full h-[98%] rounded-t relative"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] bg-indigo-600 text-white font-bold px-1 rounded">Live</span></div>
-        </div>
-        <div class="flex justify-between text-[10px] text-slate-500 px-4">
-          <span>00:00 Edge Data Nodes</span>
-          <span>12:00 Apex Traffic</span>
-          <span>24:00 Structural Cycle</span>
-        </div>
-      </section>
+     <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-6">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div>
+      <h3 class="text-sm font-bold text-white tracking-tight">Storefront User Traffic Index</h3>
+      <p class="text-[11px] text-slate-500 font-medium">Real-time unique connection matrix pings matching chosen intervals</p>
+    </div>
+    <div class="flex items-center bg-[#0B0F19] p-1 rounded-xl border border-slate-850 gap-1">
+      <button onclick="updateTrafficTimeline(24)" id="filter-24" class="text-[10px] font-bold uppercase tracking-wider text-white bg-[#4F46E5] px-3 py-1.5 rounded-lg transition-all">24 Hours</button>
+      <button onclick="updateTrafficTimeline(168)" id="filter-168" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">7 Days</button>
+      <button onclick="updateTrafficTimeline(720)" id="filter-720" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">30 Days</button>
+      <button onclick="updateTrafficTimeline(8760)" id="filter-8760" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">365 Days</button>
+    </div>
+  </div>
+
+  <div class="h-48 flex items-end gap-3 pt-4 border-b border-l border-slate-800 px-4 relative">
+    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p1">
+      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p1">0 Hits</span>
+    </div>
+    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p2">
+      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p2">0 Hits</span>
+    </div>
+    <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p3">
+      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p3">0 Hits</span>
+    </div>
+    <div class="w-full bg-indigo-600 hover:bg-indigo-500 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p4">
+      <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p4">0 Hits</span>
+    </div>
+  </div>
+
+  <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest px-4" id="graph-timeline-labels">
+    <span>Interval Start</span>
+    <span>Midpoint Progress</span>
+    <span>Live Processing Node</span>
+  </div>
+</section>
     </div>
 
     <div id="tab-templates" class="tab-content space-y-6">
@@ -395,7 +414,13 @@
       workspace.classList.add('hidden');
     }
   }
-
+} catch (err) {
+      console.error("Telemetry mapping compilation error:", err);
+    }
+    
+    // Add this to auto-load the 24-hour graph on startup!
+    await updateTrafficTimeline(24);
+  }
   function handleLogin(e) {
     e.preventDefault();
     if (document.getElementById('login-user').value === SECURE_USER && document.getElementById('login-pass').value === SECURE_PASS) {
@@ -412,52 +437,65 @@
     checkAuthentication();
   }
 
-  // --- NEW: LIVE REAL-TIME TELEMETRY SYSTEM PIPELINE ---
-  async function initializeLiveTelemetry() {
-    // Measure latency before executing parallel sync sequences
-    const startTime = performance.now();
+  // --- REAL-TIME USER TRAFFIC ANALYTICS TIMELINE ENGINE ---
+  async function updateTrafficTimeline(hourRange) {
+    // 1. Manage Active Class Styles on Buttons Selection Layout
+    const filterIds = [24, 168, 720, 8760];
+    filterIds.forEach(h => {
+      const btn = document.getElementById(`filter-${h}`);
+      if (!btn) return;
+      if (h === hourRange) {
+        btn.className = "text-[10px] font-bold uppercase tracking-wider text-white bg-[#4F46E5] px-3 py-1.5 rounded-lg transition-all";
+      } else {
+        btn.className = "text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all";
+      }
+    });
+
+    // 2. Compute dynamic ISO date filter strings based on selection parameters
+    const cutoffDate = new Date(Date.now() - hourRange * 60 * 60 * 1000).toISOString();
     
     try {
-      // Execute all core live framework scans concurrently 
-      await Promise.all([
-        syncSystemFromEngine(),
-        syncBlogsFromEngine()
-      ]);
+      const res = await fetch(`${SUPABASE_BASE}/rest/v1/page_views?created_at=gte.${cutoffDate}&select=created_at`, {
+        method: 'GET',
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+      });
+      const hits = await res.json();
       
-      const endTime = performance.now();
-      const actualPing = Math.round(endTime - startTime);
-      
-      // 1. Inject Live Latency Milliseconds into UI
-      const speedCard = document.querySelector('#tab-metrics .grid > div:nth-child(1) .text-2xl');
-      if (speedCard) speedCard.innerText = `${actualPing}ms`;
-      
-      // 2. Inject Total Published Articles count into Crawlers card slot
-      const blogsMetricCard = document.querySelector('#tab-metrics .grid > div:nth-child(4) .text-2xl');
-      const blogsMetricSub = document.querySelector('#tab-metrics .grid > div:nth-child(4) span:nth-of-type(2)');
-      if (blogsMetricCard) blogsMetricCard.innerText = `${livePlatformBlogs.length} Posts`;
-      if (blogsMetricSub) blogsMetricSub.innerText = `🔎 Live journal database objects counted`;
+      // Calculate data distribution quadrants for chart bars
+      const segmentHours = hourRange / 4;
+      const counts = [0, 0, 0, 0];
+      const nowMs = Date.now();
 
-      // 3. Scale Traffic Allocation Graph Columns using real database index weightings
-      calculateLiveGraphBars();
+      if (Array.isArray(hits)) {
+        hits.forEach(hit => {
+          const ageHours = (nowMs - new Date(hit.created_at).getTime()) / (1000 * 60 * 60);
+          if (ageHours <= segmentHours) counts[3]++;
+          else if (ageHours <= segmentHours * 2) counts[2]++;
+          else if (ageHours <= segmentHours * 3) counts[1]++;
+          else if (ageHours <= hourRange) counts[0]++;
+        });
+      }
+
+      // Max item height normalizer matrix scaler
+      const maxHitCount = Math.max(...counts, 1);
+      
+      // Map counts directly to CSS UI structural rendering heights
+      for (let i = 0; i < 4; i++) {
+        const bar = document.getElementById(`bar-p${i+1}`);
+        const tooltip = document.getElementById(`tooltip-p${i+1}`);
+        if (bar && tooltip) {
+          const percentageHeight = Math.max(10, (counts[i] / maxHitCount) * 100);
+          bar.style.height = `${percentageHeight}%`;
+          tooltip.innerText = `${counts[i]} Visits`;
+        }
+      }
+
+      // Dynamic subtitle metrics injection adjustment 
+      const crawlersCardText = document.querySelector('#tab-metrics .grid > div:nth-child(4) .text-2xl');
+      if (crawlersCardText) crawlersCardText.innerText = `${hits.length || 0} Hits`;
 
     } catch (err) {
-      console.error("Telemetry mapping compilation error:", err);
-    }
-  }
-
-  function calculateLiveGraphBars() {
-    const totalRecords = systemTemplates.length + livePlatformBlogs.length;
-    const bars = document.querySelectorAll('#tab-metrics section:nth-of-type(2) .h-48 > div');
-    
-    if (bars.length > 0) {
-      // Dynamically calculate column pixel ratios using live storage arrays weightings
-      const templateWeight = Math.min(100, Math.max(25, systemTemplates.length * 20));
-      const blogWeight = Math.min(100, Math.max(30, livePlatformBlogs.length * 25));
-      const liveTotalWeight = Math.min(100, Math.max(45, totalRecords * 15));
-
-      if (bars[0]) bars[0].style.height = `${templateWeight}%`;
-      if (bars[2]) bars[2].style.height = `${blogWeight}%`;
-      if (bars[4]) bars[4].style.height = `${liveTotalWeight}%`;
+      console.error("Traffic matrix compilation loss:", err);
     }
   }
 
