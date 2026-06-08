@@ -206,13 +206,16 @@
         </p>
       </div>
 
-     <div id="dynamic-frameworks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div id="dynamic-frameworks-grid" class="flex overflow-x-auto gap-6 sm:gap-8 pb-4 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div class="col-span-full text-center py-12 text-xs font-semibold text-indigo-400 uppercase tracking-widest animate-pulse">
           Synchronizing framework ledger matrices from edge array...
         </div>
       </div>
 
-      <div class="mt-12 text-center">
+      <div id="frameworks-dots-container" class="flex items-center justify-center gap-2.5 pt-4">
+        </div>
+
+      <div class="mt-8 text-center">
         <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
           More Templates 
           <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -230,6 +233,7 @@
       const PUBLIC_SECURITY_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
       const targetGridElement = document.getElementById("dynamic-frameworks-grid");
+      const dotsContainer = document.getElementById("frameworks-dots-container");
 
       fetch(CLOUD_DATABASE_ENDPOINT, {
         method: "GET",
@@ -248,11 +252,12 @@
           return;
         }
 
-        // Enforce structural boundary constraint limit rule: Max 5 items
+        // Keep your rule constraint filter: Max 5 items
         const parsedDisplayMatrix = payloadArray.slice(0, 5);
         targetGridElement.innerHTML = "";
+        dotsContainer.innerHTML = "";
 
-        parsedDisplayMatrix.forEach(framework => {
+        parsedDisplayMatrix.forEach((framework, index) => {
           const runtimeTitle = framework.title || framework.name || "Unnamed Core Asset";
           const displayPrice = framework.price ? `₹${framework.price}` : "Bespoke Quote";
           const localizedPreviewUrl = framework.path || framework.previewUrl || "#";
@@ -261,13 +266,13 @@
           const baselineImageUrl = framework.image_url || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600";
           const fallbackIdCode = framework.id || "system-node";
 
+          // Generate adaptive layouts (Responsive sizes: flex-row slides on mobile, cleanly scales on desktop grids)
           const layoutCardNode = document.createElement("div");
-          // FIX: Changed width from w-[85vw] back to full responsive auto cards so it stretches gracefully on mobile
-          layoutCardNode.className = "group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between w-full";
+          layoutCardNode.className = "group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between w-[85vw] sm:w-[360px] md:w-[calc(33.333%-16px)] snap-start shrink-0";
           
           layoutCardNode.innerHTML = `
             <div>
-              <div class="h-48 sm:h-52 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4">
+              <div class="h-44 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4">
                 <img src="${baselineImageUrl}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${runtimeTitle} UI Mockup Preview">
                 <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm select-none">${fallbackBadgeText}</span>
               </div>
@@ -284,8 +289,43 @@
               <a href="contact.html?asset=${encodeURIComponent(fallbackIdCode)}" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
             </div>
           `;
-          
           targetGridElement.appendChild(layoutCardNode);
+
+          // Build our customized indicator tracking point node synchronously
+          const dotNode = document.createElement("button");
+          dotNode.type = "button";
+          dotNode.ariaLabel = `Maps grid tracking module index slot ${index + 1}`;
+          // First item starts initialized as bright indigo active node
+          dotNode.className = `h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-6 bg-indigo-500' : 'w-2 bg-slate-700 hover:bg-slate-500'}`;
+          
+          // Let users tap directly on a point dot to scroll directly to that specific template!
+          dotNode.onclick = () => {
+            const calculatedCardWidth = layoutCardNode.offsetWidth + 24; // Width plus horizontal gap margin
+            targetGridElement.scrollTo({ left: index * calculatedCardWidth, behavior: 'smooth' });
+          };
+          
+          dotsContainer.appendChild(dotNode);
+        });
+
+        // Track user scroll positions to dynamically update our indicators in real time
+        targetGridElement.addEventListener("scroll", () => {
+          const cardNodes = targetGridElement.querySelectorAll(".group");
+          if (cardNodes.length === 0) return;
+          
+          const primaryCardWidth = cardNodes[0].offsetWidth + 24;
+          const currentScrollOffset = targetGridElement.scrollLeft;
+          
+          // Compute index matching closest scroll alignment threshold
+          const computedActiveIndex = Math.round(currentScrollOffset / primaryCardWidth);
+          
+          const allDots = dotsContainer.querySelectorAll("button");
+          allDots.forEach((dot, dotIdx) => {
+            if (dotIdx === computedActiveIndex) {
+              dot.className = "h-2 w-6 bg-indigo-500 rounded-full transition-all duration-300";
+            } else {
+              dot.className = "h-2 w-2 bg-slate-700 hover:bg-slate-500 rounded-full transition-all duration-300";
+            }
+          });
         });
       })
       .catch(exception => {
