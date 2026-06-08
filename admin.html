@@ -678,16 +678,15 @@
     }
   }
 
-  function renderTemplates() {
+function renderTemplates() {
     const tbody = document.getElementById('templates-tbody');
-    // Updated to target your new dynamic counter card ID
     const countMetric = document.getElementById('template-counter-text'); 
     
     if (!tbody) return;
     tbody.innerHTML = '';
     
-    // Update the counter text safely if the card exists
-    if (countMetric) {
+    // Dynamically counts your live blueprint assets (Brewhaven, Nexus, Aura, etc.)
+    if (countMetric && systemTemplates) {
       countMetric.innerText = `${systemTemplates.length} Templates`;
     }
 
@@ -709,7 +708,6 @@
       tbody.appendChild(tr);
     });
   }
-
   function startEditTemplate(id) {
     const tpl = systemTemplates.find(t => String(t.id) === String(id));
     if (!tpl) return;
