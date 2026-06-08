@@ -136,41 +136,28 @@
         </div>
       </section>
 
-      <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h3 class="text-sm font-bold text-white tracking-tight">Storefront User Traffic Index</h3>
-            <p class="text-[11px] text-slate-500 font-medium">Real-time unique connection matrix pings matching chosen intervals</p>
-          </div>
-          <div class="flex items-center bg-[#0B0F19] p-1 rounded-xl border border-slate-850 gap-1">
-            <button onclick="updateTrafficTimeline(24)" id="filter-24" class="text-[10px] font-bold uppercase tracking-wider text-white bg-[#4F46E5] px-3 py-1.5 rounded-lg transition-all">24 Hours</button>
-            <button onclick="updateTrafficTimeline(168)" id="filter-168" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">7 Days</button>
-            <button onclick="updateTrafficTimeline(720)" id="filter-720" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">30 Days</button>
-            <button onclick="updateTrafficTimeline(8760)" id="filter-8760" class="text-[10px] font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 px-3 py-1.5 rounded-lg transition-all">365 Days</button>
-          </div>
-        </div>
+      <section class="bg-[#0F1524] border border-slate-800 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden group">
+  <div class="absolute -right-20 -top-20 w-48 h-48 bg-indigo-600/10 rounded-full blur-3xl group-hover:bg-indigo-600/15 transition-all duration-500"></div>
+  
+  <div class="space-y-1.5 z-10">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+      <h3 class="text-sm font-bold text-white tracking-tight">Global Traffic Analytics</h3>
+    </div>
+    <p class="text-[11px] text-slate-400 font-medium max-w-xl leading-relaxed">
+      Live user traffic loops, geographical telemetry matrices, and conversion event properties are actively managed directly via the Google Analytics ecosystem.
+    </p>
+  </div>
 
-        <div class="h-48 flex items-end gap-3 pt-4 border-b border-l border-slate-800 px-4 relative">
-          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p1">
-            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p1">0 Hits</span>
-          </div>
-          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p2">
-            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p2">0 Hits</span>
-          </div>
-          <div class="w-full bg-indigo-500/80 hover:bg-indigo-400 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p3">
-            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-slate-950 border border-slate-800 text-slate-300 px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p3">0 Hits</span>
-          </div>
-          <div class="w-full bg-indigo-600 hover:bg-indigo-500 rounded-t transition-all duration-500 relative group" style="height: 0%;" id="bar-p4">
-            <span class="absolute -top-7 left-1/2 -translate-x-1/2 text-[9px] font-mono bg-indigo-600 text-white font-bold px-1.5 py-0.5 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap" id="tooltip-p4">0 Hits</span>
-          </div>
-        </div>
-
-        <div class="flex justify-between text-[9px] font-bold text-slate-500 uppercase tracking-widest px-4" id="graph-timeline-labels">
-          <span>Interval Start</span>
-          <span>Midpoint Progress</span>
-          <span>Live Processing Node</span>
-        </div>
-      </section>
+  <div class="z-10 shrink-0">
+    <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#1E1B4B] border border-indigo-500/30 hover:border-indigo-500/80 text-indigo-300 hover:text-white px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md shadow-indigo-950/50 hover:shadow-indigo-600/10 active:scale-95 group/btn">
+      Open Analytics Workspace
+      <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+      </svg>
+    </a>
+  </div>
+</section>
     </div>
 
     <div id="tab-templates" class="tab-content space-y-6">
