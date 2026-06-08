@@ -893,7 +893,6 @@ async function runLiveDashboardDiagnostics() {
     if (dbText) {
       dbText.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span> Interrupted`;
       dbText.className = "text-2xl font-black text-rose-500 mt-1 flex items-center gap-2";
-    }
     if (dbSub) dbSub.innerText = "Supabase infrastructure synchronization down.";
     if (blogCounter) blogCounter.innerText = "Error";
     if (templateCounter) templateCounter.innerText = "Error";
