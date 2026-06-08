@@ -230,6 +230,7 @@
       const PUBLIC_SECURITY_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
       const targetGridElement = document.getElementById("dynamic-frameworks-grid");
+      let autoScrollTimer = null;
 
       fetch(CLOUD_DATABASE_ENDPOINT, {
         method: "GET",
@@ -248,40 +249,38 @@
           return;
         }
 
-        // Enforce structural boundary constraint limit rule: Max 5 items
+        // Limit rule constraint: Max 5 items
         const parsedDisplayMatrix = payloadArray.slice(0, 5);
         targetGridElement.innerHTML = "";
 
         parsedDisplayMatrix.forEach(framework => {
-          // Fallback parsing filters for incomplete item records safely
           const runtimeTitle = framework.title || framework.name || "Unnamed Core Asset";
           const displayPrice = framework.price ? `₹${framework.price}` : "Bespoke Quote";
           const localizedPreviewUrl = framework.path || framework.previewUrl || "#";
           const fallbackBadgeText = framework.strategy || "Core Layer";
           const runtimeDescription = framework.description || "Premium software storefront ecosystem engineered for conversion retention architectures.";
-          
           const baselineImageUrl = framework.image_url || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600";
           const fallbackIdCode = framework.id || "system-node";
 
-          // Generate adaptive, scannable layout markup structures natively
           const layoutCardNode = document.createElement("div");
-          layoutCardNode.className = "group bg-white border border-slate-200/10 rounded-2xl p-3.5 sm:p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-start shrink-0";
+          // FIX: Adjusted width boundaries (w-[85vw] on mobile) so neighboring cards peek out correctly
+          layoutCardNode.className = "group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between w-[85vw] md:w-auto snap-start shrink-0 mx-2 md:mx-0";
           
           layoutCardNode.innerHTML = `
-            <div>
-              <div class="h-40 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4 sm:mb-5">
+            <div class="flex-1 flex flex-col">
+              <div class="h-44 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4">
                 <img src="${baselineImageUrl}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${runtimeTitle} UI Mockup Preview">
                 <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm select-none">${fallbackBadgeText}</span>
               </div>
-              <div class="px-1 space-y-1.5">
+              <div class="px-1 space-y-1.5 flex-1 flex flex-col justify-between">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h2 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">${runtimeTitle}</h2>
+                  <h3 class="text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#4F46E5] transition-colors line-clamp-1">${runtimeTitle}</h3>
                   <span class="text-[#0F172A] font-extrabold text-sm whitespace-nowrap">${displayPrice}</span>
                 </div>
-                <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2">${runtimeDescription}</p>
+                <p class="text-xs text-[#64748B] leading-relaxed line-clamp-2 mt-1">${runtimeDescription}</p>
               </div>
             </div>
-            <div class="pt-4 sm:pt-5 flex gap-2">
+            <div class="pt-4 flex gap-2 mt-auto">
               <a href="preview.html?url=${encodeURIComponent(localizedPreviewUrl)}&name=${encodeURIComponent(runtimeTitle)}" class="flex-1 bg-slate-50 border border-[#E2E8F0] text-[#0F172A] text-xs font-bold py-2.5 rounded-lg text-center hover:bg-slate-100 transition-colors">Live Preview</a>
               <a href="contact.html?asset=${encodeURIComponent(fallbackIdCode)}" class="flex-1 bg-[#4F46E5] text-white text-center text-xs font-bold py-2.5 rounded-lg hover:bg-[#4338CA] transition-colors">Acquire Asset</a>
             </div>
@@ -289,11 +288,38 @@
           
           targetGridElement.appendChild(layoutCardNode);
         });
+
+        // Initialize the Automatic Scroll Engine for Mobile Layouts
+        initAutoScrollLoop();
       })
       .catch(exception => {
-        console.error("Critical communications fault over active data table:", exception);
-        targetGridElement.innerHTML = `<div class="col-span-full text-center text-xs font-bold text-rose-400 bg-rose-500/5 border border-rose-500/10 rounded-xl py-6">Database alignment sync dropped. Please refresh framework stack manually.</div>`;
+        console.error("Critical communications fault:", exception);
+        targetGridElement.innerHTML = `<div class="col-span-full text-center text-xs font-bold text-rose-400 bg-rose-500/5 border border-rose-500/10 rounded-xl py-6">Database alignment sync dropped.</div>`;
       });
+
+      // AUTOMATED SCROLL ENGINE FUNCTIONS
+      function initAutoScrollLoop() {
+        if (window.innerWidth >= 768) return; // Only automate on mobile viewports
+
+        const scrollIntervalTime = 3500; // Time interval per card (3.5 seconds)
+        
+        autoScrollTimer = setInterval(() => {
+          const cardWidth = targetGridElement.querySelector('.group').offsetWidth + 16; // width + horizontal margin
+          const currentPosition = targetGridElement.scrollLeft;
+          const totalWidth = targetGridElement.scrollWidth;
+          const visibleWidth = targetGridElement.clientWidth;
+
+          // If reached the end of the line, loop right back smoothly to first index node
+          if (currentPosition + visibleWidth >= totalWidth - 10) {
+            targetGridElement.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            targetGridElement.scrollTo({ left: currentPosition + cardWidth, behavior: 'smooth' });
+          }
+        }, scrollIntervalTime);
+
+        // Pause auto-scroll if user starts manually dragging the track
+        targetGridElement.addEventListener('touchstart', () => clearInterval(autoScrollTimer), { passive: true });
+      }
     });
   </script>
 
