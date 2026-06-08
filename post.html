@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | OnePoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-white text-slate-800">
+    <div id="header-placeholder"></div>
+
+    <main class="max-w-3xl mx-auto px-6 py-20">
+        <a href="blog.html" class="text-xs font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-500 transition-colors">← Back to Journal</a>
+        
+        <article class="mt-8 space-y-8">
+            <h1 id="post-title" class="text-3xl md:text-5xl font-black text-[#0F172A] leading-tight">Loading Article...</h1>
+            <div id="post-images" class="flex gap-4 overflow-x-auto pb-4 snap-x hidden"></div>
+            <div id="post-body" class="text-slate-600 text-lg leading-relaxed space-y-6"></div>
+        </article>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="components.js"></script>
+
+    <script>
+        async function loadSinglePost() {
+            // 1. Extract the unique ID from the website URL bar
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            if (!postId) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            // 2. Query Supabase specifically for this single post ID
+            const SUPABASE_URL = `https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blog?id=eq.${postId}`;
+            const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
+
+            try {
+                const response = await fetch(SUPABASE_URL, {
+                    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+                });
+                const data = await response.json();
+                if (!data || data.length === 0) {
+                    document.getElementById('post-title').innerText = "Article Not Found";
+                    return;
+                }
+
+                const post = data[0];
+                
+                // 3. Inject content dynamically into the standalone template
+                document.title = `${post.title || 'Entry'} | OnePoint Journal`;
+                document.getElementById('post-title').innerText = post.title || 'Untitled Entry';
+                document.getElementById('post-body').innerText = post.content || '';
+
+                // 4. Render layout gallery images if they exist
+                const imagesContainer = document.getElementById('post-images');
+                const images = post.image_url ? post.image_url.split(',') : [];
+                if (images.length > 0 && images[0]) {
+                    imagesContainer.classList.remove('hidden');
+                    images.forEach(imgUrl => {
+                        if (!imgUrl) return;
+                        const imgObj = document.createElement('img');
+                        imgObj.src = imgUrl;
+                        imgObj.className = "w-full h-96 object-cover rounded-3xl border border-slate-100 shadow-sm";
+                        imagesContainer.appendChild(imgObj);
+                    });
+                }
+            } catch (err) {
+                console.error("Error fetching standalone post:", err);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadSinglePost);
+    </script>
+</body>
+</html>
