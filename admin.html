@@ -867,27 +867,23 @@ async function runLiveDashboardDiagnostics() {
   }
 }
 
-      // Dynamically display precise publication quantity metrics
-      blogCounter.innerText = `${records.length} Articles`;
-    } else {
-      throw new Error("Cluster verification handshake rejected");
-    }
-  } catch (error) {
+      } catch (error) {
     console.error("Diagnostic failure:", error);
-    dbText.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span> Interrupted`;
-    dbText.className = "text-2xl font-black text-rose-500 mt-1 flex items-center gap-2";
-    dbSub.innerText = "Supabase infrastructure synchronization down.";
-    blogCounter.innerText = "Error";
+    if (dbText) {
+      dbText.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50"></span> Interrupted`;
+      dbText.className = "text-2xl font-black text-rose-500 mt-1 flex items-center gap-2";
+    }
+    if (dbSub) dbSub.innerText = "Supabase infrastructure synchronization down.";
+    if (blogCounter) blogCounter.innerText = "Error";
+    if (templateCounter) templateCounter.innerText = "Error";
   }
 }
 
 // SECURE SESSION DESTRUCTION AND TERMINAL REDIRECT
 function handleAdminLogout() {
   if (confirm("Are you sure you want to exit the core admin command terminal?")) {
-    // Wipe local credentials storage paths
     localStorage.clear();
     sessionStorage.clear();
-    // Redirect back to standard system root homepage
     window.location.href = "index.html";
   }
 }
