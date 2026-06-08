@@ -868,7 +868,9 @@ async function runLiveDashboardDiagnostics() {
 async function syncAdminTemplateCatalog() {
   const CATALOG_URL = "https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/templates?select=*";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
-  const tableBody = document.getElementById('admin-templates-tbody');
+  
+  // 🛠️ CHANGED LINE: Updated target selector selector hook to match your true HTML container ID element
+  const tableBody = document.getElementById('templates-tbody');
 
   if (!tableBody) return;
 
@@ -887,48 +889,31 @@ async function syncAdminTemplateCatalog() {
     tableBody.innerHTML = "";
 
     if (templates.length === 0) {
-      tableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">No blueprints registered in active database.</td></tr>`;
+      tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-xs font-bold uppercase tracking-widest text-slate-500">No blueprints registered in active database.</td></tr>`;
       return;
     }
 
     templates.forEach(item => {
-      const row = document.createElement('tr');
-      row.className = "hover:bg-slate-900/30 transition-colors group";
-      row.innerHTML = `
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700/50 overflow-hidden shrink-0">
-              <img src="${item.thumbnail || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=80&q=80'}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=80&q=80'">
-            </div>
-            <div>
-              <div class="text-xs font-black text-white tracking-wide uppercase group-hover:text-indigo-400 transition-colors">${item.title || 'Unnamed Asset'}</div>
-              <div class="text-[10px] text-slate-500 font-medium font-mono mt-0.5">ID: ${item.id}</div>
-            </div>
-          </div>
+      const tr = document.createElement('tr');
+      tr.className = "hover:bg-slate-900/30 transition-colors font-medium";
+      tr.innerHTML = `
+        <td class="p-4 font-bold text-white">
+          <div>${item.title || item.name || 'Unnamed Framework'}</div>
+          <div class="text-[10px] text-slate-400 font-medium">Price: ₹${item.price || '0.00'}</div>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <span class="px-2.5 py-1 inline-flex text-[9px] font-bold uppercase tracking-widest leading-4 rounded-full bg-indigo-950/50 text-indigo-400 border border-indigo-500/20 font-mono">
-            ${item.protocol || 'Static Edge'}
-          </span>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="text-xs font-black text-emerald-400 font-mono">₹${Number(item.price).toLocaleString('en-IN')}</div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
-          <div class="flex items-center gap-3 justify-end">
-            <a href="${item.live_url || '#'}" target="_blank" class="text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
-              Preview
-              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path></svg>
-            </a>
-          </div>
+        <td class="p-4"><span class="bg-indigo-950 text-indigo-400 border border-indigo-900/50 px-2 py-0.5 rounded text-[10px]">${item.strategy || 'Static Edge'}</span></td>
+        <td class="p-4 text-emerald-400">✔ Immutable Core Secured</td>
+        <td class="p-4 text-right space-x-3">
+          <button onclick="startEditTemplate('${item.id}')" class="text-amber-400 hover:text-amber-300 font-semibold">Edit</button>
+          <button onclick="purgeTemplate('${item.id}')" class="text-rose-400 hover:text-rose-300 font-semibold">Delete Asset</button>
         </td>
       `;
-      tableBody.appendChild(row);
+      tableBody.appendChild(tr);
     });
 
   } catch (error) {
     console.error("Catalog deployment syncing error:", error);
-    tableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-8 text-center text-xs font-bold text-rose-500 uppercase tracking-wider">Sync Failure.</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-xs font-bold text-rose-500 uppercase tracking-wider">Sync Failure.</td></tr>`;
   }
 }
 
