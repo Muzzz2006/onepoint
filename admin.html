@@ -427,10 +427,6 @@
         }
       }
 
-      // Dynamic subtitle metrics injection adjustment 
-      const crawlersCardText = document.querySelector('#tab-metrics .grid > div:nth-child(4) .text-2xl');
-      if (crawlersCardText) crawlersCardText.innerText = `${hits.length || 0} Hits`;
-
     } catch (err) {
       console.error("Traffic matrix compilation loss:", err);
     }
