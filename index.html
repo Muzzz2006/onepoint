@@ -275,7 +275,11 @@
           layoutCardNode.innerHTML = `
             <div>
               <div class="h-44 sm:h-48 bg-slate-50 rounded-xl relative flex items-center justify-center overflow-hidden border border-slate-200/60 mb-4">
-                <img src="${baselineImageUrl}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${runtimeTitle} UI Mockup Preview">
+               // Locate this specific img block inside your template script and modify it:
+<img src="${baselineImageUrl}" 
+     onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600'" 
+     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+     alt="${runtimeTitle} - Premium Digital Storefront Tailwind HTML Template by OnePoint">
                 <span class="absolute top-3 right-3 bg-[#0F172A] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md shadow-sm select-none">${fallbackBadgeText}</span>
               </div>
               <div class="px-1 space-y-1.5">
