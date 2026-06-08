@@ -128,11 +128,24 @@
             <div id="metric-templates-count" class="text-2xl font-black text-white mt-1">0 Systems</div>
             <span class="text-[10px] text-indigo-400 mt-1 block">🔗 Static edge sync active</span>
           </div>
-          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5">
-            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Crawlers &amp; Requests (24h)</span>
-            <div class="text-2xl font-black text-white mt-1">2,481 hits</div>
-            <span class="text-[10px] text-slate-400 mt-1 block">🔎 Semantic schema fully parsed</span>
-          </div>
+          <div class="bg-[#0F1524] border border-slate-800 rounded-xl p-5 hover:border-indigo-500/40 transition-all duration-300 relative group/card">
+  <div class="flex justify-between items-start">
+    <div>
+      <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Crawlers &amp; Requests (24h)</span>
+      <div class="text-2xl font-black text-white mt-1">Search Index</div>
+    </div>
+    <span class="text-xl">🔎</span>
+  </div>
+  <div class="flex items-center justify-between pt-4 mt-2 border-t border-slate-800/60">
+    <span class="text-[10px] text-indigo-400 font-medium">Semantic schema fully parsed</span>
+    <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-white inline-flex items-center gap-1 transition-colors">
+      Inspect 
+      <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+      </svg>
+    </a>
+  </div>
+</div>
         </div>
       </section>
 
