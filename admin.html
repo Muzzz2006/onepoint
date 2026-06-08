@@ -684,13 +684,20 @@
 
   function renderTemplates() {
     const tbody = document.getElementById('templates-tbody');
-    const countMetric = document.getElementById('metric-templates-count');
+    // Updated to target your new dynamic counter card ID
+    const countMetric = document.getElementById('template-counter-text'); 
+    
     if (!tbody) return;
     tbody.innerHTML = '';
-    countMetric.innerText = `${systemTemplates.length} Systems`;
+    
+    // Update the counter text safely if the card exists
+    if (countMetric) {
+      countMetric.innerText = `${systemTemplates.length} Templates`;
+    }
+
     systemTemplates.forEach(tpl => {
       const tr = document.createElement('tr');
-      tr.className = "hover:bg-slate-900/30 transition-colors";
+      tr.className = "hover:bg-slate-900/30 transition-colors font-medium";
       tr.innerHTML = `
         <td class="p-4 font-bold text-white">
           <div>${tpl.title || tpl.name || 'Unnamed Framework'}</div>
