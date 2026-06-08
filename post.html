@@ -26,7 +26,6 @@
 
     <script>
         async function loadSinglePost() {
-            // 1. Extract the unique ID from the website URL bar
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
             if (!postId) {
@@ -34,7 +33,6 @@
                 return;
             }
 
-            // 2. Query Supabase specifically for this single post ID
             const SUPABASE_URL = `https://menkhsukpmqkvfirbatm.supabase.co/rest/v1/blog?id=eq.${postId}`;
             const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
@@ -50,12 +48,33 @@
 
                 const post = data[0];
                 
-                // 3. Inject content dynamically into the standalone template
+                // 1. Standard Content Injection
                 document.title = `${post.title || 'Entry'} | OnePoint Journal`;
                 document.getElementById('post-title').innerText = post.title || 'Untitled Entry';
                 document.getElementById('post-body').innerText = post.content || '';
 
-                // 4. Render layout gallery images if they exist
+                // 2. AUTOMATED SEO INJECTION FOR CRAWLERS
+                // This builds a structured question-and-answer profile dynamically for Google
+                const cleanTitle = post.title ? post.title.replace(/"/g, '\\"') : '';
+                const cleanExcerpt = post.content ? post.content.substring(0, 200).replace(/"/g, '\\"') + '...' : '';
+
+                const seoScript = document.createElement('script');
+                seoScript.type = 'application/ld+json';
+                seoScript.text = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [{
+                        "@type": "Question",
+                        "name": cleanTitle,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": cleanExcerpt
+                        }
+                    }]
+                });
+                document.head.appendChild(seoScript);
+
+                // 3. Render Image Galleries
                 const imagesContainer = document.getElementById('post-images');
                 const images = post.image_url ? post.image_url.split(',') : [];
                 if (images.length > 0 && images[0]) {
