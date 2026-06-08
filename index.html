@@ -212,8 +212,7 @@
         </div>
       </div>
 
-      <div id="frameworks-dots-container" class="flex items-center justify-center gap-2.5 pt-4">
-        </div>
+      <div id="frameworks-dots-container" class="flex items-center justify-center gap-2.5 pt-4"></div>
 
       <div class="mt-8 text-center">
         <a href="catalog.html" class="inline-flex items-center gap-2 bg-white hover:bg-slate-150 text-[#0F172A] font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 group">
@@ -234,6 +233,10 @@
 
       const targetGridElement = document.getElementById("dynamic-frameworks-grid");
       const dotsContainer = document.getElementById("frameworks-dots-container");
+      
+      let autoplayTimer = null;
+      let totalItemsCount = 0;
+      let userIsInteracting = false;
 
       fetch(CLOUD_DATABASE_ENDPOINT, {
         method: "GET",
@@ -248,12 +251,12 @@
       })
       .then(payloadArray => {
         if (!Array.isArray(payloadArray) || payloadArray.length === 0) {
-          targetGridElement.innerHTML = `<div class="col-span-full text-center text-xs font-bold text-slate-500 uppercase tracking-wider py-8">Zero active deployments returned by structural logs.</div>`;
+          targetGridElement.innerHTML = `<div class="col-span-full text-center text-xs font-bold text-slate-500 uppercase tracking-wider py-8">Zero active deployments returned.</div>`;
           return;
         }
 
-        // Keep your rule constraint filter: Max 5 items
         const parsedDisplayMatrix = payloadArray.slice(0, 5);
+        totalItemsCount = parsedDisplayMatrix.length;
         targetGridElement.innerHTML = "";
         dotsContainer.innerHTML = "";
 
@@ -266,7 +269,6 @@
           const baselineImageUrl = framework.image_url || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600";
           const fallbackIdCode = framework.id || "system-node";
 
-          // Generate adaptive layouts (Responsive sizes: flex-row slides on mobile, cleanly scales on desktop grids)
           const layoutCardNode = document.createElement("div");
           layoutCardNode.className = "group bg-white border border-slate-200/10 rounded-2xl p-4 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between w-[85vw] sm:w-[360px] md:w-[calc(33.333%-16px)] snap-start shrink-0";
           
@@ -291,31 +293,31 @@
           `;
           targetGridElement.appendChild(layoutCardNode);
 
-          // Build our customized indicator tracking point node synchronously
+          // Build our indicator tracking dots
           const dotNode = document.createElement("button");
           dotNode.type = "button";
-          dotNode.ariaLabel = `Maps grid tracking module index slot ${index + 1}`;
-          // First item starts initialized as bright indigo active node
+          dotNode.ariaLabel = `Maps to layout card ${index + 1}`;
           dotNode.className = `h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-6 bg-indigo-500' : 'w-2 bg-slate-700 hover:bg-slate-500'}`;
           
-          // Let users tap directly on a point dot to scroll directly to that specific template!
           dotNode.onclick = () => {
-            const calculatedCardWidth = layoutCardNode.offsetWidth + 24; // Width plus horizontal gap margin
+            resetAutoplayInterval();
+            const calculatedCardWidth = layoutCardNode.offsetWidth + 24;
             targetGridElement.scrollTo({ left: index * calculatedCardWidth, behavior: 'smooth' });
           };
           
           dotsContainer.appendChild(dotNode);
         });
 
-        // Track user scroll positions to dynamically update our indicators in real time
+        // Initialize the Autoplay Engine
+        startAutoplayEngine();
+
+        // Track user scroll behavior to update active dot animations
         targetGridElement.addEventListener("scroll", () => {
           const cardNodes = targetGridElement.querySelectorAll(".group");
           if (cardNodes.length === 0) return;
           
           const primaryCardWidth = cardNodes[0].offsetWidth + 24;
           const currentScrollOffset = targetGridElement.scrollLeft;
-          
-          // Compute index matching closest scroll alignment threshold
           const computedActiveIndex = Math.round(currentScrollOffset / primaryCardWidth);
           
           const allDots = dotsContainer.querySelectorAll("button");
@@ -327,11 +329,44 @@
             }
           });
         });
+
+        // Pause autoplay temporarily if someone interacts with the carousel manually
+        targetGridElement.addEventListener("touchstart", () => userIsInteracting = true, { passive: true });
+        targetGridElement.addEventListener("mousedown", () => userIsInteracting = true);
       })
       .catch(exception => {
         console.error("Critical communications fault:", exception);
         targetGridElement.innerHTML = `<div class="col-span-full text-center text-xs font-bold text-rose-400 bg-rose-500/5 border border-rose-500/10 rounded-xl py-6">Database alignment sync dropped.</div>`;
       });
+
+      // CORE AUTOPLAY ENGINE SEQUENCER
+      function startAutoplayEngine() {
+        if (autoplayTimer) clearInterval(autoplayTimer);
+        
+        autoplayTimer = setInterval(() => {
+          const cardNodes = targetGridElement.querySelectorAll(".group");
+          if (cardNodes.length === 0 || userIsInteracting) return;
+
+          const singleCardWidth = cardNodes[0].offsetWidth + 24;
+          const currentOffset = targetGridElement.scrollLeft;
+          const maxScrollOffset = targetGridElement.scrollWidth - targetGridElement.clientWidth;
+          
+          // Calculate next index node destination
+          let targetIndex = Math.round(currentOffset / singleCardWidth) + 1;
+          
+          // If at the end, cycle smoothly right back to index 0
+          if (currentOffset >= maxScrollOffset - 10 || targetIndex >= totalItemsCount) {
+            targetGridElement.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            targetGridElement.scrollTo({ left: targetIndex * singleCardWidth, behavior: 'smooth' });
+          }
+        }, 3500); // Transitions to a new card every 3.5 seconds
+      }
+
+      function resetAutoplayInterval() {
+        userIsInteracting = false;
+        startAutoplayEngine();
+      }
     });
   </script>
 
