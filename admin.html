@@ -339,23 +339,21 @@
     const workspace = document.getElementById('admin-workspace');
 
     if (sessionData && sessionData.user) {
-      if (portal) portal.style.display = 'none';
+      if (portal) portal.classList.add('hidden');
       if (sidebar) {
-        sidebar.style.display = 'flex';
         sidebar.classList.remove('hidden');
         sidebar.classList.add('flex');
       }
-      if (workspace) workspace.style.display = 'block';
+      if (workspace) workspace.classList.remove('hidden');
       
       initializeLiveTelemetry();
     } else {
-      if (portal) portal.style.display = 'block';
+      if (portal) portal.classList.remove('hidden'); // This lets "flex" work!
       if (sidebar) {
-        sidebar.style.display = 'none';
         sidebar.classList.add('hidden');
         sidebar.classList.remove('flex');
       }
-      if (workspace) workspace.style.display = 'none';
+      if (workspace) workspace.classList.add('hidden');
     }
   }
 
