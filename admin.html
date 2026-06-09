@@ -974,11 +974,13 @@ function handleAdminLogout() {
   }
 }
 
-// Run diagnostic queries and build the catalog simultaneously on launch
-document.addEventListener('DOMContentLoaded', () => {
-  runLiveDashboardDiagnostics();
-  syncAdminTemplateCatalog();
-});
+// --- ROOT INITIALIZATION ROUTINE CONTROL ---
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Authenticate security session first to toggle layout panels safely
+    checkAuthentication();
+    // 2. Fire diagnostic checks to update server health states
+    runLiveDashboardDiagnostics();
+  });
 </script>
 </body>
 </html>
