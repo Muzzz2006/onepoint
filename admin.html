@@ -30,8 +30,8 @@
 
       <form onsubmit="handleLogin(event)" class="space-y-4">
         <div>
-          <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">User Node ID</label>
-          <input type="text" id="login-user" required placeholder="admin" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
+          <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">User Node ID (Email)</label>
+          <input type="email" id="login-user" required placeholder="admin@onepoint.ind.in" class="w-full bg-[#0B0F19] border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors">
         </div>
         <div>
           <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Access Keyphrase</label>
@@ -317,63 +317,103 @@
   </main>
 
 <script>
-  // --- CORE ENGINE CONFIGURATION & GLOBAL CACHE ---
-  const SECURE_USER = "admin";
-  const SECURE_PASS = "onepoint2026";
+  // --- SECURE SUPABASE AUTHENTICATION ENGINE ---
   const SUPABASE_BASE = "https://menkhsukpmqkvfirbatm.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1lbmtoc3VrcG1xa3ZmaXJiYXRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTA5NDEsImV4cCI6MjA5NTg4Njk0MX0.EVx7nAWeWuufBN4r1EbtlosNwD0rCzxfKVZ7sXqrCF4";
 
   let systemTemplates = [];
   let livePlatformBlogs = []; 
 
-  document.addEventListener('DOMContentLoaded', () => {
-    checkAuthentication();
-
-    // Drag and Drop Core Configuration Setup
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file-input');
-    if (dropZone) dropZone.onclick = () => fileInput.click();
-    if (fileInput) fileInput.onchange = handleBlogImageUpload;
-  });
-
-  // --- AUTHENTICATION INFRASTRUCTURE MAPPING ---
+  // --- VALIDATE LIVE SESSION ACCESS TOKEN ---
   function checkAuthentication() {
-    const authState = sessionStorage.getItem('1p_admin_authenticated');
+    const sessionKey = Object.keys(localStorage).find(key => key.startsWith('sb-') && key.endsWith('-auth-token'));
+    const sessionData = sessionKey ? JSON.parse(localStorage.getItem(sessionKey)) : null;
+    
     const portal = document.getElementById('login-portal');
     const sidebar = document.getElementById('admin-sidebar');
     const workspace = document.getElementById('admin-workspace');
-    if (authState === 'true') {
-      portal.classList.add('hidden');
-      sidebar.classList.remove('hidden');
-      sidebar.classList.add('flex');
-      workspace.classList.remove('hidden');
+
+    if (sessionData && sessionData.user) {
+      if (portal) portal.classList.add('hidden');
+      if (sidebar) {
+        sidebar.classList.remove('hidden');
+        sidebar.classList.add('flex');
+      }
+      if (workspace) workspace.classList.remove('hidden');
       
-      // Initialize telemetry data pipelines simultaneously
       initializeLiveTelemetry();
     } else {
-      portal.classList.remove('hidden');
-      sidebar.classList.add('hidden');
-      sidebar.classList.remove('flex');
-      workspace.classList.add('hidden');
+      if (portal) portal.classList.remove('hidden');
+      if (sidebar) {
+        sidebar.classList.add('hidden');
+        sidebar.classList.remove('flex');
+      }
+      if (workspace) workspace.classList.add('hidden');
     }
   }
 
-  function handleLogin(e) {
+  // --- SECURE SERVER-SIDE LOGIN HANDSHAKE ---
+  async function handleLogin(e) {
     e.preventDefault();
-    if (document.getElementById('login-user').value === SECURE_USER && document.getElementById('login-pass').value === SECURE_PASS) {
-      sessionStorage.setItem('1p_admin_authenticated', 'true');
-      document.getElementById('login-error').classList.add('hidden');
-      checkAuthentication();
-    } else {
-      document.getElementById('login-error').classList.remove('hidden');
+    const email = document.getElementById('login-user').value;
+    const password = document.getElementById('login-pass').value;
+    const errorAlert = document.getElementById('login-error');
+
+    try {
+      const response = await fetch(`${SUPABASE_BASE}/auth/v1/token?grant_type=password`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.access_token) {
+        const storageKey = `sb-menkhsukpmqkvfirbatm-auth-token`;
+        localStorage.setItem(storageKey, JSON.stringify(result));
+        
+        if (errorAlert) errorAlert.classList.add('hidden');
+        checkAuthentication();
+      } else {
+        throw new Error(result.error_description || "Invalid login credentials.");
+      }
+    } catch (err) {
+      console.error("Authentication rejected:", err);
+      if (errorAlert) {
+        errorAlert.innerText = `⚠ Access Denied: ${err.message}`;
+        errorAlert.classList.remove('hidden');
+      }
     }
   }
 
-  function handleLogout() {
-    sessionStorage.removeItem('1p_admin_authenticated');
-    checkAuthentication();
-  }
+  // --- SECURE SESSION DESTRUCTION ---
+  async function handleAdminLogout() {
+    if (confirm("Are you sure you want to exit the core admin command terminal?")) {
+      try {
+        const sessionKey = Object.keys(localStorage).find(key => key.startsWith('sb-') && key.endsWith('-auth-token'));
+        const sessionData = sessionKey ? JSON.parse(localStorage.getItem(sessionKey)) : null;
 
+        if (sessionData && sessionData.access_token) {
+          await fetch(`${SUPABASE_BASE}/auth/v1/logout`, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_KEY,
+              'Authorization': `Bearer ${sessionData.access_token}`
+            }
+          });
+        }
+      } catch (err) {
+        console.error("Logout propagation error:", err);
+      } finally {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.reload();
+      }
+    }
+  }
   // --- REAL-TIME USER TRAFFIC ANALYTICS TIMELINE ENGINE ---
   async function updateTrafficTimeline(hourRange) {
     // 1. Manage Active Class Styles on Buttons Selection Layout
