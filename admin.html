@@ -326,29 +326,36 @@
 
   // --- VALIDATE LIVE SESSION ACCESS TOKEN ---
   function checkAuthentication() {
-    const sessionKey = Object.keys(localStorage).find(key => key.startsWith('sb-') && key.endsWith('-auth-token'));
-    const sessionData = sessionKey ? JSON.parse(localStorage.getItem(sessionKey)) : null;
+    let sessionData = null;
+    try {
+      const sessionKey = Object.keys(localStorage).find(key => key.startsWith('sb-') && key.endsWith('-auth-token'));
+      sessionData = sessionKey ? JSON.parse(localStorage.getItem(sessionKey)) : null;
+    } catch (e) {
+      console.error("Session parse failed, resetting states:", e);
+    }
     
     const portal = document.getElementById('login-portal');
     const sidebar = document.getElementById('admin-sidebar');
     const workspace = document.getElementById('admin-workspace');
 
     if (sessionData && sessionData.user) {
-      if (portal) portal.classList.add('hidden');
+      if (portal) portal.style.display = 'none';
       if (sidebar) {
+        sidebar.style.display = 'flex';
         sidebar.classList.remove('hidden');
         sidebar.classList.add('flex');
       }
-      if (workspace) workspace.classList.remove('hidden');
+      if (workspace) workspace.style.display = 'block';
       
       initializeLiveTelemetry();
     } else {
-      if (portal) portal.classList.remove('hidden');
+      if (portal) portal.style.display = 'block';
       if (sidebar) {
+        sidebar.style.display = 'none';
         sidebar.classList.add('hidden');
         sidebar.classList.remove('flex');
       }
-      if (workspace) workspace.classList.add('hidden');
+      if (workspace) workspace.style.display = 'none';
     }
   }
 
